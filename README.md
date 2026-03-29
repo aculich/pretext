@@ -101,6 +101,8 @@ const height = computed(() => measured().height)
 const lineCount = computed(() => measured().lineCount)
 ```
 
+> For a hands-on walkthrough with React hooks, Canvas rendering, shrink-wrapping, and multi-column patterns, see the **[Usage Guide](./USAGE.md)**.
+
 ## Demos
 
 Clone the repo, run `bun install`, then `bun start`, and open `/demos/index` in your browser. That page is the full catalog of runnable demos in this repo (each card links to a demo). On Windows, use `bun run start:windows`.
