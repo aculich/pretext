@@ -292,9 +292,18 @@ function boot(): void {
     fontValEl: getRequiredElement('font-val'),
   }
 
+  const viewportW = document.documentElement.clientWidth
+  const initialWidth = Math.min(600, viewportW - 32)
+
+  // Clamp slider range to viewport
+  const sliderMax = Math.min(900, viewportW - 32)
+  dom.widthSlider.max = String(sliderMax)
+  dom.widthSlider.value = String(initialWidth)
+  dom.widthValEl.textContent = initialWidth + 'px'
+
   const st = {
     baseFontSize: 15,
-    chatWidth: 600,
+    chatWidth: initialWidth,
     usePretext: false,
     totalH: 0,
     preparedFontSize: -1,
