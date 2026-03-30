@@ -348,7 +348,7 @@ function boot(): void {
     } else {
       const result = measureWithDOM(messages, st.chatWidth, st.baseFontSize, heights, offsets)
       st.totalH = result.totalH
-      detail = `${result.ms.toFixed(1)}ms`
+      detail = `${result.ms.toFixed(1)}ms measure`
     }
 
     rendered.forEach(el => el.remove())
