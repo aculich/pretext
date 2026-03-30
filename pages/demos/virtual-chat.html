@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Virtual Chat — DOM vs Pretext</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0f0f0f; color: #e0e0e0; height: 100vh; overflow: hidden; }
+
+.top-bar {
+  height: 52px; display: flex; align-items: center; justify-content: center; gap: 28px;
+  background: #1a1a1a; border-bottom: 1px solid #333; padding: 0 24px; flex-shrink: 0;
+}
+.control { display: flex; align-items: center; gap: 8px; }
+.control label { font-size: 12px; color: #888; }
+.control input[type=range] { width: 110px; accent-color: #666; }
+.control .val { font-size: 12px; color: #ccc; min-width: 36px; font-variant-numeric: tabular-nums; }
+
+/* Toggle switch */
+.toggle { display: flex; align-items: center; gap: 10px; }
+.toggle-label { font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.5px; transition: color 0.2s; }
+.toggle-label.active { font-weight: 600; }
+.toggle-label.dom.active { color: #cc8888; }
+.toggle-label.pretext.active { color: #88cc88; }
+.switch { position: relative; width: 44px; height: 24px; cursor: pointer; }
+.switch input { display: none; }
+.switch .track {
+  position: absolute; inset: 0; border-radius: 12px;
+  background: #cc8888; transition: background 0.25s;
+}
+.switch input:checked + .track { background: #88cc88; }
+.switch .thumb {
+  position: absolute; top: 2px; left: 2px; width: 20px; height: 20px;
+  border-radius: 50%; background: #fff; transition: transform 0.25s;
+  pointer-events: none;
+}
+.switch input:checked ~ .thumb { transform: translateX(20px); }
+
+.timing {
+  font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums;
+  min-width: 180px; text-align: right;
+  transition: color 0.2s;
+}
+.timing.dom { color: #cc8888; }
+.timing.pretext { color: #88cc88; }
+
+.chat { height: calc(100vh - 52px); overflow-y: auto; position: relative; margin: 0 auto; }
+.chat-content { position: relative; }
+
+.msg { position: absolute; left: 0; right: 0; padding: 3px 16px; display: flex; overflow: hidden; }
+.msg.sent { justify-content: flex-end; }
+.msg.received { justify-content: flex-start; }
+
+.bubble {
+  padding: 8px 12px; border-radius: 16px; overflow: hidden;
+  word-break: normal; overflow-wrap: break-word; white-space: normal;
+}
+.msg.sent .bubble { border-bottom-right-radius: 4px; }
+.msg.received .bubble { border-bottom-left-radius: 4px; }
+</style>
+</head>
+<body>
+<div class="top-bar">
+  <div class="toggle">
+    <span class="toggle-label dom active">DOM</span>
+    <label class="switch">
+      <input type="checkbox" id="mode-toggle" />
+      <div class="track"></div>
+      <div class="thumb"></div>
+    </label>
+    <span class="toggle-label pretext">Pretext</span>
+  </div>
+  <div class="control">
+    <label>Width</label>
+    <input type="range" id="width-slider" min="250" max="900" value="600" step="1" />
+    <span class="val" id="width-val">600px</span>
+  </div>
+  <div class="control">
+    <label>Font</label>
+    <input type="range" id="font-slider" min="11" max="28" value="15" step="1" />
+    <span class="val" id="font-val">15px</span>
+  </div>
+  <span class="timing dom" id="timing">—</span>
+</div>
+<div class="chat" id="chat">
+  <div class="chat-content" id="chat-content"></div>
+</div>
+<script type="module" src="./virtual-chat.ts"></script>
+</body>
+</html>
