@@ -34,7 +34,6 @@ const { height } = layout(prepared, chatWidth, 20)
 - Cache prepared objects to improve performance  
 - Avoid calling `prepare()` inside loops or frequent re-renders  
 
-
 ## Performance Comparison
 
 | Method | Time (1000 items) | Reflow |
