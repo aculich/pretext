@@ -17,6 +17,31 @@ Alternatively, see them live at [chenglou.me/pretext](https://chenglou.me/pretex
 
 Community packages and experiments: [awesome-pretext](https://github.com/ShipItAndPray/awesome-pretext)
 
+## Real-world Use Cases
+
+### 1. Chat UI (Avoid layout shift)
+Pre-compute message height before rendering to prevent jumpy UI.
+
+```ts
+const prepared = prepare(message, '16px Inter')
+const { height } = layout(prepared, chatWidth, 20)
+```
+
+## Best Practices
+
+- Call `prepare()` only once per text + font combination  
+- Call `layout()` multiple times (e.g., resize, dynamic width changes)  
+- Cache prepared objects to improve performance  
+- Avoid calling `prepare()` inside loops or frequent re-renders  
+
+
+## Performance Comparison
+
+| Method | Time (1000 items) | Reflow |
+|--------|------------------|--------|
+| DOM (getBoundingClientRect) | ~90ms | Yes |
+| Pretext | ~0.05ms | No |
+
 ## API
 
 Pretext serves 2 use cases:
