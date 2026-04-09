@@ -59,8 +59,6 @@ const { height, lineCount } = useMemo(
 )
 ```
 
-The same idea applies outside React too: cache the `prepare()` result based on text/font inputs, then rerun `layout()` when width changes.
-
 Vue (Composition API) example:
 
 ```ts
