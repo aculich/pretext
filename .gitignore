@@ -33,3 +33,6 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 
 # Finder (MacOS) folder config
 .DS_Store
+
+# Local clone of third-party forks (see research/forks/README.md)
+research/forks/pretext-a11y/
