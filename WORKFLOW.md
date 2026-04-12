@@ -42,8 +42,9 @@ Scripts live under `scripts/`; data under `research/github/`.
 |---------|--------|
 | `bun run github:export` | Refreshes `research/github/*.jsonl` + `manifest.json` (all issues/PRs, all issue comments, all PR review comments) |
 | `bun run github:triage` | Writes `research/github/triage.json` + `triage-summary.md` (heuristic scores; wave-1 shortlist) |
+| `bun run github:priissues` | Calls `gh api` once per PR for full diff stats; writes [PRISSUES.md](PRISSUES.md) + `research/github/priissues.json` (full catalog, value/difficulty/recommendation) |
 
-Requirements: `gh` authenticated (`gh auth login`).
+Requirements: `gh` authenticated (`gh auth login`). Run `github:export` before `github:priissues` if the JSONL snapshot is stale.
 
 ## Upstream fork: pretext-a11y
 
