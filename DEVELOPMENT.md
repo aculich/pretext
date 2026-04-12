@@ -1,5 +1,7 @@
 ## Development Setup
 
+For **how to think about performance** (categories A–E, what benchmarks vs traces prove, demo vs library issues), see [PERFORMANCE.md](PERFORMANCE.md). This file stays **operational**: commands and artifact paths.
+
 Install once:
 
 ```sh
@@ -95,6 +97,8 @@ Use these for the current checked-in picture:
 - [RESEARCH.md](RESEARCH.md) — the exploration log and the durable conclusions behind the current model
 
 ## Deep Profiling
+
+For conceptual framing (ontology of perf classes, evidence, Floating Languages notes), read [PERFORMANCE.md](PERFORMANCE.md) first. Below is the **how-to** loop.
 
 For one-off performance and memory work, start in a real browser.
 

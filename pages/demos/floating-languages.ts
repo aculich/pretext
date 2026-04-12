@@ -112,6 +112,46 @@ const ctx = canvas.getContext('2d')!
 const userInput = document.getElementById('user-input') as HTMLInputElement
 const addBtn = document.getElementById('add-btn') as HTMLButtonElement
 
+const perfProbe = new URLSearchParams(globalThis.location?.search ?? '').has('perf')
+let perfRafSumMs = 0
+let perfRafMaxMs = 0
+let perfRafSamples = 0
+let perfLongTaskCount = 0
+
+if (perfProbe && typeof PerformanceObserver !== 'undefined') {
+  try {
+    const obs = new PerformanceObserver((list) => {
+      for (const e of list.getEntries()) {
+        if (e.duration > 50) perfLongTaskCount++
+      }
+    })
+    obs.observe({ type: 'longtask', buffered: true })
+  } catch {
+    /* Safari / older: longtask not supported */
+  }
+}
+
+// Cached radial gradients (family × active). Avoids per-frame createRadialGradient + GC churn.
+const glowGradientCache = new Map<string, CanvasGradient>()
+
+function clearGlowGradientCache(): void {
+  glowGradientCache.clear()
+}
+
+function getGlowGradient(family: ScriptFamily, active: boolean): CanvasGradient {
+  const key = `${family}:${active ? '1' : '0'}`
+  let g = glowGradientCache.get(key)
+  if (g !== undefined) return g
+  const radius = active ? 120 : 60
+  const intensity = active ? 0.15 : 0.03
+  const color = familyColors[family]
+  g = ctx.createRadialGradient(0, 0, 0, 0, 0, radius)
+  g.addColorStop(0, `rgba(${color[0]},${color[1]},${color[2]},${intensity})`)
+  g.addColorStop(1, `rgba(${color[0]},${color[1]},${color[2]},0)`)
+  glowGradientCache.set(key, g)
+  return g
+}
+
 // ---------------------------------------------------------------------------
 // State
 // ---------------------------------------------------------------------------
@@ -127,6 +167,7 @@ let lastFrameTime = performance.now()
 let frameCount = 0
 let lastFpsUpdate = performance.now()
 let displayFps = 0
+let rafFrameSeq = 0
 
 // ---------------------------------------------------------------------------
 // Script detection for user input
@@ -158,6 +199,7 @@ function detectScript(text: string): { lang: string; label: string; family: Scri
 // ---------------------------------------------------------------------------
 
 function initCanvas(): void {
+  clearGlowGradientCache()
   const dpr = window.devicePixelRatio || 1
   canvas.width = window.innerWidth * dpr
   canvas.height = window.innerHeight * dpr
@@ -224,18 +266,19 @@ function drawBackground(): void {
   ctx.clearRect(0, 0, w, h)
 
   for (const bubble of bubbles) {
-    const color = familyColors[bubble.phrase.family]
-    const intensity = bubble.active ? 0.15 : 0.03
-    const radius = bubble.active ? 120 : 60
+    const active = bubble.active
+    const radius = active ? 120 : 60
     const bcx = bubble.x + bubble.width / 2
     const bcy = bubble.y + bubble.height / 2
-    const gradient = ctx.createRadialGradient(bcx, bcy, 0, bcx, bcy, radius)
-    gradient.addColorStop(0, `rgba(${color[0]},${color[1]},${color[2]},${intensity})`)
-    gradient.addColorStop(1, `rgba(${color[0]},${color[1]},${color[2]},0)`)
+    const gradient = getGlowGradient(bubble.phrase.family, active)
+    ctx.save()
+    ctx.translate(bcx, bcy)
     ctx.fillStyle = gradient
-    ctx.fillRect(bcx - radius, bcy - radius, radius * 2, radius * 2)
+    ctx.fillRect(-radius, -radius, radius * 2, radius * 2)
+    ctx.restore()
   }
 
+  const edgeMaxDistSq = 200 * 200
   ctx.lineWidth = 1
   for (let i = 0; i < bubbles.length; i++) {
     for (let j = i + 1; j < bubbles.length; j++) {
@@ -243,17 +286,17 @@ function drawBackground(): void {
       const b = bubbles[j]!
       const dx = (a.x + a.width / 2) - (b.x + b.width / 2)
       const dy = (a.y + a.height / 2) - (b.y + b.height / 2)
-      const dist = Math.sqrt(dx * dx + dy * dy)
-      if (dist < 200) {
-        const alpha = 0.06 * (1 - dist / 200)
-        const sameFamily = a.phrase.family === b.phrase.family
-        const color = sameFamily ? familyColors[a.phrase.family] : [176, 138, 255] as [number, number, number]
-        ctx.strokeStyle = `rgba(${color[0]},${color[1]},${color[2]},${sameFamily ? alpha * 2 : alpha})`
-        ctx.beginPath()
-        ctx.moveTo(a.x + a.width / 2, a.y + a.height / 2)
-        ctx.lineTo(b.x + b.width / 2, b.y + b.height / 2)
-        ctx.stroke()
-      }
+      const distSq = dx * dx + dy * dy
+      if (distSq >= edgeMaxDistSq) continue
+      const dist = Math.sqrt(distSq)
+      const alpha = 0.06 * (1 - dist / 200)
+      const sameFamily = a.phrase.family === b.phrase.family
+      const color = sameFamily ? familyColors[a.phrase.family] : [176, 138, 255] as [number, number, number]
+      ctx.strokeStyle = `rgba(${color[0]},${color[1]},${color[2]},${sameFamily ? alpha * 2 : alpha})`
+      ctx.beginPath()
+      ctx.moveTo(a.x + a.width / 2, a.y + a.height / 2)
+      ctx.lineTo(b.x + b.width / 2, b.y + b.height / 2)
+      ctx.stroke()
     }
   }
 
@@ -368,9 +411,10 @@ function stopWidthAnimation(bubble: Bubble): void {
   measureBubble(bubble, 280)
   const textEl = bubble.el.querySelector('.text') as HTMLSpanElement
   textEl.style.width = ''
+  updateMetaText(bubble)
 }
 
-function tickWidthAnimation(bubble: Bubble, now: number): void {
+function tickWidthAnimation(bubble: Bubble, now: number, frameSeq: number): void {
   const elapsed = now - bubble.animStartTime
   const t = (elapsed % ANIM_DURATION) / ANIM_DURATION
   const ping = t < 0.5 ? t * 2 : 2 - t * 2
@@ -404,7 +448,8 @@ function tickWidthAnimation(bubble: Bubble, now: number): void {
     )
   }
 
-  updateMetaText(bubble)
+  const metaEveryFrame = prevLineCount !== bubble.lineCount || (frameSeq & 3) === 0
+  if (metaEveryFrame) updateMetaText(bubble)
 }
 
 // ---------------------------------------------------------------------------
@@ -556,6 +601,9 @@ function renderBubbles(): void {
 // ---------------------------------------------------------------------------
 
 function animate(now: number): void {
+  const frameStart = perfProbe ? performance.now() : 0
+  rafFrameSeq++
+
   const dt = Math.min((now - lastFrameTime) / 1000, 0.05)
   lastFrameTime = now
   globalTime = now
@@ -569,13 +617,29 @@ function animate(now: number): void {
   }
 
   for (const bubble of bubbles) {
-    if (bubble.animating) tickWidthAnimation(bubble, now / 1000)
+    if (bubble.animating) tickWidthAnimation(bubble, now / 1000, rafFrameSeq)
   }
 
   updatePhysics(dt)
   updateParticles(dt)
   renderBubbles()
   drawBackground()
+
+  if (perfProbe) {
+    const elapsed = performance.now() - frameStart
+    perfRafSumMs += elapsed
+    perfRafMaxMs = Math.max(perfRafMaxMs, elapsed)
+    perfRafSamples++
+    if (rafFrameSeq % 120 === 0) {
+      console.table({
+        avgRafMs: Math.round((perfRafSumMs / perfRafSamples) * 100) / 100,
+        maxRafMs: Math.round(perfRafMaxMs * 100) / 100,
+        frames: perfRafSamples,
+        longTasksOver50ms: perfLongTaskCount,
+      })
+    }
+  }
+
   requestAnimationFrame(animate)
 }
 

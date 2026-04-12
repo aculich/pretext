@@ -7,7 +7,7 @@ Baseline capabilities are described in [README.md](README.md) (APIs, `prepare` /
 - **DOM-free measurement** — `prepare` + `layout` for height/line count without layout thrash.
 - **Rich layout APIs** — `prepareWithSegments`, `layoutWithLines`, `walkLineRanges`, `layoutNextLineRange`, `materializeLineRange`, `measureLineStats` (see README).
 - **Modes** — `whiteSpace: 'pre-wrap'`, `wordBreak: 'keep-all'`, bidi-aware rich path.
-- **Tooling** — Browser accuracy/benchmark pages, corpus sweeps, dashboards ([DEVELOPMENT.md](DEVELOPMENT.md)).
+- **Tooling** — Browser accuracy/benchmark pages, corpus sweeps, dashboards ([DEVELOPMENT.md](DEVELOPMENT.md)); performance vocabulary and measurement framing ([PERFORMANCE.md](PERFORMANCE.md)).
 
 ## Added in this fork (wave 1 — upstream PRs)
 

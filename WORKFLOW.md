@@ -79,6 +79,8 @@ Optional smoke: `bun start` → open `/demos/index`.
 
 **Demo sweep checklist** (click every card from `/demos/index`, or hit these paths): `/demos/accordion`, `/demos/bubbles`, `/demos/dynamic-layout`, `/demos/variable-typographic-ascii`, `/demos/editorial-engine`, `/demos/justification-comparison`, `/demos/rich-note`, `/demos/markdown-chat`, `/demos/masonry`, `/demos/virtual-scroll`, `/demos/virtual-chat`, `/demos/cjk-line-breaking`, `/demos/old-man-sea`, `/demos/floating-languages`, `/demos/optimal-line-breaking`.
 
+**Demo performance** — If a demo feels janky, classify the issue using [PERFORMANCE.md](PERFORMANCE.md) (library vs render loop vs compositing) before changing `src/`. Floating Languages supports an optional probe: `/demos/floating-languages?perf=1`.
+
 Results from the last integration run are appended in this file’s **Verification log** section below.
 
 ## Verification log

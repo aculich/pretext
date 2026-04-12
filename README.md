@@ -4,6 +4,8 @@ Pure JavaScript/TypeScript library for multiline text measurement & layout. Fast
 
 Pretext side-steps the need for DOM measurements (e.g. `getBoundingClientRect`, `offsetHeight`), which trigger layout reflow, one of the most expensive operations in the browser. It implements its own text measurement logic, using the browsers' own font engine as ground truth (very AI-friendly iteration method).
 
+For a conceptual guide to **performance**, **benchmarking**, and how demos relate to library cost, see [PERFORMANCE.md](PERFORMANCE.md). For day-to-day commands and profiling steps, see [DEVELOPMENT.md](DEVELOPMENT.md).
+
 ## Installation
 
 ```sh
