@@ -1,0 +1,91 @@
+# Fork workflow: upstream, GitButler, and issue/PR triage
+
+This fork tracks [chenglou/pretext](https://github.com/chenglou/pretext) while keeping an auditable path for integrating open upstream PRs.
+
+## Remotes
+
+| Remote | URL | Role |
+|--------|-----|------|
+| `origin` | `https://github.com/aculich/pretext` | Your fork (push PRs here) |
+| `upstream` | `https://github.com/chenglou/pretext.git` | Canonical upstream |
+
+```sh
+git fetch upstream
+git merge upstream/main   # or rebase your branch, per team preference
+```
+
+## GitButler and `but` (macOS)
+
+1. Install the app + CLI: `brew install --cask gitbutler` (binary: `but`).
+2. From your **toolchain-2026** checkout (this machine: `~/tools/toolchain-2026`), merge AI hooks per `docs/patterns/GITBUTLER_AI_HOOKS.md`:
+
+   ```sh
+   cd ~/tools/toolchain-2026
+   ./scripts/configure-gitbutler-ai-hooks.sh --dry-run   # optional preview
+   ./scripts/configure-gitbutler-ai-hooks.sh
+   ```
+
+   This updates `~/.cursor/hooks.json` and merges `hooks` into `~/.claude/settings.json`. If you later run `configure-claude-code-safe-yolo.sh --force`, **re-run** the GitButler script afterward.
+
+3. Do not mix **Graphite** (`gt`) and **GitButler** on the same worktree; pick one stacking model per repo (see `STACKED_PR_IDE_EXTENSIONS.md` in the same toolchain docs tree).
+
+4. **Stacked integration branches** used for wave 1 (tip = `integration/wave1-upstream`, merged into `main`):
+
+   - `integration/wave1-pr125` → `integration/wave1-pr80` → … → `integration/wave1-pr97`
+   - Each step is one upstream PR cherry-picked from `upstream pull/<n>/head`.
+
+## Local GitHub archive (issues + PRs + comments)
+
+Scripts live under `scripts/`; data under `research/github/`.
+
+| Command | Output |
+|---------|--------|
+| `bun run github:export` | Refreshes `research/github/*.jsonl` + `manifest.json` (all issues/PRs, all issue comments, all PR review comments) |
+| `bun run github:triage` | Writes `research/github/triage.json` + `triage-summary.md` (heuristic scores; wave-1 shortlist) |
+
+Requirements: `gh` authenticated (`gh auth login`).
+
+## Upstream fork: pretext-a11y
+
+[TheMarco/pretext-a11y](https://github.com/TheMarco/pretext-a11y) is analyzed in [research/github/pretext-a11y-analysis.md](research/github/pretext-a11y-analysis.md). Clone path is gitignored; see [research/forks/README.md](research/forks/README.md).
+
+## Wave 1 upstream PRs integrated (2026-04-12)
+
+Cherry-picked onto `main` (from open PRs on `chenglou/pretext`):
+
+| PR | Summary |
+|----|---------|
+| [#125](https://github.com/chenglou/pretext/pull/125) | Docs: README typo / parenthesis in `walkLineRanges` description |
+| [#80](https://github.com/chenglou/pretext/pull/80) | Docs: link to community [awesome-pretext](https://github.com/ShipItAndPray/awesome-pretext) |
+| [#119](https://github.com/chenglou/pretext/pull/119) | Perf: skip no-op merge passes in `src/analysis.ts` |
+| [#114](https://github.com/chenglou/pretext/pull/114) | Dev: Windows `start:windows` uses `localhost` instead of `0.0.0.0` |
+| [#97](https://github.com/chenglou/pretext/pull/97) | Docs: real-world snippet + best practices + performance table; adds `benchmarks/simple-benchmark.ts` |
+
+**Note:** [#97](https://github.com/chenglou/pretext/pull/97) needed a README merge fix: the upstream first commit omitted a closing ` ``` ` on the TypeScript example; resolution keeps our Demos/awesome-pretext lines and a valid fenced block.
+
+## Verification (after integrating)
+
+See [DEVELOPMENT.md](DEVELOPMENT.md). Minimum bar:
+
+```sh
+bun install
+bun run check
+bun test
+bun run site:build
+```
+
+Optional smoke: `bun start` → open `/demos/index`.
+
+Results from the last integration run are appended in this file’s **Verification log** section below.
+
+## Verification log
+
+**Session: 2026-04-12**
+
+| Step | Result |
+|------|--------|
+| `bun run check` | Pass (`tsc` + `oxlint --type-aware src`) |
+| `bun test` | Pass (144 tests; includes duplicate suite under `research/forks/pretext-a11y` if cloned) |
+| `bun run site:build` | Pass (`site/` generated) |
+| Dev server | `bun pages/demos/index.html --host=127.0.0.1:3001` → `GET /demos` **HTTP 200** |
+| `bun run benchmarks/simple-benchmark.ts` | **Fails in plain Bun** (no canvas / OffscreenCanvas). Run in a browser or another canvas-capable runtime; see comment in `benchmarks/simple-benchmark.ts`. |

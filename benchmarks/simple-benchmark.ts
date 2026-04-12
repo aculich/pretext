@@ -1,4 +1,9 @@
-import { prepare, layout } from '@chenglou/pretext'
+/**
+ * Micro-benchmark for hot-path `layout()` timing.
+ * Requires a canvas-capable environment (browser or runtime with `document` / OffscreenCanvas).
+ * Plain `bun run` in the terminal will throw from measurement setup.
+ */
+import { prepare, layout } from '../src/layout.js'
 
 const text = "Hello world ".repeat(100)
 const font = '16px Arial' // safer default font

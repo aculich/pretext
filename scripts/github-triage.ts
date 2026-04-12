@@ -38,9 +38,9 @@ async function readJsonl(path: string): Promise<UnknownRecord[]> {
 function scoreIssue(issue: UnknownRecord): { score: number; tags: string[] } {
   const tags: string[] = []
   let score = 40
-  const title = String(issue.title ?? '')
-  const body = String(issue.body ?? '')
-  const state = String(issue.state ?? '')
+  const title = String(issue['title'] ?? '')
+  const body = String(issue['body'] ?? '')
+  const state = String(issue['state'] ?? '')
 
   if (state === 'open') {
     score += 10
@@ -79,9 +79,9 @@ function scorePullFromDetail(
   const tags: string[] = []
   let score = 35
 
-  const state = String(base.state ?? '')
-  const draft = Boolean(base.draft)
-  const title = String(base.title ?? '')
+  const state = String(base['state'] ?? '')
+  const draft = Boolean(base['draft'])
+  const title = String(base['title'] ?? '')
 
   if (state === 'open') {
     score += 15
@@ -117,11 +117,11 @@ function scorePullFromDetail(
   let cleanliness: 'unknown' | 'likely-clean' | 'likely-messy' = 'unknown'
 
   if (detail) {
-    const changed = Number(detail.changed_files ?? 999)
-    const additions = Number(detail.additions ?? 0)
-    const deletions = Number(detail.deletions ?? 0)
-    const mergeable = detail.mergeable
-    const mergeableState = String(detail.mergeable_state ?? '')
+    const changed = Number(detail['changed_files'] ?? 999)
+    const additions = Number(detail['additions'] ?? 0)
+    const deletions = Number(detail['deletions'] ?? 0)
+    const mergeable = detail['mergeable']
+    const mergeableState = String(detail['mergeable_state'] ?? '')
 
     if (changed <= 2 && additions + deletions < 80) {
       score += 20
@@ -157,9 +157,9 @@ function scorePullFromDetail(
 }
 
 function formatIssueRow(i: UnknownRecord, scored: ReturnType<typeof scoreIssue>): string {
-  const num = i.number
-  const title = String(i.title ?? '').replace(/\|/g, '\\|')
-  const state = String(i.state ?? '')
+  const num = i['number']
+  const title = String(i['title'] ?? '').replace(/\|/g, '\\|')
+  const state = String(i['state'] ?? '')
   return `| #${num} | ${state} | ${scored.score} | ${scored.tags.join(', ')} | ${title} |`
 }
 
@@ -168,12 +168,12 @@ function formatPullRow(
   scored: ReturnType<typeof scorePullFromDetail>,
   detail: UnknownRecord | null,
 ): string {
-  const num = p.number
-  const title = String(p.title ?? '').replace(/\|/g, '\\|')
-  const state = String(p.state ?? '')
-  const draft = p.draft ? 'yes' : 'no'
-  const files = detail ? String(detail.changed_files ?? '') : '—'
-  const mergeable = detail && detail.mergeable != null ? String(detail.mergeable) : '—'
+  const num = p['number']
+  const title = String(p['title'] ?? '').replace(/\|/g, '\\|')
+  const state = String(p['state'] ?? '')
+  const draft = p['draft'] ? 'yes' : 'no'
+  const files = detail ? String(detail['changed_files'] ?? '') : '—'
+  const mergeable = detail && detail['mergeable'] != null ? String(detail['mergeable']) : '—'
   return `| #${num} | ${state} | ${draft} | ${scored.score} | ${scored.risk} | ${files} | ${mergeable} | ${title} |`
 }
 
@@ -203,8 +203,8 @@ async function main() {
   }[] = []
 
   for (const pull of pulls) {
-    const state = String(pull.state ?? '')
-    const num = Number(pull.number)
+    const state = String(pull['state'] ?? '')
+    const num = Number(pull['number'])
     let detail: UnknownRecord | null = null
     if (state === 'open' && Number.isFinite(num)) {
       detail = await ghApiJson(`repos/${repo}/pulls/${num}`)
@@ -218,52 +218,55 @@ async function main() {
   const wave1 = pullRows
     .filter(
       (r) =>
-        String(r.pull.state ?? '') === 'open' &&
-        !r.pull.draft &&
+        String(r.pull['state'] ?? '') === 'open' &&
+        !r.pull['draft'] &&
         r.scored.score >= 55 &&
         r.detail &&
-        r.detail.mergeable !== false &&
-        Number(r.detail.changed_files ?? 999) <= 12,
+        r.detail['mergeable'] !== false &&
+        Number(r.detail['changed_files'] ?? 999) <= 12,
     )
     .slice(0, 5)
 
   const triage = {
     repo,
     generated_at: new Date().toISOString(),
-    wave1_recommendations: wave1.map((r) => ({
-      number: r.pull.number,
-      title: r.pull.title,
-      html_url: r.pull.html_url,
-      score: r.scored.score,
-      tags: r.scored.tags,
-      risk: r.scored.risk,
-      cleanliness: r.scored.cleanliness,
-      changed_files: r.detail?.changed_files,
-      additions: r.detail?.additions,
-      deletions: r.detail?.deletions,
-      head_sha: (r.pull.head as UnknownRecord | undefined)?.sha,
-      head_ref: (r.pull.head as UnknownRecord | undefined)?.ref,
-    })),
+    wave1_recommendations: wave1.map((r) => {
+      const head = r.pull['head'] as UnknownRecord | undefined
+      return {
+        number: r.pull['number'],
+        title: r.pull['title'],
+        html_url: r.pull['html_url'],
+        score: r.scored.score,
+        tags: r.scored.tags,
+        risk: r.scored.risk,
+        cleanliness: r.scored.cleanliness,
+        changed_files: r.detail?.['changed_files'],
+        additions: r.detail?.['additions'],
+        deletions: r.detail?.['deletions'],
+        head_sha: head?.['sha'],
+        head_ref: head?.['ref'],
+      }
+    }),
     issues_top: issueRows.slice(0, 25).map((r) => ({
-      number: r.issue.number,
-      title: r.issue.title,
-      state: r.issue.state,
+      number: r.issue['number'],
+      title: r.issue['title'],
+      state: r.issue['state'],
       score: r.scored.score,
       tags: r.scored.tags,
-      html_url: r.issue.html_url,
+      html_url: r.issue['html_url'],
     })),
     pulls_ranked: pullRows.map((r) => ({
-      number: r.pull.number,
-      title: r.pull.title,
-      state: r.pull.state,
-      draft: r.pull.draft,
+      number: r.pull['number'],
+      title: r.pull['title'],
+      state: r.pull['state'],
+      draft: r.pull['draft'],
       score: r.scored.score,
       tags: r.scored.tags,
       risk: r.scored.risk,
       cleanliness: r.scored.cleanliness,
-      changed_files: r.detail?.changed_files ?? null,
-      mergeable: r.detail?.mergeable ?? null,
-      html_url: r.pull.html_url,
+      changed_files: r.detail?.['changed_files'] ?? null,
+      mergeable: r.detail?.['mergeable'] ?? null,
+      html_url: r.pull['html_url'],
     })),
   }
 
@@ -282,10 +285,10 @@ async function main() {
     md.push('| PR | Score | Risk | Files | Title |')
     md.push('|---:|---:|:---|---:|:---|')
     for (const r of wave1) {
-      const n = r.pull.number
-      const url = String(r.pull.html_url ?? '')
+      const n = r.pull['number']
+      const url = String(r.pull['html_url'] ?? '')
       md.push(
-        `| [#${n}](${url}) | ${r.scored.score} | ${r.scored.risk} | ${r.detail?.changed_files} | ${String(r.pull.title ?? '')} |`,
+        `| [#${n}](${url}) | ${r.scored.score} | ${r.scored.risk} | ${r.detail?.['changed_files']} | ${String(r.pull['title'] ?? '')} |`,
       )
     }
   }
@@ -311,7 +314,7 @@ async function main() {
   console.log('Wrote research/github/triage.json and triage-summary.md')
   console.log(
     'Wave1:',
-    wave1.map((r) => `#${r.pull.number}`).join(', ') || '(none)',
+    wave1.map((r) => `#${r.pull['number']}`).join(', ') || '(none)',
   )
 }
 

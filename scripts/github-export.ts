@@ -58,7 +58,7 @@ function partitionIssues(raw: Record<string, unknown>[]) {
   const issues: Record<string, unknown>[] = []
   const issueLikePrs: Record<string, unknown>[] = []
   for (const row of raw) {
-    if (row.pull_request != null) {
+    if (row['pull_request'] != null) {
       issueLikePrs.push(row)
     } else {
       issues.push(row)

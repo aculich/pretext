@@ -1,4 +1,5 @@
 {
+  "exclude": ["node_modules", "dist", "site", "research/forks"],
   "compilerOptions": {
     "lib": ["ESNext", "DOM"],
     "target": "ESNext",
