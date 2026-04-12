@@ -61,12 +61,21 @@ bun install
 The ones worth keeping in your muscle memory:
 
 - `/demos/index`
+- `/demos/accordion`
 - `/demos/bubbles`
 - `/demos/dynamic-layout`
+- `/demos/variable-typographic-ascii`
 - `/demos/editorial-engine`
 - `/demos/justification-comparison`
-- `/demos/markdown-chat`
 - `/demos/rich-note`
+- `/demos/markdown-chat`
+- `/demos/masonry`
+- `/demos/virtual-scroll`
+- `/demos/virtual-chat`
+- `/demos/cjk-line-breaking`
+- `/demos/old-man-sea`
+- `/demos/floating-languages`
+- `/demos/optimal-line-breaking`
 - `/accuracy`
 - `/benchmark`
 - `/corpus`

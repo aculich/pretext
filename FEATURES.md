@@ -20,6 +20,17 @@ Baseline capabilities are described in [README.md](README.md) (APIs, `prepare` /
 | Documentation + examples | README: “Real-world use cases”, best-practices bullets, DOM vs Pretext comparison table | [PR #97](https://github.com/chenglou/pretext/pull/97) |
 | Benchmarks | New optional script `benchmarks/simple-benchmark.ts` — micro-timing `layout()` in a loop (**needs canvas**; not a headless Bun script) | [PR #97](https://github.com/chenglou/pretext/pull/97) |
 
+## Added in this fork (wave 2 — demos)
+
+| Area | Change | Source |
+|------|--------|--------|
+| Demos | Virtual scroll list demo | [PR #31](https://github.com/chenglou/pretext/pull/31) |
+| Demos | Virtual chat + DOM comparison | [PR #46](https://github.com/chenglou/pretext/pull/46) |
+| Demos | CJK line-breaking explorer | [PR #79](https://github.com/chenglou/pretext/pull/79) |
+| Demos | “Old Man and the Sea” editorial reflow / drop cap | [PR #19](https://github.com/chenglou/pretext/pull/19) |
+| Demos | Floating Languages physics-style demo | [PR #93](https://github.com/chenglou/pretext/pull/93) |
+| Demos | Optimal line breaking (Knuth–Plass) playground | [PR #113](https://github.com/chenglou/pretext/pull/113) |
+
 ## Research / triage (not runtime features)
 
 - **GitHub export** — `research/github/*.jsonl` snapshots for issues, PRs, and comments (`bun run github:export`).

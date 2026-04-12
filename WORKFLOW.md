@@ -77,6 +77,8 @@ bun run site:build
 
 Optional smoke: `bun start` → open `/demos/index`.
 
+**Demo sweep checklist** (click every card from `/demos/index`, or hit these paths): `/demos/accordion`, `/demos/bubbles`, `/demos/dynamic-layout`, `/demos/variable-typographic-ascii`, `/demos/editorial-engine`, `/demos/justification-comparison`, `/demos/rich-note`, `/demos/markdown-chat`, `/demos/masonry`, `/demos/virtual-scroll`, `/demos/virtual-chat`, `/demos/cjk-line-breaking`, `/demos/old-man-sea`, `/demos/floating-languages`, `/demos/optimal-line-breaking`.
+
 Results from the last integration run are appended in this file’s **Verification log** section below.
 
 ## Verification log
