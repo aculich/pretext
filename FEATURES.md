@@ -31,6 +31,15 @@ Baseline capabilities are described in [README.md](README.md) (APIs, `prepare` /
 | Demos | Floating Languages physics-style demo | [PR #93](https://github.com/chenglou/pretext/pull/93) |
 | Demos | Optimal line breaking (Knuth–Plass) playground | [PR #113](https://github.com/chenglou/pretext/pull/113) |
 
+## Added in this fork (wave 2 — capabilities and docs)
+
+| Area | Change | Source |
+|------|--------|--------|
+| API | `setMeasureFunction()` for custom measurement backends (plus tests) | [PR #17](https://github.com/chenglou/pretext/pull/17) |
+| API | Intrinsic sizing: `minContentWidth()` / `maxContentWidth()` | [PR #45](https://github.com/chenglou/pretext/pull/45) |
+| Documentation | Quick start, framework snippets (React / Vue / Angular), “which API” table, trimmed overlap | [PR #81](https://github.com/chenglou/pretext/pull/81) |
+| Documentation | Progressive **[USAGE.md](USAGE.md)** (hooks, canvas, shrink-wrap, columns) linked from README | [PR #21](https://github.com/chenglou/pretext/pull/21) |
+
 ## Research / triage (not runtime features)
 
 - **GitHub export** — `research/github/*.jsonl` snapshots for issues, PRs, and comments (`bun run github:export`).

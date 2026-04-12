@@ -1,15 +1,25 @@
 {
   "repo": "chenglou/pretext",
   "upstream_manifest_exported_at": "2026-04-12T12:17:26.762Z",
-  "generated_at": "2026-04-12T18:15:46.257Z",
+  "generated_at": "2026-04-12T18:32:11.895Z",
   "counts": {
     "pulls": 66,
     "issues": 59,
     "pr_api_calls": 66
   },
   "wave1_in_fork": [
+    17,
+    19,
+    21,
+    31,
+    45,
+    46,
+    79,
     80,
+    81,
+    93,
     97,
+    113,
     114,
     119,
     125
@@ -189,7 +199,7 @@
       "mergeable": true,
       "value": "medium",
       "merge_difficulty": "easy",
-      "recommendation": "candidate_next"
+      "recommendation": "already_in_fork"
     },
     {
       "number": 19,
@@ -205,7 +215,7 @@
       "mergeable": true,
       "value": "low",
       "merge_difficulty": "medium",
-      "recommendation": "review_carefully"
+      "recommendation": "already_in_fork"
     },
     {
       "number": 20,
@@ -237,7 +247,7 @@
       "mergeable": true,
       "value": "medium",
       "merge_difficulty": "medium",
-      "recommendation": "review_carefully"
+      "recommendation": "already_in_fork"
     },
     {
       "number": 23,
@@ -349,7 +359,7 @@
       "mergeable": true,
       "value": "low",
       "merge_difficulty": "medium",
-      "recommendation": "review_carefully"
+      "recommendation": "already_in_fork"
     },
     {
       "number": 32,
@@ -461,7 +471,7 @@
       "mergeable": false,
       "value": "medium",
       "merge_difficulty": "medium",
-      "recommendation": "review_carefully"
+      "recommendation": "already_in_fork"
     },
     {
       "number": 46,
@@ -477,7 +487,7 @@
       "mergeable": true,
       "value": "low",
       "merge_difficulty": "medium",
-      "recommendation": "review_carefully"
+      "recommendation": "already_in_fork"
     },
     {
       "number": 52,
@@ -701,7 +711,7 @@
       "mergeable": true,
       "value": "low",
       "merge_difficulty": "medium",
-      "recommendation": "review_carefully"
+      "recommendation": "already_in_fork"
     },
     {
       "number": 80,
@@ -733,7 +743,7 @@
       "mergeable": true,
       "value": "high",
       "merge_difficulty": "easy",
-      "recommendation": "candidate_next"
+      "recommendation": "already_in_fork"
     },
     {
       "number": 82,
@@ -813,7 +823,7 @@
       "mergeable": true,
       "value": "low",
       "merge_difficulty": "medium",
-      "recommendation": "review_carefully"
+      "recommendation": "already_in_fork"
     },
     {
       "number": 97,
@@ -989,7 +999,7 @@
       "mergeable": true,
       "value": "low",
       "merge_difficulty": "medium",
-      "recommendation": "review_carefully"
+      "recommendation": "already_in_fork"
     },
     {
       "number": 114,
@@ -1612,12 +1622,12 @@
       "hard": 8
     },
     "pr_by_recommendation": {
-      "review_carefully": 26,
+      "review_carefully": 18,
       "merged_upstream": 7,
       "closed_unmerged": 23,
-      "candidate_next": 3,
+      "already_in_fork": 15,
       "draft_hold": 2,
-      "already_in_fork": 5
+      "candidate_next": 1
     },
     "issue_by_effort": {
       "triage_only": 24,

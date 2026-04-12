@@ -83,7 +83,17 @@ Results from the last integration run are appended in this file’s **Verificati
 
 ## Verification log
 
-**Session: 2026-04-12**
+**Session: 2026-04-12 (wave 2 — demos + capabilities)**
+
+| Step | Result |
+|------|--------|
+| `bun run check` | Pass (`tsc` + `oxlint --type-aware src`) |
+| `bun test` | Pass (160 tests) |
+| `bun run site:build` | Pass (`site/` generated) |
+| Dev server | `bun start` → `GET /demos` and every path in the demo sweep checklist **HTTP 200** (spot-checked via `curl` to `127.0.0.1:3000`) |
+| `bun run github:priissues` | Pass — refreshed [PRISSUES.md](PRISSUES.md) + `research/github/priissues.json` |
+
+**Session: 2026-04-12 (wave 1)**
 
 | Step | Result |
 |------|--------|

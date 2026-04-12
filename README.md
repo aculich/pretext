@@ -124,6 +124,7 @@ Good first pages:
 | custom line rendering to canvas / SVG / WebGL | `prepareWithSegments()` + `layoutWithLines()` |
 | streaming or variable-width line routing | `prepareWithSegments()` + `layoutNextLine()` |
 | shrink-wrap / widest-line geometry without building line strings | `prepareWithSegments()` + `walkLineRanges()` |
+| CSS-like intrinsic widths (min-content / max-content) without wrapping the text | `minContentWidth()` / `maxContentWidth()` |
 
 Community packages and experiments: [awesome-pretext](https://github.com/ShipItAndPray/awesome-pretext)
 

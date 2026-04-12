@@ -15,8 +15,10 @@ const GH_DIR = join(ROOT, 'research', 'github')
 const OUT_JSON = join(GH_DIR, 'priissues.json')
 const OUT_MD = join(ROOT, 'PRISSUES.md')
 
-/** Wave 1 PRs cherry-picked into aculich fork (see FEATURES.md). */
-const ALREADY_IN_FORK = new Set([80, 97, 114, 119, 125])
+/** Wave 1–2 PRs cherry-picked into aculich fork (see FEATURES.md). */
+const ALREADY_IN_FORK = new Set([
+  17, 19, 21, 31, 45, 46, 79, 80, 81, 93, 97, 113, 114, 119, 125,
+])
 
 type UnknownRecord = Record<string, unknown>
 

@@ -76,6 +76,7 @@ The ones worth keeping in your muscle memory:
 - `/demos/old-man-sea`
 - `/demos/floating-languages`
 - `/demos/optimal-line-breaking`
+- [USAGE.md](USAGE.md) — progressive integration patterns (also linked from README)
 - `/accuracy`
 - `/benchmark`
 - `/corpus`
