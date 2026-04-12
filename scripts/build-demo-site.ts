@@ -9,12 +9,17 @@ const entrypoints = [
   'pages/demos/bubbles.html',
   'pages/demos/dynamic-layout.html',
   'pages/demos/editorial-engine.html',
+  'pages/demos/floating-languages.html',
   'pages/demos/justification-comparison.html',
   'pages/demos/markdown-chat.html',
   'pages/demos/masonry/index.html',
+  'pages/demos/optimal-line-breaking.html',
+  'pages/demos/old-man-sea.html',
   'pages/demos/rich-note.html',
   'pages/demos/variable-typographic-ascii.html',
+  'pages/demos/virtual-scroll.html',
   'pages/demos/virtual-chat.html',
+  'pages/demos/cjk-line-breaking.html',
 ]
 
 const result = Bun.spawnSync(
@@ -36,12 +41,17 @@ const targets = [
   { source: 'bubbles.html', target: 'bubbles/index.html' },
   { source: 'dynamic-layout.html', target: 'dynamic-layout/index.html' },
   { source: 'editorial-engine.html', target: 'editorial-engine/index.html' },
+  { source: 'floating-languages.html', target: 'floating-languages/index.html' },
   { source: 'justification-comparison.html', target: 'justification-comparison/index.html' },
   { source: 'markdown-chat.html', target: 'markdown-chat/index.html' },
   { source: 'masonry/index.html', target: 'masonry/index.html' },
+  { source: 'optimal-line-breaking.html', target: 'optimal-line-breaking/index.html' },
+  { source: 'old-man-sea.html', target: 'old-man-sea/index.html' },
   { source: 'rich-note.html', target: 'rich-note/index.html' },
   { source: 'variable-typographic-ascii.html', target: 'variable-typographic-ascii/index.html' },
+  { source: 'virtual-scroll.html', target: 'virtual-scroll/index.html' },
   { source: 'virtual-chat.html', target: 'virtual-chat/index.html' },
+  { source: 'cjk-line-breaking.html', target: 'cjk-line-breaking/index.html' },
 ]
 
 for (let index = 0; index < targets.length; index++) {
