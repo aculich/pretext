@@ -85,6 +85,16 @@ Results from the last integration run are appended in this file’s **Verificati
 
 ## Verification log
 
+**Session: 2026-04-18 (merge `upstream/main` — 13 commits behind → caught up)**
+
+| Step | Result |
+|------|--------|
+| `bun install` | Pass (no lock drift) |
+| `bun run check` | Pass (`tsc` + `oxlint --type-aware src`) |
+| `bun test` | Pass (164 tests) |
+| `bun run site:build` | Pass (`site/` generated) |
+| Dev server smoke | `HOST=127.0.0.1 bun start` → `GET` each path in the demo sweep checklist **HTTP 200** at `http://127.0.0.1:3000` |
+
 **Session: 2026-04-12 (wave 2 — demos + capabilities)**
 
 | Step | Result |
