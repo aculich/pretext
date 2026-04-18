@@ -53,4 +53,4 @@ Use [PRISSUES.md](PRISSUES.md) for the full ranked view. Examples: accessibility
 
 ## How to refresh this document
 
-After future integration waves, update the “Added in this fork” table from merged PR titles and run `bun run github:export`, `bun run github:triage`, and `bun run github:priissues` to refresh research artifacts.
+After future integration waves, update the “Added in this fork” table from merged PR titles and run `bun run github:export`, `bun run github:triage`, and `bun run github:priissues` to refresh research artifacts. For the full cadence (git merge from `upstream`, verification log, fork registry checks, optional new-fork search), follow [WORKFLOW.md](WORKFLOW.md) **Periodic upstream sync & triage**.

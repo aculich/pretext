@@ -1,6 +1,6 @@
 ## Pretext
 
-Use `README.md` as the public source of truth for API examples and user-facing limitations. See `DEVELOPMENT.md` for the current command surface and the canonical dashboards/snapshots to consult before making browser-accuracy or benchmark claims. Use `TODO.md` for the current priorities. **Every time before you commit, ensure you've synced the docs.** For fork remotes, GitButler/`but`, upstream issue/PR export/triage, stacked PR integration, and the full upstream catalog, see `WORKFLOW.md`, `FEATURES.md`, and `PRISSUES.md`.
+Use `README.md` as the public source of truth for API examples and user-facing limitations. See `DEVELOPMENT.md` for the current command surface and the canonical dashboards/snapshots to consult before making browser-accuracy or benchmark claims. Use `TODO.md` for the current priorities. **Every time before you commit, ensure you've synced the docs.** For fork remotes, GitButler/`but`, upstream issue/PR export/triage, stacked PR integration, and the full upstream catalog, see `WORKFLOW.md`, `FEATURES.md`, and `PRISSUES.md`. For a repeatable **merge + export + fork-scan** rhythm, use `WORKFLOW.md` section **Periodic upstream sync & triage** and the Cursor project skill `.cursor/skills/pretext-upstream-rhythm/SKILL.md`.
 Do not change the existing tone of the documents unless they're wrong.
 Do `bun install` if you're in a fresh worktree.
 

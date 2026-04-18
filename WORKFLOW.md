@@ -46,9 +46,81 @@ Scripts live under `scripts/`; data under `research/github/`.
 
 Requirements: `gh` authenticated (`gh auth login`). Run `github:export` before `github:priissues` if the JSONL snapshot is stale.
 
-## Upstream fork: pretext-a11y
+## Periodic upstream sync & triage
 
-[TheMarco/pretext-a11y](https://github.com/TheMarco/pretext-a11y) is analyzed in [research/github/pretext-a11y-analysis.md](research/github/pretext-a11y-analysis.md). Clone path is gitignored; see [research/forks/README.md](research/forks/README.md).
+Run this rhythm whenever you want **main** aligned with `chenglou/pretext`, fresh **issue/PR intelligence**, and **fork** drift checks. Cursor agents can follow the project skill [`.cursor/skills/pretext-upstream-rhythm/SKILL.md`](.cursor/skills/pretext-upstream-rhythm/SKILL.md) for a compact checklist.
+
+### 1. Git — merge upstream
+
+```sh
+git fetch upstream
+git merge --no-ff upstream/main   # resolve conflicts; preserve fork-specific doc pointers
+git log --oneline main..upstream/main   # expect empty when caught up
+```
+
+### 2. Verify + log
+
+Run **Verification** (below), then append a dated row block to **Verification log**. If you refreshed GitHub data in the same session, note `bun run github:priissues` there too.
+
+### 3. Refresh GitHub export (issues, PRs, all comments)
+
+```sh
+bun run github:export
+bun run github:triage
+bun run github:priissues
+```
+
+After export, `research/github/manifest.json` records `exported_at` and counts. If `research/github/` is committed, use `git diff research/github/` to see what changed since the last rhythm.
+
+### 4. Triage: what to look for
+
+| Goal | Where |
+|------|--------|
+| **New upstream PRs** | [PRISSUES.md](PRISSUES.md) — focus on **open** rows that are not `already_in_fork`. Sort mentally by `updated_at` / title in `research/github/pulls.jsonl`. |
+| **New upstream issues** | `research/github/issues.jsonl` — items with no `pull_request` field and `"state": "open"`, newest `created_at` first. |
+| **Comments on work we already merged** | Issue + PR threads for upstream numbers we ship in this fork (see table below). Use `rg` on the JSONL after export, or read threads on GitHub. |
+
+**Integrated upstream PRs (watch for ongoing discussion)** — upstream may still show these PRs **open** while commentary continues; our fork already contains the substance ([FEATURES.md](FEATURES.md)):
+
+`#17` `#19` `#21` `#31` `#45` `#46` `#79` `#80` `#81` `#93` `#97` `#113` `#114` `#119` `#125`
+
+Examples (issue-style comments on PR threads live in `issues.comments.jsonl`; line reviews in `pulls.review_comments.jsonl`):
+
+```sh
+rg 'chenglou/pretext/pull/(17|19|21|31|45|46|79|80|81|93|97|113|114|119|125)' research/github/issues.comments.jsonl
+rg 'api.github.com/repos/chenglou/pretext/pulls/(17|19|21|31|45|46|79|80|81|93|97|113|114|119|125)"' research/github/pulls.review_comments.jsonl
+```
+
+(Adjust the alternation if you add new integrated PRs; keep [FEATURES.md](FEATURES.md) and this list in sync.)
+
+### 5. Known forks — check for new commits
+
+Canonical list: [research/forks/README.md](research/forks/README.md) (**Relevant forks registry**).
+
+- **pretext-a11y** (if cloned): `cd research/forks/pretext-a11y && git fetch origin && git log --oneline HEAD..origin/main | head -30`
+- **awesome-pretext**: skim the repo for new listed projects (not a `git pull` inside this monorepo).
+
+If a fork gained meaningful commits, update [pretext-a11y-analysis.md](research/github/pretext-a11y-analysis.md) or add a new short analysis file under `research/github/`.
+
+### 6. Discover new forks (optional)
+
+Read-only GitHub search (tweak query if noisy):
+
+```sh
+gh search repos "pretext fork:true" --sort updated --limit 15 --json fullName,description,updatedAt,url
+```
+
+Compare results to [research/forks/README.md](research/forks/README.md). Add promising repos to the registry after a quick sanity check (real fork vs name collision).
+
+### 7. Push
+
+When checks pass: `git push origin main`.
+
+---
+
+## Relevant forks (summary)
+
+Third-party layout forks and the community list live in [research/forks/README.md](research/forks/README.md) (**Relevant forks registry**). Accessibility fork analysis: [research/github/pretext-a11y-analysis.md](research/github/pretext-a11y-analysis.md).
 
 ## Wave 1 upstream PRs integrated (2026-04-12)
 
