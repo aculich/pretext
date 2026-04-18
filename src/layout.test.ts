@@ -82,6 +82,7 @@ function isWideCharacter(ch: string): boolean {
     (code >= 0x3000 && code <= 0x303F) ||
     (code >= 0x3040 && code <= 0x309F) ||
     (code >= 0x30A0 && code <= 0x30FF) ||
+    (code >= 0x3130 && code <= 0x318F) ||
     (code >= 0xAC00 && code <= 0xD7AF) ||
     (code >= 0xFF00 && code <= 0xFFEF)
   )
@@ -558,6 +559,19 @@ describe('prepare invariants', () => {
     expect(prepareWithSegments('테스트입니다.', FONT).segments.at(-1)).toBe('다.')
   })
 
+  test('treats Hangul compatibility jamo as CJK break units', () => {
+    const prepared = prepareWithSegments('ㅋㅋㅋ 진짜', FONT)
+    expect(prepared.segments).toEqual(['ㅋ', 'ㅋ', 'ㅋ', ' ', '진', '짜'])
+
+    const width = measureWidth('ㅋㅋ', FONT) + 0.1
+    const lines = layoutWithLines(prepared, width, LINE_HEIGHT)
+    expect(lines.lines.map(line => line.text)).toEqual(['ㅋㅋ', 'ㅋ ', '진짜'])
+    expect(layout(prepared, width, LINE_HEIGHT)).toEqual({
+      lineCount: 3,
+      height: LINE_HEIGHT * 3,
+    })
+  })
+
   test('keeps non-CJK glue-connected runs intact before CJK text', () => {
     const prepared = prepareWithSegments('foo\u00A0世界', FONT)
     expect(prepared.segments).toEqual(['foo\u00A0', '世', '界'])
@@ -606,11 +620,20 @@ describe('prepare invariants', () => {
     }
   })
 
-  test('isCJK covers the newer CJK extension blocks', () => {
+  test('isCJK covers Hangul compatibility jamo and the newer CJK extension blocks', () => {
+    expect(isCJK('ㅋ')).toBe(true)
     expect(isCJK('\u{2EBF0}')).toBe(true)
     expect(isCJK('\u{31350}')).toBe(true)
     expect(isCJK('\u{323B0}')).toBe(true)
     expect(isCJK('hello')).toBe(false)
+  })
+
+  test('keeps opening brackets after CJK attached to following annotation text', () => {
+    expect(prepareWithSegments('서울(Seoul)과', FONT).segments).toEqual(['서', '울', '(Seoul)', '과'])
+    expect(prepareWithSegments('東京(Tokyo)と', FONT).segments).toEqual(['東', '京', '(Tokyo)', 'と'])
+    expect(prepareWithSegments('北京(Beijing)和', FONT).segments).toEqual(['北', '京', '(Beijing)', '和'])
+    expect(prepareWithSegments('참조[1]와', FONT).segments).toEqual(['참', '조', '[1]', '와'])
+    expect(prepareWithSegments('AB(CD)', FONT).segments).toEqual(['AB(', 'CD)'])
   })
 
   test('prepare and prepareWithSegments agree on layout behavior', () => {
@@ -846,6 +869,16 @@ describe('layout invariants', () => {
     expect(layoutWithLines(prepared, width, LINE_HEIGHT).lines).toEqual(collectStreamedLines(prepared, width))
   })
 
+  test('chunked batch line walking normalizes spaces after zero-width breaks like streaming', () => {
+    const prepared = prepareWithSegments('x\u00AD A\u200B B', FONT)
+    const width = measureWidth('x A', FONT) + 0.1
+    const batched = layoutWithLines(prepared, width, LINE_HEIGHT)
+
+    expect(batched.lines.map(line => line.text)).toEqual(['x A\u200B', 'B'])
+    expect(collectStreamedLines(prepared, width)).toEqual(batched.lines)
+    expect(layout(prepared, width, LINE_HEIGHT).lineCount).toBe(batched.lineCount)
+  })
+
   test('layoutNextLine can resume from any fixed-width line start without hidden state', () => {
     const prepared = prepareWithSegments('foo trans\u00ADatlantic said "hello" to 世界 and waved. alpha\u200Bbeta 🚀', FONT)
     const width = 90
@@ -1047,6 +1080,21 @@ describe('layout invariants', () => {
     }
 
     expect(actual).toEqual(expected.lines)
+  })
+
+  test('pre-wrap soft hyphen does not preempt a closer preserved-space break', () => {
+    const prepared = prepareWithSegments('A\nbا \u00ADb، b', FONT, { whiteSpace: 'pre-wrap' })
+    const width =
+      measureWidth('bا', FONT) +
+      measureWidth(' ', FONT) +
+      measureWidth('b،', FONT) +
+      measureWidth(' ', FONT) +
+      0.1
+    const expected = layoutWithLines(prepared, width, LINE_HEIGHT)
+
+    expect(expected.lines.map(line => line.text)).toEqual(['A', 'bا b، ', 'b'])
+    expect(collectStreamedLines(prepared, width)).toEqual(expected.lines)
+    expect(layout(prepared, width, LINE_HEIGHT).lineCount).toBe(expected.lineCount)
   })
 
   test('pre-wrap mode keeps empty lines from consecutive hard breaks', () => {

@@ -121,6 +121,7 @@ function isCJKCodePoint(codePoint: number): boolean {
     (codePoint >= 0x3000 && codePoint <= 0x303F) ||
     (codePoint >= 0x3040 && codePoint <= 0x309F) ||
     (codePoint >= 0x30A0 && codePoint <= 0x30FF) ||
+    (codePoint >= 0x3130 && codePoint <= 0x318F) ||
     (codePoint >= 0xAC00 && codePoint <= 0xD7AF) ||
     (codePoint >= 0xFF00 && codePoint <= 0xFFEF)
   )
@@ -1076,6 +1077,7 @@ function buildMergedSegmentation(
         !piece.isWordLike &&
         mergedLen > 0 &&
         mergedKinds[prevIndex] === 'text' &&
+        !mergedContainsCJK[prevIndex] &&
         (
           isLeftStickyPunctuationSegment(piece.text) ||
           (piece.text === '-' && mergedWordLike[prevIndex]!)
@@ -1124,7 +1126,8 @@ function buildMergedSegmentation(
       mergedKinds[i] === 'text' &&
       !mergedWordLike[i]! &&
       isEscapedQuoteClusterSegment(mergedTexts[i]!) &&
-      mergedKinds[i - 1] === 'text'
+      mergedKinds[i - 1] === 'text' &&
+      !mergedContainsCJK[i - 1]
     ) {
       mergedTexts[i - 1] += mergedTexts[i]!
       mergedWordLike[i - 1] = mergedWordLike[i - 1]! || mergedWordLike[i]!
