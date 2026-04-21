@@ -1,12 +1,12 @@
 {
   "repo": "chenglou/pretext",
-  "exported_at": "2026-04-12T12:17:26.762Z",
+  "exported_at": "2026-04-21T16:51:07.978Z",
   "counts": {
-    "issues": 59,
-    "issues_pull_requests_as_issues": 66,
-    "pulls": 66,
-    "issues_comments": 144,
-    "pulls_review_comments": 13
+    "issues": 72,
+    "issues_pull_requests_as_issues": 83,
+    "pulls": 83,
+    "issues_comments": 182,
+    "pulls_review_comments": 15
   },
   "files": [
     "issues.jsonl",

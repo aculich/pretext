@@ -157,6 +157,21 @@ Results from the last integration run are appended in this file’s **Verificati
 
 ## Verification log
 
+**Session: 2026-04-21 (`pretext-upstream-rhythm` — merge + GitHub refresh)**
+
+| Step | Result |
+|------|--------|
+| `git merge upstream/main` | 1 commit (`f201433` Better root cause command); `AGENTS.md` auto-merged |
+| `bun install` | Pass |
+| `bun run check` | Pass (`tsc` + `oxlint --type-aware src`) |
+| `bun test` | Pass (164 tests) |
+| `bun run site:build` | Pass (`site/` generated) |
+| `bun run github:export` | Pass — manifest counts: issues 72, pulls 83, issue comments 182, PR review comments 15 |
+| `bun run github:triage` | Pass — wave-1 shortlist includes **#139**, **#132**, **#80**, **#119**, **#38** (see `triage-summary.md`) |
+| `bun run github:priissues` | Pass — [PRISSUES.md](PRISSUES.md) + `priissues.json` refreshed |
+| Fork `pretext-a11y` | Clone present; `origin/main` had **no** commits ahead of local `HEAD` after `git fetch` |
+| `gh search repos "pretext fork:true"` | Many hits are **unrelated** (PreTeXt math notes, social-engineering “pretext”); worth eyeball: **darkroomengineering/fitbox** (React + Pretext), **acoyfellow/cloudterm**, **Top-g-hash/nuxt-pretext**, **somnai-dreams/preimage** |
+
 **Session: 2026-04-18 (merge `upstream/main` — 13 commits behind → caught up)**
 
 | Step | Result |
