@@ -22,6 +22,7 @@ bun install
 - `bun run site:build` — build the static demo site into `site/`
 - `bun run ecosystem:intake` — refresh `research/forks/ecosystem-inventory.json` + `pages/assets/ecosystem-inventory.json` (needs `gh`; parses [awesome-pretext](https://github.com/ShipItAndPray/awesome-pretext) `app.js` + discovery list)
 - `bun run ecosystem:clone-upstream` — shallow clone / fetch ecosystem repos into gitignored `upstream/` (see [research/forks/README.md](research/forks/README.md))
+- `bun run ecosystem:lighthouse` — performance-only Lighthouse vs [awesome-pretext](https://shipitandpray.github.io/awesome-pretext/) and the built `site/ecosystem-catalog/` (needs local Chrome; JSON under `research/forks/lighthouse/reports/`, gitignored)
 - `bun run generate:bidi-data` — refresh the checked-in simplified Unicode bidi ranges
 
 `prepack` also rebuilds `dist/` through plain `tsc`, so keep runtime `.js` specifiers honest in source imports.
