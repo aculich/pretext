@@ -13,13 +13,15 @@ bun install
 - `bun start` — stable local page server at <http://localhost:3000>
 - `bun run start:windows` — Windows-friendly fallback without automatic port cleanup
 - `bun run check` — typecheck plus lint
-- `bun test` — small durable invariant suite
+- `bun test` / `bun run test` — invariant suite under `./src/` only (`bun test src` matches any path segment named `src`, e.g. clones under `upstream/`; use `bun run test` or `bun test ./src/`)
 
 ### Packaging And Release Confidence
 
 - `bun run build:package` — emit `dist/` for the published ESM package
 - `bun run package-smoke-test` — pack the tarball and verify temporary JS + TS consumers
 - `bun run site:build` — build the static demo site into `site/`
+- `bun run ecosystem:intake` — refresh `research/forks/ecosystem-inventory.json` + `pages/assets/ecosystem-inventory.json` (needs `gh`; parses [awesome-pretext](https://github.com/ShipItAndPray/awesome-pretext) `app.js` + discovery list)
+- `bun run ecosystem:clone-upstream` — shallow clone / fetch ecosystem repos into gitignored `upstream/` (see [research/forks/README.md](research/forks/README.md))
 - `bun run generate:bidi-data` — refresh the checked-in simplified Unicode bidi ranges
 
 `prepack` also rebuilds `dist/` through plain `tsc`, so keep runtime `.js` specifiers honest in source imports.

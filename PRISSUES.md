@@ -9,7 +9,7 @@ This file is **generated** from `research/github/*.jsonl` plus live `gh api` pul
 
 ## Merge philosophy
 
-Do **not** merge all open PRs at once. Prefer **small waves** (cherry-pick or branch per PR), verify with `bun run check`, `bun test`, and `bun run site:build`. See [WORKFLOW.md](WORKFLOW.md) and [DEVELOPMENT.md](DEVELOPMENT.md).
+Do **not** merge all open PRs at once. Prefer **small waves** (cherry-pick or branch per PR), verify with `bun run check`, `bun run test`, and `bun run site:build`. See [WORKFLOW.md](WORKFLOW.md) and [DEVELOPMENT.md](DEVELOPMENT.md).
 
 ## Already integrated in this fork (wave 1)
 

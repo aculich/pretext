@@ -98,7 +98,7 @@ rg 'api.github.com/repos/chenglou/pretext/pulls/(17|19|21|31|45|46|79|80|81|93|9
 Canonical list: [research/forks/README.md](research/forks/README.md) (**Relevant forks registry**).
 
 - **pretext-a11y** (if cloned): `cd research/forks/pretext-a11y && git fetch origin && git log --oneline HEAD..origin/main | head -30`
-- **awesome-pretext**: skim the repo for new listed projects (not a `git pull` inside this monorepo).
+- **awesome-pretext + ecosystem mirrors**: refresh the machine inventory and optional shallow clones — `bun run ecosystem:intake` then `bun run ecosystem:clone-upstream`, then spot-check `/demos/ecosystem-catalog` (see [research/forks/README.md](research/forks/README.md)).
 
 If a fork gained meaningful commits, update [pretext-a11y-analysis.md](research/github/pretext-a11y-analysis.md) or add a new short analysis file under `research/github/`.
 
@@ -143,13 +143,13 @@ See [DEVELOPMENT.md](DEVELOPMENT.md). Minimum bar:
 ```sh
 bun install
 bun run check
-bun test
+bun run test
 bun run site:build
 ```
 
 Optional smoke: `bun start` → open `/demos/index`.
 
-**Demo sweep checklist** (click every card from `/demos/index`, or hit these paths): `/demos/accordion`, `/demos/bubbles`, `/demos/dynamic-layout`, `/demos/variable-typographic-ascii`, `/demos/editorial-engine`, `/demos/justification-comparison`, `/demos/rich-note`, `/demos/markdown-chat`, `/demos/masonry`, `/demos/virtual-scroll`, `/demos/virtual-chat`, `/demos/cjk-line-breaking`, `/demos/old-man-sea`, `/demos/floating-languages`, `/demos/optimal-line-breaking`.
+**Demo sweep checklist** (click every card from `/demos/index`, or hit these paths): `/demos/accordion`, `/demos/bubbles`, `/demos/dynamic-layout`, `/demos/variable-typographic-ascii`, `/demos/editorial-engine`, `/demos/justification-comparison`, `/demos/rich-note`, `/demos/markdown-chat`, `/demos/masonry`, `/demos/virtual-scroll`, `/demos/virtual-chat`, `/demos/cjk-line-breaking`, `/demos/old-man-sea`, `/demos/floating-languages`, `/demos/optimal-line-breaking`, `/demos/ecosystem-catalog`.
 
 **Demo performance** — If a demo feels janky, classify the issue using [PERFORMANCE.md](PERFORMANCE.md) (library vs render loop vs compositing) before changing `src/`. Floating Languages supports an optional probe: `/demos/floating-languages?perf=1`.
 
@@ -164,7 +164,7 @@ Results from the last integration run are appended in this file’s **Verificati
 | `git merge upstream/main` | 1 commit (`f201433` Better root cause command); `AGENTS.md` auto-merged |
 | `bun install` | Pass |
 | `bun run check` | Pass (`tsc` + `oxlint --type-aware src`) |
-| `bun test` | Pass (164 tests) |
+| `bun run test` | Pass (164 tests) |
 | `bun run site:build` | Pass (`site/` generated) |
 | `bun run github:export` | Pass — manifest counts: issues 72, pulls 83, issue comments 182, PR review comments 15 |
 | `bun run github:triage` | Pass — wave-1 shortlist includes **#139**, **#132**, **#80**, **#119**, **#38** (see `triage-summary.md`) |
@@ -178,7 +178,7 @@ Results from the last integration run are appended in this file’s **Verificati
 |------|--------|
 | `bun install` | Pass (no lock drift) |
 | `bun run check` | Pass (`tsc` + `oxlint --type-aware src`) |
-| `bun test` | Pass (164 tests) |
+| `bun run test` | Pass (164 tests) |
 | `bun run site:build` | Pass (`site/` generated) |
 | Dev server smoke | `HOST=127.0.0.1 bun start` → `GET` each path in the demo sweep checklist **HTTP 200** at `http://127.0.0.1:3000` |
 
@@ -187,7 +187,7 @@ Results from the last integration run are appended in this file’s **Verificati
 | Step | Result |
 |------|--------|
 | `bun run check` | Pass (`tsc` + `oxlint --type-aware src`) |
-| `bun test` | Pass (160 tests) |
+| `bun run test` | Pass (160 tests) |
 | `bun run site:build` | Pass (`site/` generated) |
 | Dev server | `bun start` → `GET /demos` and every path in the demo sweep checklist **HTTP 200** (spot-checked via `curl` to `127.0.0.1:3000`) |
 | `bun run github:priissues` | Pass — refreshed [PRISSUES.md](PRISSUES.md) + `research/github/priissues.json` |
@@ -197,7 +197,7 @@ Results from the last integration run are appended in this file’s **Verificati
 | Step | Result |
 |------|--------|
 | `bun run check` | Pass (`tsc` + `oxlint --type-aware src`) |
-| `bun test` | Pass (144 tests; includes duplicate suite under `research/forks/pretext-a11y` if cloned) |
+| `bun run test` | Pass (144 tests; includes duplicate suite under `research/forks/pretext-a11y` if cloned) |
 | `bun run site:build` | Pass (`site/` generated) |
 | Dev server | `bun pages/demos/index.html --host=127.0.0.1:3001` → `GET /demos` **HTTP 200** |
 | `bun run benchmarks/simple-benchmark.ts` | **Fails in plain Bun** (no canvas / OffscreenCanvas). Run in a browser or another canvas-capable runtime; see comment in `benchmarks/simple-benchmark.ts`. |

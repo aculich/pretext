@@ -45,6 +45,7 @@ Baseline capabilities are described in [README.md](README.md) (APIs, `prepare` /
 - **GitHub export** — `research/github/*.jsonl` snapshots for issues, PRs, and comments (`bun run github:export`).
 - **Triage** — `research/github/triage.json` / `triage-summary.md` (`bun run github:triage`).
 - **PRISSUES catalog** — [PRISSUES.md](PRISSUES.md) lists **every** exported upstream PR and issue with heuristic value, merge difficulty, and recommendations; machine-readable `research/github/priissues.json` (`bun run github:priissues`).
+- **Ecosystem inventory** — `research/forks/ecosystem-inventory.json` + `/demos/ecosystem-catalog` (`bun run ecosystem:intake`, optional `bun run ecosystem:clone-upstream`); see [research/forks/README.md](research/forks/README.md) and [INTEGRATION-BACKLOG.md](research/forks/INTEGRATION-BACKLOG.md).
 - **Accessibility fork analysis** — [research/github/pretext-a11y-analysis.md](research/github/pretext-a11y-analysis.md) (demo-layer a11y patterns; no `src/` changes in that fork snapshot).
 
 ## Not yet merged (examples)

@@ -36,7 +36,7 @@ From [WORKFLOW.md](../../../WORKFLOW.md) **Verification**:
 ```sh
 bun install
 bun run check
-bun test
+bun run test
 bun run site:build
 ```
 
@@ -53,6 +53,8 @@ bun run github:export
 bun run github:triage
 bun run github:priissues
 ```
+
+Optional **ecosystem** pass (awesome-pretext + mirrors): `bun run ecosystem:intake` then `bun run ecosystem:clone-upstream` — see [research/forks/README.md](../../../research/forks/README.md).
 
 If `research/github/` is tracked, inspect churn:
 
