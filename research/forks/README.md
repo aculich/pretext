@@ -11,6 +11,7 @@ This fork tracks [chenglou/pretext](https://github.com/chenglou/pretext). **Awes
 | [ecosystem-inventory.json](ecosystem-inventory.json) | All catalogued GitHub repos: source (`awesome-pretext-package` / `community` / `discovery-search`), `demoUrl`, GitHub description, **relevance** (`core-pretext-ecosystem` / `adjacent-pretext` / `unclear-or-noise`), and rationale. |
 | [UPSTREAM-SYNC.log](UPSTREAM-SYNC.log) | Append-only log from `bun run ecosystem:clone-upstream` (clone / fetch results). |
 | [ECOSYSTEM-CATALOG-PERF.md](ECOSYSTEM-CATALOG-PERF.md) | Performance comparison: upstream awesome-pretext site vs our `/demos/ecosystem-catalog`. |
+| [lighthouse/README.md](lighthouse/README.md) | How to run Lighthouse against upstream vs local catalog; CI workflow dispatch. |
 | [INTEGRATION-BACKLOG.md](INTEGRATION-BACKLOG.md) | Prioritized plan for pulling patterns or packages into this super-library. |
 
 ## Commands (from repo root)
@@ -18,6 +19,7 @@ This fork tracks [chenglou/pretext](https://github.com/chenglou/pretext). **Awes
 ```sh
 bun run ecosystem:intake          # refresh ecosystem-inventory.json + pages/assets copy (needs gh)
 bun run ecosystem:clone-upstream  # shallow clone / fetch into upstream/ (gitignored)
+bun run ecosystem:lighthouse      # Lighthouse perf vs upstream + local site/ecosystem-catalog (needs Chrome)
 ```
 
 After `ecosystem:intake`, re-run `bun run site:build` so the static site bundles the updated JSON for `/demos/ecosystem-catalog`.
