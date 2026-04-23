@@ -35,7 +35,11 @@ type Relevance = 'core-pretext-ecosystem' | 'adjacent-pretext' | 'unclear-or-noi
 
 type InventoryEntry = {
   fullName: string
-  source: 'awesome-pretext-package' | 'awesome-pretext-community' | 'discovery-search'
+  source:
+    | 'awesome-pretext-package'
+    | 'awesome-pretext-community'
+    | 'discovery-search'
+    | 'pretext-dependent-search'
   /** Display name from awesome-pretext `app.js` `name` (package short name). */
   packageName?: string
   /** `label` from communityProjects (e.g. "creative coding"). */
@@ -274,6 +278,13 @@ function classify(args: {
   hasPackageJson: boolean
   source: InventoryEntry['source']
 }): { relevance: Relevance; rationale: string } {
+  if (args.source === 'pretext-dependent-search' && !args.pkg && args.hasPackageJson === false) {
+    return {
+      relevance: 'adjacent-pretext',
+      rationale:
+        'Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify locally.',
+    }
+  }
   const desc = (args.description ?? '').toLowerCase()
   const lowerName = args.fullName.toLowerCase()
 
@@ -313,6 +324,46 @@ async function sleep(ms: number) {
   await new Promise((r) => setTimeout(r, ms))
 }
 
+type GhCodeRepository = { nameWithOwner?: string }
+
+/** Public repos whose package.json references Pretext (GitHub code search; noisy, deduped). */
+async function collectDependentFullNames(seen: Set<string>): Promise<string[]> {
+  const queries: string[][] = [
+    ['search', 'code', '"@chenglou/pretext"', '--filename', 'package.json', '--json', 'repository', '--limit', '80'],
+    ['search', 'code', '"chenglou/pretext"', '--filename', 'package.json', '--json', 'repository', '--limit', '50'],
+  ]
+  const byLower = new Map<string, string>()
+  for (const q of queries) {
+    try {
+      const proc = Bun.spawn(['gh', ...q], { stdout: 'pipe', stderr: 'pipe' })
+      const err = await new Response(proc.stderr).text()
+      const out = await new Response(proc.stdout).text()
+      const code = await proc.exited
+      if (code !== 0) {
+        console.warn('gh', q.join(' '), 'failed:', err || out)
+        continue
+      }
+      const rows = JSON.parse(out) as Array<{ repository?: GhCodeRepository }>
+      for (const row of rows) {
+        const id = row.repository?.nameWithOwner
+        if (!id) continue
+        const lower = id.toLowerCase()
+        if (lower === 'chenglou/pretext') continue
+        if (seen.has(lower) || byLower.has(lower)) continue
+        byLower.set(lower, id)
+      }
+    } catch (e) {
+      console.warn('dependent code search error:', e)
+    }
+    await sleep(400)
+  }
+  return [...byLower.values()]
+}
+
+function repoSeenKey(fullName: string): string {
+  return fullName.toLowerCase()
+}
+
 async function main() {
   console.log('Fetching', AWESOME_APP_JS)
   const res = await fetch(AWESOME_APP_JS)
@@ -335,8 +386,10 @@ async function main() {
 
   for (const p of packages) {
     const fn = fullNameFromRepoUrl(p.repo)
-    if (!fn || seen.has(fn)) continue
-    seen.add(fn)
+    if (!fn) continue
+    const sk = repoSeenKey(fn)
+    if (seen.has(sk)) continue
+    seen.add(sk)
     const row: QueueItem = { fullName: fn, source: 'awesome-pretext-package' }
     if (p.name !== undefined) row.packageName = p.name
     if (p.category !== undefined) row.category = p.category
@@ -347,8 +400,10 @@ async function main() {
   }
   for (const c of community) {
     const fn = fullNameFromRepoUrl(c.url)
-    if (!fn || seen.has(fn)) continue
-    seen.add(fn)
+    if (!fn) continue
+    const sk = repoSeenKey(fn)
+    if (seen.has(sk)) continue
+    seen.add(sk)
     const row: QueueItem = { fullName: fn, source: 'awesome-pretext-community' }
     if (c.name !== undefined) row.packageName = c.name
     if (c.label !== undefined) row.communityLabel = c.label
@@ -357,10 +412,23 @@ async function main() {
     queue.push(row)
   }
   for (const fn of EXTRA_GITHUB_REPOS) {
-    if (seen.has(fn)) continue
-    seen.add(fn)
+    const sk = repoSeenKey(fn)
+    if (seen.has(sk)) continue
+    seen.add(sk)
     queue.push({ fullName: fn, source: 'discovery-search' })
   }
+
+  console.log('\nCollecting dependent repos (gh search code)…')
+  const dependents = await collectDependentFullNames(seen)
+  let depAdded = 0
+  for (const id of dependents) {
+    const sk = repoSeenKey(id)
+    if (seen.has(sk)) continue
+    seen.add(sk)
+    queue.push({ fullName: id, source: 'pretext-dependent-search' })
+    depAdded++
+  }
+  console.log(`Added ${String(depAdded)} repo(s) from package.json code search (deduped against prior sources).`)
 
   const entries: InventoryEntry[] = []
   let i = 0
@@ -513,7 +581,9 @@ async function writeEcosystemCollectionMd(
   lines.push('1. **Official resources first** — upstream Pretext, live demos, community demo hub, development notes.')
   lines.push('2. **Ecosystem packages with live demos** — curated in awesome-pretext `app.js`; we carry the same repos plus metadata from the GitHub API.')
   lines.push('3. **Selected community experiments** — `communityProjects` in their `app.js`.')
-  lines.push('4. **Beyond their README** — discovery repos we added (see end). Intake also warns if their README introduces new `github.com/o/r` links not present in the inventory.')
+  lines.push(
+    '4. **Beyond their README** — discovery repos we added (see end), plus repos found via **GitHub code search** for `package.json` references to Pretext (see dedicated section). Intake also warns if their README introduces new `github.com/o/r` links not present in the inventory.',
+  )
   lines.push('')
   lines.push('## Official Pretext resources')
   lines.push('')
@@ -557,13 +627,42 @@ async function writeEcosystemCollectionMd(
   })
   for (const e of sorted) {
     const demo = e.demoUrl ? `[demo](${e.demoUrl})` : '—'
-    const cat = e.category ?? (e.source === 'awesome-pretext-community' ? 'Community' : e.source === 'discovery-search' ? 'Discovery' : '—')
+    const cat =
+      e.category ??
+      (e.source === 'awesome-pretext-community'
+        ? 'Community'
+        : e.source === 'discovery-search'
+          ? 'Discovery'
+          : e.source === 'pretext-dependent-search'
+            ? 'Code search (importers)'
+            : '—')
     const stars = e.stargazerCount ?? '—'
     const forks = e.forkCount ?? '—'
     const pushed = e.pushedAt ? e.pushedAt.slice(0, 10) : '—'
     lines.push(
       `| [\`${mdEscapeCell(e.fullName)}\`](${e.repoUrl}) | ${mdEscapeCell(cat)} | ${demo} | \`${e.relevance}\` | ${String(stars)} | ${String(forks)} | ${pushed} |`,
     )
+  }
+  lines.push('')
+  const dependents = entries.filter((e) => e.source === 'pretext-dependent-search')
+  lines.push('## Repos referencing @chenglou/pretext (code search)')
+  lines.push('')
+  lines.push(
+    '_These rows come from public `gh search code` hits on `package.json` (npm scope and git-style references). They may include false positives, fork noise, or version ranges that do not match what you run locally. **awesome-pretext** remains the curated product list._',
+  )
+  lines.push('')
+  if (dependents.length === 0) {
+    lines.push('_None in this run._')
+  } else {
+    lines.push('| Repo | Stars | Relevance | Rationale (short) |')
+    lines.push('| --- | ---: | --- | --- |')
+    for (const e of dependents.sort((a, b) => (b.stargazerCount ?? 0) - (a.stargazerCount ?? 0))) {
+      const stars = e.stargazerCount ?? '—'
+      const rat = mdEscapeCell(e.relevanceRationale.slice(0, 120))
+      lines.push(
+        `| [\`${mdEscapeCell(e.fullName)}\`](${e.repoUrl}) | ${String(stars)} | \`${e.relevance}\` | ${rat}${e.relevanceRationale.length > 120 ? '…' : ''} |`,
+      )
+    }
   }
   lines.push('')
   lines.push('## Repos in this fork’s inventory but not in awesome-pretext README tables')

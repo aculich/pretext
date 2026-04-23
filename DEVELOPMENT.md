@@ -20,9 +20,10 @@ bun install
 - `bun run build:package` — emit `dist/` for the published ESM package
 - `bun run package-smoke-test` — pack the tarball and verify temporary JS + TS consumers
 - `bun run site:build` — build the static demo site into `site/`
-- `bun run ecosystem:intake` — refresh `research/forks/ecosystem-inventory.json`, `pages/assets/ecosystem-inventory.json`, and `research/forks/ECOSYSTEM-COLLECTION.md` (needs `gh`; parses [awesome-pretext](https://github.com/ShipItAndPray/awesome-pretext) `app.js` + discovery list; warns if awesome README links a repo missing from inventory)
+- `bun run ecosystem:intake` — refresh `research/forks/ecosystem-inventory.json`, `pages/assets/ecosystem-inventory.json`, and `research/forks/ECOSYSTEM-COLLECTION.md` (needs `gh`; parses [awesome-pretext](https://github.com/ShipItAndPray/awesome-pretext) `app.js` + discovery list + **deduped `gh search code` hits** on `package.json` for Pretext; warns if awesome README links a repo missing from inventory)
 - `bun run ecosystem:clone-upstream` — shallow clone / fetch ecosystem repos into gitignored `upstream/` (see [research/forks/README.md](research/forks/README.md))
 - `bun run ecosystem:lighthouse` — performance-only Lighthouse vs [awesome-pretext](https://shipitandpray.github.io/awesome-pretext/) and the built `site/ecosystem-catalog/` (needs local Chrome; JSON under `research/forks/lighthouse/reports/`, gitignored)
+- **Upstream version check** (fork vs library releases): `gh release list -R chenglou/pretext --limit 8` and compare to root `package.json` / `CHANGELOG.md`; tags and releases live at <https://github.com/chenglou/pretext/tags> and <https://github.com/chenglou/pretext/releases> (see `.cursor/skills/pretext-upstream-rhythm/SKILL.md` phase 0 for when to bump vs pre-release suffixes).
 - `bun run generate:bidi-data` — refresh the checked-in simplified Unicode bidi ranges
 
 `prepack` also rebuilds `dist/` through plain `tsc`, so keep runtime `.js` specifiers honest in source imports.

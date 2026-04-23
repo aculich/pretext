@@ -50,6 +50,7 @@ const CHIP_ORDER = [
   'PLATFORM TARGETS',
   'TESTING & CI',
   'COMMUNITY',
+  'PACKAGE USERS',
   'DISCOVERY',
 ] as const
 
@@ -98,6 +99,7 @@ function badgeClass(relevance: string): string {
 function matchesChip(r: Row, chip: ChipId): boolean {
   if (chip === 'ALL') return true
   if (chip === 'COMMUNITY') return r.source === 'awesome-pretext-community'
+  if (chip === 'PACKAGE USERS') return r.source === 'pretext-dependent-search'
   if (chip === 'DISCOVERY') return r.source === 'discovery-search'
   const want = CHIP_TO_CATEGORY[chip]
   if (!want) return false
@@ -115,6 +117,7 @@ function filtered(): Row[] {
 function cardKicker(r: Row): string {
   if (r.category) return r.category.toUpperCase()
   if (r.source === 'awesome-pretext-community') return 'COMMUNITY'
+  if (r.source === 'pretext-dependent-search') return 'PACKAGE USERS'
   if (r.source === 'discovery-search') return 'DISCOVERY'
   return 'ECOSYSTEM'
 }
