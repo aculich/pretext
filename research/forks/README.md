@@ -1,18 +1,46 @@
-# Third-party forks and related repos
+# Third-party forks, ecosystem mirrors, and related repos
 
-## Relevant forks registry
+## Why this exists
 
-Use this table when **refreshing** after an upstream sync: fetch each **clone** fork, skim new commits, and update linked analysis docs if behavior drifted.
+This fork tracks [chenglou/pretext](https://github.com/chenglou/pretext). **Awesome-pretext** and related repos are *not* upstream — they are a **parallel ecosystem**. We previously linked [ShipItAndPray/awesome-pretext](https://github.com/ShipItAndPray/awesome-pretext) only as a README pointer ([PR #80](https://github.com/chenglou/pretext/pull/80) lineage) and **did not** routinely expand it into a classified inventory or local clones. That is now automated (see below).
+
+## Machine-readable inventory
+
+| Artifact | Purpose |
+|----------|---------|
+| [ecosystem-inventory.json](ecosystem-inventory.json) | All catalogued GitHub repos: source (`awesome-pretext-package` / `community` / `discovery-search`), `demoUrl`, GitHub description, **relevance** (`core-pretext-ecosystem` / `adjacent-pretext` / `unclear-or-noise`), and rationale. |
+| [UPSTREAM-SYNC.log](UPSTREAM-SYNC.log) | Append-only log from `bun run ecosystem:clone-upstream` (clone / fetch results). |
+| [ECOSYSTEM-CATALOG-PERF.md](ECOSYSTEM-CATALOG-PERF.md) | Performance comparison: upstream awesome-pretext site vs our `/demos/ecosystem-catalog`. |
+| [INTEGRATION-BACKLOG.md](INTEGRATION-BACKLOG.md) | Prioritized plan for pulling patterns or packages into this super-library. |
+
+## Commands (from repo root)
+
+```sh
+bun run ecosystem:intake          # refresh ecosystem-inventory.json + pages/assets copy (needs gh)
+bun run ecosystem:clone-upstream  # shallow clone / fetch into upstream/ (gitignored)
+```
+
+After `ecosystem:intake`, re-run `bun run site:build` so the static site bundles the updated JSON for `/demos/ecosystem-catalog`.
+
+## Local mirrors (`upstream/`)
+
+Shallow clones live under **`upstream/<owner>-<repo>/`** (see `.gitignore`). They are **not** committed. Naming matches `ecosystem-inventory.json` `fullName` with `/` → `-`.
+
+To wipe and reclone: `rm -rf upstream && bun run ecosystem:clone-upstream`.
+
+## Relevant forks registry (summary)
 
 | Repo | Role | Integrated here? | How to refresh |
 |------|------|------------------|----------------|
-| [chenglou/pretext](https://github.com/chenglou/pretext) | Upstream source of truth | N/A (remote `upstream`) | `git fetch upstream` |
-| [TheMarco/pretext-a11y](https://github.com/TheMarco/pretext-a11y) | Demo-layer accessibility patterns; no core `src/` fork in the analyzed snapshot | **No** — separate track ([analysis](../github/pretext-a11y-analysis.md)) | Clone below → `git fetch origin` → `git log HEAD..origin/main` |
-| [ShipItAndPray/awesome-pretext](https://github.com/ShipItAndPray/awesome-pretext) | Curated community list (links, not a layout fork) | **Docs only** ([PR #80](https://github.com/chenglou/pretext/pull/80) lineage) | Open repo / releases; add notable new entries to README if appropriate |
+| [chenglou/pretext](https://github.com/chenglou/pretext) | Upstream source of truth | N/A (git remote `upstream`) | `git fetch upstream` |
+| [TheMarco/pretext-a11y](https://github.com/TheMarco/pretext-a11y) | Demo-layer accessibility patterns | **No** — separate track ([analysis](../github/pretext-a11y-analysis.md)) | `mkdir -p research/forks && git clone …` (see below) |
+| [ShipItAndPray/awesome-pretext](https://github.com/ShipItAndPray/awesome-pretext) | Curated ecosystem list + [live site](https://shipitandpray.github.io/awesome-pretext/) | **Catalog + docs** | Listed inside `ecosystem-inventory.json`; clone via `ecosystem:clone-upstream` |
+| [ShipItAndPray/pretext-*](https://github.com/ShipItAndPray?tab=repositories&q=pretext) | Ecosystem packages / demos | **Varies** — see [INTEGRATION-BACKLOG.md](INTEGRATION-BACKLOG.md) | Same `upstream/` mirrors |
+| [somnai-dreams/preimage](https://github.com/somnai-dreams/preimage) | Image measurement complement to Pretext | **Planned** — [INTEGRATION-BACKLOG.md](INTEGRATION-BACKLOG.md) | `upstream/somnai-dreams-preimage` |
 
-### Clone (local only)
+### Clone TheMarco/pretext-a11y only (legacy path)
 
-The `pretext-a11y` directory under this folder is gitignored until cloned:
+The `pretext-a11y` directory under `research/forks/` is gitignored until cloned:
 
 ```bash
 mkdir -p research/forks && git clone https://github.com/TheMarco/pretext-a11y.git research/forks/pretext-a11y
@@ -20,8 +48,8 @@ mkdir -p research/forks && git clone https://github.com/TheMarco/pretext-a11y.gi
 
 See [pretext-a11y-analysis.md](../github/pretext-a11y-analysis.md) for a summarized diff vs `chenglou/pretext`.
 
-### Adding a newly discovered fork
+### Adding a newly discovered repo
 
-1. Run the discovery query in [WORKFLOW.md](../../WORKFLOW.md) (**Periodic upstream sync & triage** → *Discover new forks*).
-2. If the repo is a real fork of `chenglou/pretext` (or clearly continuation work), add a row here and optionally `research/github/<fork>-analysis.md`.
-3. Prefer **small** follow-up PRs from a fork rather than mega-merges (same rule as a11y in the analysis doc).
+1. Append it to `EXTRA_GITHUB_REPOS` in [scripts/ecosystem-intake.ts](../../scripts/ecosystem-intake.ts) (or extend the parser), then run `bun run ecosystem:intake`.
+2. Run `bun run ecosystem:clone-upstream`.
+3. Update [INTEGRATION-BACKLOG.md](INTEGRATION-BACKLOG.md) if it should enter the super-library queue.

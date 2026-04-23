@@ -1,0 +1,846 @@
+{
+  "generated_at": "2026-04-21T19:04:32.435Z",
+  "awesome_app_js": "https://raw.githubusercontent.com/ShipItAndPray/awesome-pretext/main/app.js",
+  "counts": {
+    "total": 52,
+    "core": 40,
+    "adjacent": 12,
+    "unclear": 0
+  },
+  "entries": [
+    {
+      "fullName": "0xNyk/pretext-playground",
+      "source": "awesome-pretext-community",
+      "repoUrl": "https://github.com/0xNyk/pretext-playground",
+      "ghDescription": "Interactive ASCII dragon playground built with @chenglou/pretext — text measurement without DOM reflow. Features physics-based letter interaction, fire breathing, 3D text tunnel, floating enemies, and a full control panel.",
+      "pushedAt": "2026-03-30T15:00:11Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "acoyfellow/cloudterm",
+      "source": "discovery-search",
+      "repoUrl": "https://github.com/acoyfellow/cloudterm",
+      "ghDescription": "Web terminal emulator. DOM-rendered. Built on @chenglou/pretext.",
+      "pushedAt": "2026-04-21T18:37:49Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "cocktailpeanut/textmash",
+      "source": "awesome-pretext-community",
+      "repoUrl": "https://github.com/cocktailpeanut/textmash",
+      "ghDescription": "pretext demo to wrap text chunks around each other https://github.com/chenglou/pretext",
+      "pushedAt": "2026-03-29T04:29:29Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "Repository description references chenglou/pretext.",
+      "hasPackageJson": false,
+      "declaresChenglouPretext": false
+    },
+    {
+      "fullName": "darkroomengineering/fitbox",
+      "source": "discovery-search",
+      "repoUrl": "https://github.com/darkroomengineering/fitbox",
+      "ghDescription": "Reflow-free text-to-box fitting for React, built on Pretext.",
+      "pushedAt": "2026-04-21T17:07:14Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "jihchi/react-pretext",
+      "source": "awesome-pretext-community",
+      "repoUrl": "https://github.com/jihchi/react-pretext",
+      "ghDescription": "React component for @chenglou/pretext -- fast, accurate multiline text measurement without DOM reflow.",
+      "pushedAt": "2026-03-31T04:33:05Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "joeflateau-octavius/pretext-rich",
+      "source": "awesome-pretext-community",
+      "repoUrl": "https://github.com/joeflateau-octavius/pretext-rich",
+      "ghDescription": "Rich text inline layout engine built on @chenglou/pretext",
+      "pushedAt": "2026-03-30T14:37:50Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "lucascrespo23/pinch-type",
+      "source": "awesome-pretext-community",
+      "repoUrl": "https://github.com/lucascrespo23/pinch-type",
+      "ghDescription": "Pinch to zoom text, not the page. Built on @chenglou/pretext.",
+      "pushedAt": "2026-03-31T01:47:44Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "mateffy/pretext-php",
+      "source": "awesome-pretext-community",
+      "repoUrl": "https://github.com/mateffy/pretext-php",
+      "ghDescription": "A PHP port of the chenglou/pretext text layout and measurement library. Provides fast, accurate text layout calculation using ICU (Intl) for segmentation and an injectable font measurement interface.",
+      "pushedAt": "2026-03-29T14:25:46Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "Repository description references chenglou/pretext.",
+      "hasPackageJson": false,
+      "declaresChenglouPretext": false
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-a11y",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-a11y/",
+      "tags": [
+        "a11y",
+        "wcag",
+        "ci",
+        "overflow"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-a11y",
+      "ghDescription": "WCAG text overflow audit in CI. No browser needed. Powered by Pretext.",
+      "pushedAt": "2026-04-02T06:16:35Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-accordion",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-accordion/",
+      "tags": [
+        "accordion",
+        "cls",
+        "ui"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-accordion",
+      "ghDescription": "Zero-CLS accordion component using Pretext for predictive height measurement. No layout shift.",
+      "pushedAt": "2026-04-02T06:16:37Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-animate",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-animate/",
+      "tags": [
+        "animation",
+        "physics",
+        "canvas"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-animate",
+      "ghDescription": "Physics-based text animations with zero layout reflows. 120fps. Powered by Pretext.",
+      "pushedAt": "2026-04-02T06:16:40Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-blocks",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-blocks/",
+      "tags": [
+        "blocks",
+        "editor",
+        "virtualization"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-blocks",
+      "ghDescription": "Block editor virtualizer for Notion-style editors. Pretext predicts block heights.",
+      "pushedAt": "2026-04-02T06:16:41Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-canvas",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-canvas/",
+      "tags": [
+        "canvas",
+        "webgl",
+        "labels",
+        "rendering"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-canvas",
+      "ghDescription": "Canvas and WebGL text rendering helpers powered by Pretext.",
+      "pushedAt": "2026-04-02T06:16:43Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-captions",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-captions/",
+      "tags": [
+        "subtitles",
+        "captions",
+        "accessibility"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-captions",
+      "ghDescription": "Subtitle editor and renderer. SRT/VTT/ASS parsing, WCAG compliance, Pretext layout.",
+      "pushedAt": "2026-04-02T06:16:44Z",
+      "relevance": "adjacent-pretext",
+      "relevanceRationale": "Listed in awesome-pretext catalog as Pretext ecosystem package; verify package.json on disk after clone.",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": false
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-chat",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-chat/",
+      "tags": [
+        "chat",
+        "react",
+        "virtualization",
+        "ai-ui"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-chat",
+      "ghDescription": "Pretext-powered chat UI components for React with stable message sizing and virtualization.",
+      "pushedAt": "2026-04-02T06:16:38Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-code-minimap",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-code-minimap/",
+      "tags": [
+        "minimap",
+        "editor",
+        "canvas"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-code-minimap",
+      "ghDescription": "VS Code-style code minimap for the browser. Pixel-accurate, Canvas-rendered, powered by Pretext.",
+      "pushedAt": "2026-04-02T06:16:45Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-comic",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-comic/",
+      "tags": [
+        "comic",
+        "speech-bubble",
+        "canvas"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-comic",
+      "ghDescription": "Comic speech bubble tool with shape-aware text fitting. 6 built-in shapes, PNG export.",
+      "pushedAt": "2026-04-02T06:16:46Z",
+      "relevance": "adjacent-pretext",
+      "relevanceRationale": "Listed in awesome-pretext catalog as Pretext ecosystem package; verify package.json on disk after clone.",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": false
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-devtools",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-devtools/",
+      "tags": [
+        "devtools",
+        "debugging",
+        "overlay"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-devtools",
+      "ghDescription": "Overlay Pretext text measurements on any webpage. See predicted vs actual dimensions.",
+      "pushedAt": "2026-04-02T06:16:48Z",
+      "relevance": "adjacent-pretext",
+      "relevanceRationale": "Listed in awesome-pretext catalog as Pretext ecosystem package; verify package.json on disk after clone.",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": false
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-diff",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-diff/",
+      "tags": [
+        "diff",
+        "editor",
+        "virtualization"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-diff",
+      "ghDescription": "Virtualized side-by-side diff viewer using Pretext. Handles 100K+ line diffs.",
+      "pushedAt": "2026-04-02T06:16:50Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-diff-navigator",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-diff-navigator/",
+      "tags": [
+        "diff",
+        "scroll-sync",
+        "editor"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-diff-navigator",
+      "ghDescription": "Side-by-side diff with drift-free synchronized scroll. Powered by Pretext.",
+      "pushedAt": "2026-04-02T06:16:49Z",
+      "relevance": "adjacent-pretext",
+      "relevanceRationale": "Listed in awesome-pretext catalog as Pretext ecosystem package; verify package.json on disk after clone.",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": false
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-docgen",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-docgen/",
+      "tags": [
+        "docgen",
+        "pdf",
+        "serverless"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-docgen",
+      "ghDescription": "PDF generation without Puppeteer. Pure JS text layout with Pretext. 100x cheaper.",
+      "pushedAt": "2026-03-30T15:07:29Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-editor",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-editor/",
+      "tags": [
+        "editor",
+        "canvas",
+        "text",
+        "monaco-alternative"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-editor",
+      "ghDescription": "Canvas-rendered text editor using Pretext for line measurement. No contenteditable. Handles 1M+ lines.",
+      "pushedAt": "2026-04-02T06:16:52Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-epub",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-epub/",
+      "tags": [
+        "epub",
+        "pagination",
+        "reading"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-epub",
+      "ghDescription": "EPUB pagination engine with O(1) page access. Pretext computes exact page breaks.",
+      "pushedAt": "2026-04-02T06:16:53Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-forms",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-forms/",
+      "tags": [
+        "forms",
+        "textarea",
+        "inputs"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-forms",
+      "ghDescription": "Auto-sizing textarea, input, select components using Pretext. No DOM reflow.",
+      "pushedAt": "2026-04-02T06:16:54Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-gantt",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-gantt/",
+      "tags": [
+        "gantt",
+        "chart",
+        "canvas"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-gantt",
+      "ghDescription": "Zero-flicker Gantt chart. Task labels placed correctly on frame 1 using Pretext.",
+      "pushedAt": "2026-04-02T06:16:55Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-i18n",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-i18n/",
+      "tags": [
+        "i18n",
+        "overflow",
+        "ci"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-i18n",
+      "ghDescription": "Catch i18n text overflow at build time. No browser needed. Powered by Pretext.",
+      "pushedAt": "2026-04-02T06:16:57Z",
+      "relevance": "adjacent-pretext",
+      "relevanceRationale": "Listed in awesome-pretext catalog as Pretext ecosystem package; verify package.json on disk after clone.",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": false
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-infinite-canvas",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-infinite-canvas/",
+      "tags": [
+        "canvas",
+        "infinite",
+        "zoom",
+        "figma"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-infinite-canvas",
+      "ghDescription": "Infinite canvas with pixel-perfect text at any zoom level, powered by Pretext.",
+      "pushedAt": "2026-04-02T06:16:58Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-logviewer",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-logviewer/",
+      "tags": [
+        "logs",
+        "ansi",
+        "search",
+        "virtualization"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-logviewer",
+      "ghDescription": "10M+ line log viewer with ANSI colors, virtualized scroll, search. Replaces react-lazylog.",
+      "pushedAt": "2026-04-02T06:16:59Z",
+      "relevance": "adjacent-pretext",
+      "relevanceRationale": "Listed in awesome-pretext catalog as Pretext ecosystem package; verify package.json on disk after clone.",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": false
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-map-labels",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-map-labels/",
+      "tags": [
+        "maps",
+        "labels",
+        "collision"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-map-labels",
+      "ghDescription": "Collision-free label placement for maps and diagrams. Powered by Pretext.",
+      "pushedAt": "2026-04-02T06:17:01Z",
+      "relevance": "adjacent-pretext",
+      "relevanceRationale": "Listed in awesome-pretext catalog as Pretext ecosystem package; verify package.json on disk after clone.",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": false
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-markdown",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-markdown/",
+      "tags": [
+        "markdown",
+        "streaming",
+        "renderer"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-markdown",
+      "ghDescription": "Streaming markdown renderer with zero layout shift. Pre-measures every block with Pretext.",
+      "pushedAt": "2026-04-02T06:17:02Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-masonry",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-masonry/",
+      "tags": [
+        "masonry",
+        "grid",
+        "virtualization"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-masonry",
+      "ghDescription": "Pinterest-style masonry grid with Pretext height prediction. 10K+ cards virtualized.",
+      "pushedAt": "2026-04-02T06:17:03Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-og",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-og/",
+      "tags": [
+        "og-image",
+        "images",
+        "text-layout"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-og",
+      "ghDescription": "OG image generator fixing Satori text wrapping bugs. Drop-in replacement powered by Pretext.",
+      "pushedAt": "2026-04-02T06:17:05Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-overflow-menu",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-overflow-menu/",
+      "tags": [
+        "overflow",
+        "menu",
+        "nav",
+        "ui"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-overflow-menu",
+      "ghDescription": "Nav bar overflow menu correct on frame 1. No flicker. Powered by Pretext.",
+      "pushedAt": "2026-04-02T06:17:06Z",
+      "relevance": "adjacent-pretext",
+      "relevanceRationale": "Listed in awesome-pretext catalog as Pretext ecosystem package; verify package.json on disk after clone.",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": false
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-overflow-monitor",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-overflow-monitor/",
+      "tags": [
+        "overflow",
+        "ci",
+        "monitoring"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-overflow-monitor",
+      "ghDescription": "Detect text overflow in CI before render. Zero browser, zero DOM, pure arithmetic.",
+      "pushedAt": "2026-04-02T06:17:07Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-pdf",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-pdf/",
+      "tags": [
+        "pdf",
+        "docgen",
+        "pagination",
+        "layout"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-pdf",
+      "ghDescription": "PDF generation with proper text wrapping using Pretext + pdf-lib.",
+      "pushedAt": "2026-04-02T06:17:08Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-react",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-react/",
+      "tags": [
+        "react",
+        "hooks",
+        "ui",
+        "streaming"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-react",
+      "ghDescription": "React hooks and UI primitives for @chenglou/pretext.",
+      "pushedAt": "2026-04-02T06:17:10Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-repl",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-repl/",
+      "tags": [
+        "repl",
+        "notebook",
+        "virtualization"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-repl",
+      "ghDescription": "REPL notebook where output cells never shift other cells. Powered by Pretext.",
+      "pushedAt": "2026-04-02T06:17:11Z",
+      "relevance": "adjacent-pretext",
+      "relevanceRationale": "Listed in awesome-pretext catalog as Pretext ecosystem package; verify package.json on disk after clone.",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": false
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-rn",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-rn/",
+      "tags": [
+        "react-native",
+        "mobile",
+        "bridge"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-rn",
+      "ghDescription": "React Native text measurement bridge. Enables FlatList getItemLayout with Pretext.",
+      "pushedAt": "2026-03-30T15:07:32Z",
+      "relevance": "adjacent-pretext",
+      "relevanceRationale": "Listed in awesome-pretext catalog as Pretext ecosystem package; verify package.json on disk after clone.",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": false
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-slides",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-slides/",
+      "tags": [
+        "slides",
+        "presentations",
+        "canvas"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-slides",
+      "ghDescription": "Presentation tool rendering slides in Canvas with Pretext text layout. Write markdown, present anywhere.",
+      "pushedAt": "2026-04-02T06:17:12Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-sparkline",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-sparkline/",
+      "tags": [
+        "sparkline",
+        "chart",
+        "inline"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-sparkline",
+      "ghDescription": "Inline sparklines with collision-free value labels computed before render using Pretext",
+      "pushedAt": "2026-04-02T06:17:13Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-ssr",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-ssr/",
+      "tags": [
+        "ssr",
+        "fonts",
+        "cls"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-ssr",
+      "ghDescription": "SSR zero-CLS font loading. Predicts text height for both fallback and loaded fonts.",
+      "pushedAt": "2026-04-02T06:17:14Z",
+      "relevance": "adjacent-pretext",
+      "relevanceRationale": "Listed in awesome-pretext catalog as Pretext ecosystem package; verify package.json on disk after clone.",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": false
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-storybook",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-storybook/",
+      "tags": [
+        "storybook",
+        "testing",
+        "overflow"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-storybook",
+      "ghDescription": "Stress-test UI components with dynamic text. Flags overflow before it ships.",
+      "pushedAt": "2026-04-02T06:17:16Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-table",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-table/",
+      "tags": [
+        "table",
+        "data-grid",
+        "virtualization"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-table",
+      "ghDescription": "Virtualized data table with Pretext-powered column auto-sizing. No DOM measurement.",
+      "pushedAt": "2026-04-02T06:17:17Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-terminal",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-terminal/",
+      "tags": [
+        "terminal",
+        "ansi",
+        "canvas",
+        "logviewer"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-terminal",
+      "ghDescription": "Virtualized terminal UI for React with Pretext-aware layout and canvas rendering.",
+      "pushedAt": "2026-04-02T06:17:19Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-tooltip",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-tooltip/",
+      "tags": [
+        "tooltip",
+        "overlay",
+        "ui"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-tooltip",
+      "ghDescription": "Tooltips that know their size before rendering. No repositioning flash. Powered by Pretext.",
+      "pushedAt": "2026-04-02T06:17:21Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-truncate",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-truncate/",
+      "tags": [
+        "truncate",
+        "multiline",
+        "ui"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-truncate",
+      "ghDescription": "Multiline text truncation without content flash. Uses Pretext for instant line calculation.",
+      "pushedAt": "2026-04-02T06:17:23Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-tts-highlight",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-tts-highlight/",
+      "tags": [
+        "tts",
+        "audio",
+        "karaoke"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-tts-highlight",
+      "ghDescription": "Karaoke-style word highlighting synced to TTS. Uses Pretext for word positions.",
+      "pushedAt": "2026-04-02T06:17:24Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-typewriter",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-typewriter/",
+      "tags": [
+        "typewriter",
+        "animation",
+        "streaming"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-typewriter",
+      "ghDescription": "Zero-shift streaming text animations. Pre-measures final height with Pretext.",
+      "pushedAt": "2026-04-02T06:17:26Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-webxr",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-webxr/",
+      "tags": [
+        "webxr",
+        "3d",
+        "spatial-ui"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-webxr",
+      "ghDescription": "3D text rendering for WebXR/Three.js using Pretext. First mover in VR/AR text.",
+      "pushedAt": "2026-04-02T06:17:27Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "ShipItAndPray/pretext-word-cloud",
+      "source": "awesome-pretext-package",
+      "demoUrl": "https://shipitandpray.github.io/pretext-word-cloud/",
+      "tags": [
+        "word-cloud",
+        "canvas",
+        "layout"
+      ],
+      "repoUrl": "https://github.com/ShipItAndPray/pretext-word-cloud",
+      "ghDescription": "Deterministic word cloud layout powered by Pretext. 500x faster than d3-cloud.",
+      "pushedAt": "2026-04-02T06:17:29Z",
+      "relevance": "adjacent-pretext",
+      "relevanceRationale": "Listed in awesome-pretext catalog as Pretext ecosystem package; verify package.json on disk after clone.",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": false
+    },
+    {
+      "fullName": "somnai-dreams/preimage",
+      "source": "discovery-search",
+      "repoUrl": "https://github.com/somnai-dreams/preimage",
+      "ghDescription": "Fast, accurate & comprehensive image measurement & layout, based on @chenglou/pretext",
+      "pushedAt": "2026-04-21T14:08:08Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    },
+    {
+      "fullName": "Top-g-hash/nuxt-pretext",
+      "source": "discovery-search",
+      "repoUrl": "https://github.com/Top-g-hash/nuxt-pretext",
+      "ghDescription": "Pretext integration for Nuxt. Fast multiline text measurement without DOM reflow. Components, composables, and canvas rendering included.",
+      "pushedAt": "2026-04-21T14:16:48Z",
+      "relevance": "core-pretext-ecosystem",
+      "relevanceRationale": "package.json lists @chenglou/pretext (dependency / peer / dev).",
+      "hasPackageJson": true,
+      "declaresChenglouPretext": true
+    }
+  ]
+}
