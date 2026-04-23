@@ -36,3 +36,9 @@ report.[0-9]_.[0-9]_.[0-9]_.[0-9]_.json
 
 # Local clone of third-party forks (see research/forks/README.md)
 research/forks/pretext-a11y/
+
+# Local mirrors of ecosystem repos (see research/forks/README.md, scripts/ecosystem-clone-upstream.ts)
+upstream/
+
+# Lighthouse JSON dumps (local only; regenerate with bun run ecosystem:lighthouse)
+research/forks/lighthouse/reports/

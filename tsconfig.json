@@ -1,5 +1,5 @@
 {
-  "exclude": ["node_modules", "dist", "site", "research/forks"],
+  "exclude": ["node_modules", "dist", "site", "research/forks", "upstream"],
   "compilerOptions": {
     "lib": ["ESNext", "DOM"],
     "target": "ESNext",
@@ -9,6 +9,7 @@
     "types": ["bun", "node"],
 
     "moduleResolution": "bundler",
+    "resolveJsonModule": true,
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true,
     "noEmit": true,

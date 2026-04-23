@@ -20,6 +20,7 @@ const entrypoints = [
   'pages/demos/virtual-scroll.html',
   'pages/demos/virtual-chat.html',
   'pages/demos/cjk-line-breaking.html',
+  'pages/demos/ecosystem-catalog.html',
 ]
 
 const result = Bun.spawnSync(
@@ -52,6 +53,7 @@ const targets = [
   { source: 'virtual-scroll.html', target: 'virtual-scroll/index.html' },
   { source: 'virtual-chat.html', target: 'virtual-chat/index.html' },
   { source: 'cjk-line-breaking.html', target: 'cjk-line-breaking/index.html' },
+  { source: 'ecosystem-catalog.html', target: 'ecosystem-catalog/index.html' },
 ]
 
 for (let index = 0; index < targets.length; index++) {
