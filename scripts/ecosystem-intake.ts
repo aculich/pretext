@@ -15,6 +15,10 @@ const ROOT = join(__dirname, '..')
 const OUT_JSON = join(ROOT, 'research', 'forks', 'ecosystem-inventory.json')
 /** Copy for bundling the local ecosystem catalog demo (see pages/demos/ecosystem-catalog.ts). */
 const OUT_DEMO_ASSET = join(ROOT, 'pages', 'assets', 'ecosystem-inventory.json')
+const OUT_COLLECTION_MD = join(ROOT, 'research', 'forks', 'ECOSYSTEM-COLLECTION.md')
+
+const AWESOME_README_RAW =
+  'https://raw.githubusercontent.com/ShipItAndPray/awesome-pretext/main/README.md'
 
 const AWESOME_APP_JS =
   'https://raw.githubusercontent.com/ShipItAndPray/awesome-pretext/main/app.js'
@@ -32,6 +36,10 @@ type Relevance = 'core-pretext-ecosystem' | 'adjacent-pretext' | 'unclear-or-noi
 type InventoryEntry = {
   fullName: string
   source: 'awesome-pretext-package' | 'awesome-pretext-community' | 'discovery-search'
+  /** Display name from awesome-pretext `app.js` `name` (package short name). */
+  packageName?: string
+  /** `label` from communityProjects (e.g. "creative coding"). */
+  communityLabel?: string
   category?: string
   summary?: string
   demoUrl?: string
@@ -39,6 +47,11 @@ type InventoryEntry = {
   repoUrl: string
   ghDescription: string | null
   pushedAt: string | null
+  stargazerCount?: number
+  forkCount?: number
+  updatedAt?: string | null
+  isArchived?: boolean
+  isFork?: boolean
   relevance: Relevance
   relevanceRationale: string
   hasPackageJson: boolean
@@ -54,9 +67,124 @@ async function ghJson<T>(args: string[]): Promise<T> {
   return JSON.parse(out) as T
 }
 
+/** Skip strings so `{` / `[` inside quotes do not affect depth. */
+function findMatchingBracket(source: string, openIdx: number): number {
+  let depth = 1
+  let i = openIdx + 1
+  let inStr: '"' | "'" | null = null
+  let escape = false
+  for (; i < source.length; i++) {
+    const c = source[i]
+    if (inStr) {
+      if (escape) {
+        escape = false
+        continue
+      }
+      if (c === '\\') {
+        escape = true
+        continue
+      }
+      if (c === inStr) inStr = null
+      continue
+    }
+    if (c === '"' || c === "'") {
+      inStr = c
+      continue
+    }
+    if (c === '[') depth++
+    else if (c === ']') {
+      depth--
+      if (depth === 0) return i
+    }
+  }
+  return -1
+}
+
+function findMatchingBrace(source: string, openIdx: number): number {
+  let depth = 0
+  let i = openIdx
+  let inStr: '"' | "'" | null = null
+  let escape = false
+  for (; i < source.length; i++) {
+    const c = source[i]
+    if (inStr) {
+      if (escape) {
+        escape = false
+        continue
+      }
+      if (c === '\\') {
+        escape = true
+        continue
+      }
+      if (c === inStr) inStr = null
+      continue
+    }
+    if (c === '"' || c === "'") {
+      inStr = c
+      continue
+    }
+    if (c === '{') depth++
+    else if (c === '}') {
+      depth--
+      if (depth === 0) return i
+    }
+  }
+  return -1
+}
+
+function extractArrayInner(source: string, marker: string): string | null {
+  const idx = source.indexOf(marker)
+  if (idx === -1) return null
+  const openBracket = source.indexOf('[', idx + marker.length)
+  if (openBracket === -1) return null
+  const closeBracket = findMatchingBracket(source, openBracket)
+  if (closeBracket === -1) return null
+  return source.slice(openBracket + 1, closeBracket)
+}
+
+function extractTopLevelObjectStrings(arrayInner: string): string[] {
+  const out: string[] = []
+  let i = 0
+  while (i < arrayInner.length) {
+    let ch = arrayInner.charAt(i)
+    while (i < arrayInner.length && /[\s,]/.test(ch)) {
+      i++
+      ch = arrayInner.charAt(i)
+    }
+    if (i >= arrayInner.length) break
+    if (ch === '{') {
+      const end = findMatchingBrace(arrayInner, i)
+      if (end === -1) break
+      out.push(arrayInner.slice(i, end + 1))
+      i = end + 1
+    } else {
+      i++
+    }
+  }
+  return out
+}
+
+function fieldDoubleQuoted(obj: string, key: string): string | undefined {
+  const re = new RegExp(`${key}:\\s*"((?:\\\\.|[^"\\\\])*)"`)
+  const m = re.exec(obj)
+  if (!m?.[1]) return undefined
+  return m[1].replace(/\\"/g, '"').replace(/\\\\/g, '\\')
+}
+
+function parseTagsArray(obj: string): string[] {
+  const tagRe = /tags:\s*\[([\s\S]*?)\]/m.exec(obj)
+  const inner = tagRe?.[1]
+  if (!inner) return []
+  const tags: string[] = []
+  for (const t of inner.matchAll(/"((?:\\.|[^"\\])*)"/g)) {
+    if (t[1]) tags.push(t[1].replace(/\\"/g, '"'))
+  }
+  return tags
+}
+
 function parseGithubReposFromAwesomeAppJs(text: string): {
   packages: Array<{ repo: string; demo?: string; name?: string; category?: string; summary?: string; tags?: string[] }>
-  community: Array<{ url: string; name?: string }>
+  community: Array<{ url: string; name?: string; description?: string; label?: string }>
 } {
   const packages: Array<{
     repo: string
@@ -67,62 +195,40 @@ function parseGithubReposFromAwesomeAppJs(text: string): {
     tags?: string[]
   }> = []
 
-  const pkgBlocks = text.match(/const packages = \[[\s\S]*?\];/)
-  if (pkgBlocks) {
-    const block = pkgBlocks[0]
-    const repoRe = /repo:\s*"(https:\/\/github\.com\/[^"]+)"/g
-    let m: RegExpExecArray | null
-    while ((m = repoRe.exec(block)) !== null) {
-      const end = block.indexOf('},', m.index)
-      const slice = end === -1 ? block.slice(m.index) : block.slice(m.index, end + 2)
-      const demoM = /demo:\s*"(https:\/\/[^"]+)"/.exec(slice)
-      const nameM = /name:\s*"([^"]+)"/.exec(slice)
-      const catM = /category:\s*"([^"]+)"/.exec(slice)
-      const sumM = /summary:\s*"([^"]+)"/.exec(slice)
-      const tags: string[] = []
-      const tagRe = /tags:\s*\[([\s\S]*?)\]/m.exec(slice)
-      const innerTags = tagRe?.[1]
-      if (innerTags) {
-        const tm = innerTags.matchAll(/"([^"]+)"/g)
-        for (const t of tm) {
-          if (t[1]) tags.push(t[1])
-        }
-      }
-      const repoUrl = m[1]
-      if (!repoUrl) continue
-      const rec: {
-        repo: string
-        demo?: string
-        name?: string
-        category?: string
-        summary?: string
-        tags?: string[]
-      } = { repo: repoUrl }
-      if (demoM?.[1] !== undefined) rec.demo = demoM[1]
-      if (nameM?.[1] !== undefined) rec.name = nameM[1]
-      if (catM?.[1] !== undefined) rec.category = catM[1]
-      if (sumM?.[1] !== undefined) rec.summary = sumM[1]
+  const inner = extractArrayInner(text, 'const packages = ')
+  if (inner) {
+    for (const obj of extractTopLevelObjectStrings(inner)) {
+      const repo = fieldDoubleQuoted(obj, 'repo')
+      if (!repo) continue
+      const rec: (typeof packages)[number] = { repo }
+      const demo = fieldDoubleQuoted(obj, 'demo')
+      if (demo !== undefined) rec.demo = demo
+      const name = fieldDoubleQuoted(obj, 'name')
+      if (name !== undefined) rec.name = name
+      const category = fieldDoubleQuoted(obj, 'category')
+      if (category !== undefined) rec.category = category
+      const summary = fieldDoubleQuoted(obj, 'summary')
+      if (summary !== undefined) rec.summary = summary
+      const tags = parseTagsArray(obj)
       if (tags.length > 0) rec.tags = tags
       packages.push(rec)
     }
   }
 
-  const community: Array<{ url: string; name?: string }> = []
-  const commBlocks = text.match(/const communityProjects = \[[\s\S]*?\];/)
-  if (commBlocks) {
-    const block = commBlocks[0]
-    const urlRe = /url:\s*"(https:\/\/github\.com\/[^"]+)"/g
-    let m: RegExpExecArray | null
-    while ((m = urlRe.exec(block)) !== null) {
-      const end = block.indexOf('},', m.index)
-      const slice = end === -1 ? block.slice(m.index) : block.slice(m.index, end + 2)
-      const nameM = /name:\s*"([^"]+)"/.exec(slice)
-      const u = m[1]
-      if (u) {
-        const crec: { url: string; name?: string } = { url: u }
-        if (nameM?.[1] !== undefined) crec.name = nameM[1]
-        community.push(crec)
-      }
+  const community: Array<{ url: string; name?: string; description?: string; label?: string }> = []
+  const commInner = extractArrayInner(text, 'const communityProjects = ')
+  if (commInner) {
+    for (const obj of extractTopLevelObjectStrings(commInner)) {
+      const url = fieldDoubleQuoted(obj, 'url')
+      if (!url) continue
+      const crec: (typeof community)[number] = { url }
+      const name = fieldDoubleQuoted(obj, 'name')
+      if (name !== undefined) crec.name = name
+      const description = fieldDoubleQuoted(obj, 'description')
+      if (description !== undefined) crec.description = description
+      const label = fieldDoubleQuoted(obj, 'label')
+      if (label !== undefined) crec.label = label
+      community.push(crec)
     }
   }
 
@@ -218,6 +324,8 @@ async function main() {
   type QueueItem = {
     fullName: string
     source: InventoryEntry['source']
+    packageName?: string
+    communityLabel?: string
     category?: string
     summary?: string
     demoUrl?: string
@@ -230,6 +338,7 @@ async function main() {
     if (!fn || seen.has(fn)) continue
     seen.add(fn)
     const row: QueueItem = { fullName: fn, source: 'awesome-pretext-package' }
+    if (p.name !== undefined) row.packageName = p.name
     if (p.category !== undefined) row.category = p.category
     if (p.summary !== undefined) row.summary = p.summary
     if (p.demo !== undefined) row.demoUrl = p.demo
@@ -241,7 +350,10 @@ async function main() {
     if (!fn || seen.has(fn)) continue
     seen.add(fn)
     const row: QueueItem = { fullName: fn, source: 'awesome-pretext-community' }
-    if (c.name !== undefined) row.summary = c.name
+    if (c.name !== undefined) row.packageName = c.name
+    if (c.label !== undefined) row.communityLabel = c.label
+    if (c.description !== undefined) row.summary = c.description
+    else if (c.name !== undefined) row.summary = c.name
     queue.push(row)
   }
   for (const fn of EXTRA_GITHUB_REPOS) {
@@ -259,16 +371,34 @@ async function main() {
 
     let ghDescription: string | null = null
     let pushedAt: string | null = null
+    let stargazerCount: number | undefined
+    let forkCount: number | undefined
+    let updatedAt: string | null = null
+    let isArchived: boolean | undefined
+    let isFork: boolean | undefined
     try {
-      const meta = await ghJson<{ description: string | null; pushedAt: string | null }>([
+      const meta = await ghJson<{
+        description: string | null
+        pushedAt: string | null
+        stargazerCount: number
+        forkCount: number
+        updatedAt: string
+        isArchived: boolean
+        isFork: boolean
+      }>([
         'repo',
         'view',
         item.fullName,
         '--json',
-        'description,pushedAt',
+        'description,pushedAt,stargazerCount,forkCount,updatedAt,isArchived,isFork',
       ])
       ghDescription = meta.description
       pushedAt = meta.pushedAt
+      stargazerCount = meta.stargazerCount
+      forkCount = meta.forkCount
+      updatedAt = meta.updatedAt
+      isArchived = meta.isArchived
+      isFork = meta.isFork
     } catch (e) {
       ghDescription = `(gh repo view failed: ${e})`
     }
@@ -295,10 +425,17 @@ async function main() {
       hasPackageJson,
       declaresChenglouPretext,
     }
+    if (item.packageName !== undefined) row.packageName = item.packageName
+    if (item.communityLabel !== undefined) row.communityLabel = item.communityLabel
     if (item.category !== undefined) row.category = item.category
     if (item.summary !== undefined) row.summary = item.summary
     if (item.demoUrl !== undefined) row.demoUrl = item.demoUrl
     if (item.tags !== undefined) row.tags = item.tags
+    if (stargazerCount !== undefined) row.stargazerCount = stargazerCount
+    if (forkCount !== undefined) row.forkCount = forkCount
+    if (updatedAt !== undefined) row.updatedAt = updatedAt
+    if (isArchived !== undefined) row.isArchived = isArchived
+    if (isFork !== undefined) row.isFork = isFork
     entries.push(row)
   }
   process.stderr.write('\n')
@@ -321,6 +458,126 @@ async function main() {
   await writeFile(OUT_JSON, body, 'utf8')
   await writeFile(OUT_DEMO_ASSET, body, 'utf8')
   console.log('Wrote', OUT_JSON, 'and', OUT_DEMO_ASSET, manifest.counts)
+
+  await verifyAwesomeReadmeCoversInventory(new Set(entries.map((e) => e.fullName.toLowerCase())))
+  await writeEcosystemCollectionMd(manifest.generated_at, entries, manifest.counts)
+}
+
+/** Warn if awesome-pretext README links a GitHub repo we did not merge into inventory. */
+async function verifyAwesomeReadmeCoversInventory(inventoryLower: Set<string>): Promise<void> {
+  const res = await fetch(AWESOME_README_RAW)
+  if (!res.ok) {
+    console.warn('Could not fetch awesome README for link check:', res.status)
+    return
+  }
+  const readme = await res.text()
+  const re = /https:\/\/github\.com\/([\w.-]+)\/([\w.-]+)(?=\/|\)|\s|"|'|$)/g
+  const fromReadme = new Set<string>()
+  let m: RegExpExecArray | null
+  while ((m = re.exec(readme)) !== null) {
+    const fn = `${m[1]}/${m[2]}`.toLowerCase()
+    if (fn === 'chenglou/pretext') continue
+    fromReadme.add(fn)
+  }
+  const missing = [...fromReadme].filter((f) => !inventoryLower.has(f))
+  if (missing.length > 0) {
+    console.warn('README lists GitHub repos not in inventory — update intake or README:', missing.sort().join(', '))
+  }
+}
+
+function mdEscapeCell(s: string): string {
+  return s.replace(/\|/g, '\\|').replace(/\r?\n/g, ' ')
+}
+
+async function writeEcosystemCollectionMd(
+  generatedAt: string,
+  entries: InventoryEntry[],
+  counts: { total: number; core: number; adjacent: number; unclear: number },
+): Promise<void> {
+  const discovery = entries.filter((e) => e.source === 'discovery-search')
+  const lines: string[] = []
+  lines.push('# Pretext ecosystem collection (aculich fork)')
+  lines.push('')
+  lines.push(
+    '[![Awesome pretext site](https://img.shields.io/badge/awesome--pretext-site-0f766e)](https://shipitandpray.github.io/awesome-pretext/) [![Upstream Pretext](https://img.shields.io/badge/upstream-chenglou%2Fpretext-111827)](https://github.com/chenglou/pretext) [![Local catalog demo](https://img.shields.io/badge/catalog-demo-8b4d2f)](https://github.com/aculich/pretext/blob/main/pages/demos/ecosystem-catalog.html)',
+  )
+  lines.push('')
+  lines.push(
+    'This document mirrors the *intent* of [ShipItAndPray/awesome-pretext](https://github.com/ShipItAndPray/awesome-pretext)’s README while grounding the **full superset** in [`ecosystem-inventory.json`](ecosystem-inventory.json). Regenerate both with `bun run ecosystem:intake`.',
+  )
+  lines.push('')
+  lines.push(`_Inventory generated: ${generatedAt.slice(0, 10)} · ${counts.total} repos (core ${counts.core}, adjacent ${counts.adjacent}, unclear ${counts.unclear})._`)
+  lines.push('')
+  lines.push('## How to read this vs awesome-pretext')
+  lines.push('')
+  lines.push('1. **Official resources first** — upstream Pretext, live demos, community demo hub, development notes.')
+  lines.push('2. **Ecosystem packages with live demos** — curated in awesome-pretext `app.js`; we carry the same repos plus metadata from the GitHub API.')
+  lines.push('3. **Selected community experiments** — `communityProjects` in their `app.js`.')
+  lines.push('4. **Beyond their README** — discovery repos we added (see end). Intake also warns if their README introduces new `github.com/o/r` links not present in the inventory.')
+  lines.push('')
+  lines.push('## Official Pretext resources')
+  lines.push('')
+  lines.push('- [Pretext repository](https://github.com/chenglou/pretext)')
+  lines.push('- [Live demos by Cheng Lou](https://chenglou.me/pretext/)')
+  lines.push('- [Additional community demos](https://somnai-dreams.github.io/pretext-demos/)')
+  lines.push('- [Development notes](https://github.com/chenglou/pretext/blob/main/DEVELOPMENT.md)')
+  lines.push('')
+  lines.push('## Flagship ecosystem packages (curated)')
+  lines.push('')
+  lines.push('| Project | What it does | Links |')
+  lines.push('| --- | --- | --- |')
+  lines.push(
+    '| [`pretext-react`](https://github.com/ShipItAndPray/pretext-react) | React hooks and UI primitives for stable text sizing, bubbles, streaming text, and virtualization. | [demo](https://shipitandpray.github.io/pretext-react/) |',
+  )
+  lines.push(
+    '| [`pretext-chat`](https://github.com/ShipItAndPray/pretext-chat) | Chat UI components with precomputed message sizing and streaming-friendly layout. | [demo](https://shipitandpray.github.io/pretext-chat/) |',
+  )
+  lines.push(
+    '| [`pretext-terminal`](https://github.com/ShipItAndPray/pretext-terminal) | Canvas-first terminal and log UI for large scrollback and ANSI-rich output. | [demo](https://shipitandpray.github.io/pretext-terminal/) |',
+  )
+  lines.push(
+    '| [`pretext-editor`](https://github.com/ShipItAndPray/pretext-editor) | Canvas text editor using Pretext for line measurement instead of DOM text nodes. | [demo](https://shipitandpray.github.io/pretext-editor/) |',
+  )
+  lines.push(
+    '| [`pretext-pdf`](https://github.com/ShipItAndPray/pretext-pdf) | PDF generation with correct wrapping and pagination powered by Pretext + pdf-lib. | [demo](https://shipitandpray.github.io/pretext-pdf/) |',
+  )
+  lines.push('')
+  lines.push('## Full machine catalog (superset)')
+  lines.push('')
+  lines.push(
+    'Sorted by **use-case category** (from awesome-pretext when present), then repo. Demo and relevance come from [`ecosystem-inventory.json`](ecosystem-inventory.json).',
+  )
+  lines.push('')
+  lines.push('| Repo | Category | Demo | Relevance | Stars | Forks | Pushed |')
+  lines.push('| --- | --- | --- | --- | ---: | ---: | --- |')
+  const sorted = [...entries].sort((a, b) => {
+    const ca = (a.category ?? '\uFFFF').localeCompare(b.category ?? '\uFFFF')
+    if (ca !== 0) return ca
+    return a.fullName.localeCompare(b.fullName)
+  })
+  for (const e of sorted) {
+    const demo = e.demoUrl ? `[demo](${e.demoUrl})` : '—'
+    const cat = e.category ?? (e.source === 'awesome-pretext-community' ? 'Community' : e.source === 'discovery-search' ? 'Discovery' : '—')
+    const stars = e.stargazerCount ?? '—'
+    const forks = e.forkCount ?? '—'
+    const pushed = e.pushedAt ? e.pushedAt.slice(0, 10) : '—'
+    lines.push(
+      `| [\`${mdEscapeCell(e.fullName)}\`](${e.repoUrl}) | ${mdEscapeCell(cat)} | ${demo} | \`${e.relevance}\` | ${String(stars)} | ${String(forks)} | ${pushed} |`,
+    )
+  }
+  lines.push('')
+  lines.push('## Repos in this fork’s inventory but not in awesome-pretext README tables')
+  lines.push('')
+  if (discovery.length === 0) {
+    lines.push('_None._')
+  } else {
+    for (const e of discovery.sort((a, b) => a.fullName.localeCompare(b.fullName))) {
+      lines.push(`- [\`${e.fullName}\`](${e.repoUrl}) — ${mdEscapeCell(e.ghDescription ?? '')}`)
+    }
+  }
+  lines.push('')
+  await writeFile(OUT_COLLECTION_MD, `${lines.join('\n')}\n`, 'utf8')
+  console.log('Wrote', OUT_COLLECTION_MD)
 }
 
 main().catch((e) => {

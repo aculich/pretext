@@ -20,7 +20,7 @@ bun install
 - `bun run build:package` — emit `dist/` for the published ESM package
 - `bun run package-smoke-test` — pack the tarball and verify temporary JS + TS consumers
 - `bun run site:build` — build the static demo site into `site/`
-- `bun run ecosystem:intake` — refresh `research/forks/ecosystem-inventory.json` + `pages/assets/ecosystem-inventory.json` (needs `gh`; parses [awesome-pretext](https://github.com/ShipItAndPray/awesome-pretext) `app.js` + discovery list)
+- `bun run ecosystem:intake` — refresh `research/forks/ecosystem-inventory.json`, `pages/assets/ecosystem-inventory.json`, and `research/forks/ECOSYSTEM-COLLECTION.md` (needs `gh`; parses [awesome-pretext](https://github.com/ShipItAndPray/awesome-pretext) `app.js` + discovery list; warns if awesome README links a repo missing from inventory)
 - `bun run ecosystem:clone-upstream` — shallow clone / fetch ecosystem repos into gitignored `upstream/` (see [research/forks/README.md](research/forks/README.md))
 - `bun run ecosystem:lighthouse` — performance-only Lighthouse vs [awesome-pretext](https://shipitandpray.github.io/awesome-pretext/) and the built `site/ecosystem-catalog/` (needs local Chrome; JSON under `research/forks/lighthouse/reports/`, gitignored)
 - `bun run generate:bidi-data` — refresh the checked-in simplified Unicode bidi ranges

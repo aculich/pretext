@@ -7,14 +7,15 @@
   <style>
     :root {
       color-scheme: light;
-      --bg: #f6f2ec;
-      --panel: #fffdf8;
-      --ink: #1c1816;
+      --bg: #fdf8f4;
+      --panel: #fffefb;
+      --ink: #141210;
       --muted: #5c534c;
-      --rule: #d5cbc0;
-      --accent: #8b4d2f;
+      --rule: #e8ddd4;
+      --accent: #b54a32;
       --core: #0f5132;
       --adj: #664d03;
+      --tag-bg: #fdeee8;
     }
     * { box-sizing: border-box; }
     body {
@@ -22,41 +23,64 @@
       min-height: 100vh;
       background: var(--bg);
       color: var(--ink);
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-family: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
     }
     .wrap {
-      width: min(1100px, calc(100vw - 28px));
+      width: min(1180px, calc(100vw - 28px));
       margin: 0 auto;
-      padding: 28px 0 56px;
+      padding: 32px 0 64px;
+    }
+    .hero-kicker {
+      margin: 0 0 8px;
+      font: 600 11px/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--accent);
     }
     h1 {
       margin: 0;
-      font: 700 28px/1.15 Georgia, "Times New Roman", serif;
+      font: 700 32px/1.12 Georgia, "Times New Roman", serif;
+      color: var(--ink);
+      max-width: 20ch;
     }
-    .sub {
-      margin: 8px 0 0;
-      max-width: 72ch;
+    .hero-row {
+      display: grid;
+      gap: 24px;
+      align-items: start;
+    }
+    @media (min-width: 860px) {
+      .hero-row {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+    .hero-copy .sub {
+      margin: 12px 0 0;
+      max-width: 52ch;
       line-height: 1.55;
+      font-size: 14px;
       color: var(--muted);
     }
     .stats {
-      margin: 14px 0 0;
-      font: 13px/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+      margin: 10px 0 0;
+      font: 12px/1.45 ui-monospace, SFMono-Regular, Menlo, monospace;
       color: var(--muted);
     }
     .controls {
-      margin-top: 22px;
+      margin-top: 26px;
       display: grid;
-      gap: 12px;
+      gap: 14px;
     }
     input[type="search"] {
       width: 100%;
-      min-height: 44px;
-      padding: 0 14px;
-      border-radius: 12px;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
       border: 1px solid var(--rule);
       background: #fff;
-      font: inherit;
+      font: 15px/1.2 inherit;
+    }
+    input[type="search"]::placeholder {
+      color: #9a8f88;
     }
     .chips {
       display: flex;
@@ -67,54 +91,96 @@
       border: 1px solid var(--rule);
       background: #fff;
       border-radius: 999px;
-      padding: 7px 12px;
-      font: 12px ui-monospace, monospace;
+      padding: 8px 14px;
+      font: 600 11px ui-monospace, SFMono-Regular, Menlo, monospace;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
       cursor: pointer;
+      color: var(--ink);
     }
     button.chip[aria-pressed="true"] {
       background: var(--ink);
-      color: #fffdf8;
+      color: #fffefb;
       border-color: var(--ink);
     }
     #grid {
-      margin-top: 18px;
+      margin-top: 22px;
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 14px;
+      gap: 16px;
     }
     .card {
       border: 1px solid var(--rule);
-      border-radius: 16px;
-      padding: 14px 16px;
+      border-radius: 20px;
+      padding: 16px 18px 14px;
       background: var(--panel);
-      /* Intentionally no backdrop-filter (see research/forks/ECOSYSTEM-CATALOG-PERF.md). */
-      box-shadow: 0 10px 26px rgb(40 30 20 / 0.06);
+      box-shadow: 0 4px 14px rgb(40 30 20 / 0.04);
+      transition: box-shadow 0.15s ease;
     }
-    .card h3 {
-      margin: 0;
-      font-size: 15px;
-      word-break: break-word;
+    .card:hover {
+      box-shadow: 0 10px 28px rgb(40 30 20 / 0.08);
+    }
+    .card-kicker {
+      margin: 0 0 6px;
+      font: 600 10px ui-monospace, SFMono-Regular, Menlo, monospace;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
     }
     .row {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      align-items: baseline;
+      gap: 10px;
+      align-items: flex-start;
       justify-content: space-between;
     }
-    .meta {
-      margin: 6px 0 0;
-      font-size: 12px;
+    .title-block {
+      min-width: 0;
+      flex: 1;
+    }
+    .card h3 {
+      margin: 0;
+      font: 700 20px/1.15 Georgia, "Times New Roman", serif;
+      word-break: break-word;
+    }
+    .repo-path {
+      margin: 4px 0 0;
+      font: 12px ui-monospace, monospace;
+      color: var(--muted);
+      word-break: break-all;
+    }
+    .gh-stats {
+      margin: 8px 0 0;
+      font: 11px ui-monospace, SFMono-Regular, Menlo, monospace;
       color: var(--muted);
     }
-    .card > p {
+    .community-label {
+      margin: 6px 0 0;
+      font-size: 12px;
+      font-style: italic;
+      color: var(--muted);
+    }
+    .desc {
       margin: 10px 0 0;
       font-size: 13px;
       line-height: 1.45;
       color: var(--ink);
     }
-    .links {
+    .tag-row {
       margin-top: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag-pill {
+      font: 11px ui-monospace, monospace;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: var(--tag-bg);
+      color: var(--accent);
+    }
+    .links {
+      margin-top: 12px;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
@@ -122,26 +188,39 @@
     a.pill {
       display: inline-flex;
       align-items: center;
-      padding: 4px 10px;
+      padding: 8px 16px;
       border-radius: 999px;
       border: 1px solid var(--rule);
       text-decoration: none;
-      color: var(--accent);
-      font-size: 12px;
+      color: var(--ink);
+      font: 600 12px ui-monospace, monospace;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
       background: #fff;
     }
-    a.pill:hover { border-color: var(--accent); }
-    .rationale {
-      margin-top: 8px;
-      font-size: 11px;
+    a.pill:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+    .classification {
+      margin-top: 10px;
+      font-size: 12px;
       color: var(--muted);
-      line-height: 1.35;
+    }
+    .classification summary {
+      cursor: pointer;
+      user-select: none;
+    }
+    .classification-body p {
+      margin: 6px 0 0;
+      line-height: 1.4;
     }
     .badge {
       font: 10px ui-monospace, monospace;
-      padding: 3px 7px;
-      border-radius: 6px;
+      padding: 4px 8px;
+      border-radius: 8px;
       white-space: nowrap;
+      flex-shrink: 0;
     }
     .badge.core {
       background: #d1e7dd;
@@ -163,31 +242,38 @@
       color: var(--muted);
     }
     #more {
-      margin-top: 16px;
-      padding: 10px 16px;
-      border-radius: 12px;
+      margin-top: 18px;
+      padding: 10px 18px;
+      border-radius: 999px;
       border: 1px solid var(--rule);
       background: #fff;
       cursor: pointer;
       font: inherit;
     }
-    #more:hover { border-color: var(--accent); color: var(--accent); }
+    #more:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
   </style>
 </head>
 <body>
   <main class="wrap">
-    <p style="margin:0 0 6px;font:12px ui-monospace,monospace;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);">Pretext fork</p>
-    <h1>Ecosystem catalog</h1>
-    <p class="sub">
-      Local mirror of <a href="https://github.com/ShipItAndPray/awesome-pretext">awesome-pretext</a>
-      plus discovery hits, regenerated from <code>bun run ecosystem:intake</code>.
-      Shallow clones live under <code>upstream/</code> (gitignored). This page uses debounced search,
-      category filters, and incremental rendering to stay responsive.
-    </p>
-    <p class="stats" id="stats"></p>
-    <div class="controls">
-      <input id="search" type="search" placeholder="Filter by name, description, tags…" autocomplete="off" />
-      <div class="chips" id="chips" role="toolbar" aria-label="Category"></div>
+    <div class="hero-row">
+      <div class="hero-copy">
+        <p class="hero-kicker">Ecosystem packages</p>
+        <h1>Live demos and package repos</h1>
+        <p class="sub">
+          Data from <a href="https://github.com/ShipItAndPray/awesome-pretext">awesome-pretext</a>
+          <code>app.js</code> plus discovery repos, refreshed with <code>bun run ecosystem:intake</code>.
+          Same use-case filters as the upstream site; debounced search, chunked list, and no heavy compositing on cards
+          (see <a href="https://github.com/aculich/pretext/blob/main/research/forks/ECOSYSTEM-CATALOG-PERF.md">perf notes</a>).
+        </p>
+        <p class="stats" id="stats"></p>
+      </div>
+      <div class="controls">
+        <input id="search" type="search" placeholder="Search packages, tags, or use cases" autocomplete="off" />
+        <div class="chips" id="chips" role="toolbar" aria-label="Use case and source"></div>
+      </div>
     </div>
     <div id="grid"></div>
     <button type="button" id="more" hidden>Load more</button>
