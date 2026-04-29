@@ -1,11 +1,11 @@
 {
   "repo": "chenglou/pretext",
-  "upstream_manifest_exported_at": "2026-04-21T16:51:07.978Z",
-  "generated_at": "2026-04-21T16:52:57.340Z",
+  "upstream_manifest_exported_at": "2026-04-23T04:36:24.499Z",
+  "generated_at": "2026-04-23T04:37:43.457Z",
   "counts": {
-    "pulls": 83,
-    "issues": 72,
-    "pr_api_calls": 83
+    "pulls": 84,
+    "issues": 74,
+    "pr_api_calls": 84
   },
   "wave1_in_fork": [
     17,
@@ -36,7 +36,7 @@
       "changed_files": 7,
       "additions": 62,
       "deletions": 32,
-      "mergeable": false,
+      "mergeable": null,
       "value": "medium",
       "merge_difficulty": "medium",
       "recommendation": "review_carefully"
@@ -940,7 +940,7 @@
     {
       "number": 108,
       "title": "feat: letterSpacing option in prepare()",
-      "state": "open",
+      "state": "closed",
       "draft": false,
       "html_url": "https://github.com/chenglou/pretext/pull/108",
       "merged": false,
@@ -948,10 +948,10 @@
       "changed_files": 2,
       "additions": 98,
       "deletions": 16,
-      "mergeable": false,
+      "mergeable": null,
       "value": "high",
       "merge_difficulty": "easy",
-      "recommendation": "review_carefully"
+      "recommendation": "closed_unmerged"
     },
     {
       "number": 109,
@@ -1060,7 +1060,7 @@
       "changed_files": 3,
       "additions": 196,
       "deletions": 10,
-      "mergeable": true,
+      "mergeable": false,
       "value": "medium",
       "merge_difficulty": "medium",
       "recommendation": "review_carefully"
@@ -1188,10 +1188,10 @@
       "changed_files": 2,
       "additions": 2,
       "deletions": 139,
-      "mergeable": true,
+      "mergeable": false,
       "value": "medium",
       "merge_difficulty": "easy",
-      "recommendation": "candidate_next"
+      "recommendation": "review_carefully"
     },
     {
       "number": 139,
@@ -1204,10 +1204,10 @@
       "changed_files": 1,
       "additions": 5,
       "deletions": 0,
-      "mergeable": true,
+      "mergeable": false,
       "value": "high",
       "merge_difficulty": "easy",
-      "recommendation": "candidate_next"
+      "recommendation": "review_carefully"
     },
     {
       "number": 140,
@@ -1220,10 +1220,10 @@
       "changed_files": 3,
       "additions": 49,
       "deletions": 106,
-      "mergeable": true,
+      "mergeable": false,
       "value": "medium",
       "merge_difficulty": "easy",
-      "recommendation": "candidate_next"
+      "recommendation": "review_carefully"
     },
     {
       "number": 141,
@@ -1316,10 +1316,10 @@
       "changed_files": 1,
       "additions": 94,
       "deletions": 1,
-      "mergeable": true,
+      "mergeable": false,
       "value": "high",
       "merge_difficulty": "easy",
-      "recommendation": "candidate_next"
+      "recommendation": "review_carefully"
     },
     {
       "number": 154,
@@ -1351,6 +1351,22 @@
       "mergeable": true,
       "value": "medium",
       "merge_difficulty": "easy",
+      "recommendation": "closed_unmerged"
+    },
+    {
+      "number": 156,
+      "title": "feat: letterSpacing option via Canvas native API",
+      "state": "closed",
+      "draft": false,
+      "html_url": "https://github.com/chenglou/pretext/pull/156",
+      "merged": false,
+      "merged_at": null,
+      "changed_files": 4,
+      "additions": 90,
+      "deletions": 9,
+      "mergeable": null,
+      "value": "medium",
+      "merge_difficulty": "medium",
       "recommendation": "closed_unmerged"
     }
   ],
@@ -1673,7 +1689,7 @@
     {
       "number": 78,
       "title": "Feature request: letterSpacing support in prepare()",
-      "state": "open",
+      "state": "closed",
       "html_url": "https://github.com/chenglou/pretext/issues/78",
       "issue_effort": "engine_work",
       "value": "high",
@@ -2002,24 +2018,42 @@
       "issue_effort": "triage_only",
       "value": "low",
       "notes": "discussion"
+    },
+    {
+      "number": 157,
+      "title": "React Native: bridge native text measurement for virtualized lists",
+      "state": "open",
+      "html_url": "https://github.com/chenglou/pretext/issues/157",
+      "issue_effort": "triage_only",
+      "value": "low",
+      "notes": "general"
+    },
+    {
+      "number": 158,
+      "title": "Add \"sideEffects\": false to enable tree-shaking",
+      "state": "open",
+      "html_url": "https://github.com/chenglou/pretext/issues/158",
+      "issue_effort": "triage_only",
+      "value": "low",
+      "notes": "general"
     }
   ],
   "summary": {
     "pr_by_difficulty": {
       "easy": 47,
-      "medium": 26,
+      "medium": 27,
       "hard": 10
     },
     "pr_by_recommendation": {
-      "review_carefully": 17,
+      "review_carefully": 20,
       "merged_upstream": 7,
-      "closed_unmerged": 34,
+      "closed_unmerged": 36,
       "already_in_fork": 15,
       "draft_hold": 3,
-      "candidate_next": 7
+      "candidate_next": 3
     },
     "issue_by_effort": {
-      "triage_only": 32,
+      "triage_only": 34,
       "doc_work": 7,
       "repro_needed": 5,
       "engine_work": 28

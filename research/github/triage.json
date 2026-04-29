@@ -1,25 +1,7 @@
 {
   "repo": "chenglou/pretext",
-  "generated_at": "2026-04-21T16:51:50.954Z",
+  "generated_at": "2026-04-23T04:36:53.162Z",
   "wave1_recommendations": [
-    {
-      "number": 139,
-      "title": "docs: document breakableFitAdvances cache invariant",
-      "html_url": "https://github.com/chenglou/pretext/pull/139",
-      "score": 92,
-      "tags": [
-        "open",
-        "conventional-docs",
-        "small-diff"
-      ],
-      "risk": "low",
-      "cleanliness": "likely-clean",
-      "changed_files": 1,
-      "additions": 5,
-      "deletions": 0,
-      "head_sha": "b696a4a1a614c3eb0d7d47ac69fd1aaab3d17d8c",
-      "head_ref": "fix/document-breakable-fit-cache-invariant"
-    },
     {
       "number": 80,
       "title": "docs: link to community awesome-pretext list",
@@ -55,6 +37,24 @@
       "deletions": 0,
       "head_sha": "ec1d983c3b4cc047662d591b706a1001843afb55",
       "head_ref": "fix/rich-inline-cjk-overflow"
+    },
+    {
+      "number": 29,
+      "title": "fix: align trailing collapsible space handling across all line-break paths",
+      "html_url": "https://github.com/chenglou/pretext/pull/29",
+      "score": 88,
+      "tags": [
+        "open",
+        "conventional-fix",
+        "small-diff"
+      ],
+      "risk": "low",
+      "cleanliness": "likely-clean",
+      "changed_files": 2,
+      "additions": 46,
+      "deletions": 0,
+      "head_sha": "a3ba38a6dc1ac680379d6fb3843e5720ebb1373c",
+      "head_ref": "fix/trailing-collapsible-space-linecount"
     },
     {
       "number": 119,
@@ -211,17 +211,6 @@
       "html_url": "https://github.com/chenglou/pretext/issues/84"
     },
     {
-      "number": 78,
-      "title": "Feature request: letterSpacing support in prepare()",
-      "state": "open",
-      "score": 65,
-      "tags": [
-        "open",
-        "bug-ish"
-      ],
-      "html_url": "https://github.com/chenglou/pretext/issues/78"
-    },
-    {
       "number": 40,
       "title": "Bug: In justification demo both 2nd and 3rd columns are broken at some width",
       "state": "open",
@@ -310,6 +299,17 @@
       "html_url": "https://github.com/chenglou/pretext/issues/11"
     },
     {
+      "number": 157,
+      "title": "React Native: bridge native text measurement for virtualized lists",
+      "state": "open",
+      "score": 60,
+      "tags": [
+        "open",
+        "perf-ish"
+      ],
+      "html_url": "https://github.com/chenglou/pretext/issues/157"
+    },
+    {
       "number": 153,
       "title": "Feature request: incremental / append-only prepare API for streaming text UIs",
       "state": "open",
@@ -378,23 +378,6 @@
   ],
   "pulls_ranked": [
     {
-      "number": 139,
-      "title": "docs: document breakableFitAdvances cache invariant",
-      "state": "open",
-      "draft": false,
-      "score": 92,
-      "tags": [
-        "open",
-        "conventional-docs",
-        "small-diff"
-      ],
-      "risk": "low",
-      "cleanliness": "likely-clean",
-      "changed_files": 1,
-      "mergeable": null,
-      "html_url": "https://github.com/chenglou/pretext/pull/139"
-    },
-    {
       "number": 80,
       "title": "docs: link to community awesome-pretext list",
       "state": "open",
@@ -408,7 +391,7 @@
       "risk": "low",
       "cleanliness": "likely-clean",
       "changed_files": 1,
-      "mergeable": true,
+      "mergeable": null,
       "html_url": "https://github.com/chenglou/pretext/pull/80"
     },
     {
@@ -425,8 +408,25 @@
       "risk": "low",
       "cleanliness": "likely-clean",
       "changed_files": 2,
-      "mergeable": true,
+      "mergeable": null,
       "html_url": "https://github.com/chenglou/pretext/pull/132"
+    },
+    {
+      "number": 29,
+      "title": "fix: align trailing collapsible space handling across all line-break paths",
+      "state": "open",
+      "draft": false,
+      "score": 88,
+      "tags": [
+        "open",
+        "conventional-fix",
+        "small-diff"
+      ],
+      "risk": "low",
+      "cleanliness": "likely-clean",
+      "changed_files": 2,
+      "mergeable": null,
+      "html_url": "https://github.com/chenglou/pretext/pull/29"
     },
     {
       "number": 119,
@@ -442,7 +442,7 @@
       "risk": "low",
       "cleanliness": "likely-clean",
       "changed_files": 1,
-      "mergeable": true,
+      "mergeable": null,
       "html_url": "https://github.com/chenglou/pretext/pull/119"
     },
     {
@@ -491,7 +491,7 @@
       "risk": "low",
       "cleanliness": "likely-clean",
       "changed_files": 2,
-      "mergeable": true,
+      "mergeable": null,
       "html_url": "https://github.com/chenglou/pretext/pull/97"
     },
     {
@@ -511,20 +511,36 @@
       "html_url": "https://github.com/chenglou/pretext/pull/41"
     },
     {
-      "number": 149,
-      "title": "test: add direct coverage for documented public APIs",
+      "number": 20,
+      "title": "Fix lineCount inconsistency between layout() and layoutWithLines()",
       "state": "open",
       "draft": false,
-      "score": 58,
+      "score": 70,
       "tags": [
         "open",
-        "medium-diff"
+        "small-diff"
+      ],
+      "risk": "low",
+      "cleanliness": "likely-clean",
+      "changed_files": 2,
+      "mergeable": null,
+      "html_url": "https://github.com/chenglou/pretext/pull/20"
+    },
+    {
+      "number": 5,
+      "title": "Document layout/algorithm technique in README.md",
+      "state": "open",
+      "draft": false,
+      "score": 70,
+      "tags": [
+        "open",
+        "small-diff"
       ],
       "risk": "low",
       "cleanliness": "likely-clean",
       "changed_files": 1,
-      "mergeable": true,
-      "html_url": "https://github.com/chenglou/pretext/pull/149"
+      "mergeable": null,
+      "html_url": "https://github.com/chenglou/pretext/pull/5"
     },
     {
       "number": 140,
@@ -539,24 +555,8 @@
       "risk": "low",
       "cleanliness": "likely-clean",
       "changed_files": 3,
-      "mergeable": true,
-      "html_url": "https://github.com/chenglou/pretext/pull/140"
-    },
-    {
-      "number": 138,
-      "title": "simplify: unify stepRichInlineLine/Stats and remove containsCJKText wrapper",
-      "state": "open",
-      "draft": false,
-      "score": 58,
-      "tags": [
-        "open",
-        "medium-diff"
-      ],
-      "risk": "low",
-      "cleanliness": "likely-clean",
-      "changed_files": 2,
       "mergeable": null,
-      "html_url": "https://github.com/chenglou/pretext/pull/138"
+      "html_url": "https://github.com/chenglou/pretext/pull/140"
     },
     {
       "number": 126,
@@ -575,38 +575,6 @@
       "html_url": "https://github.com/chenglou/pretext/pull/126"
     },
     {
-      "number": 124,
-      "title": "Improve Korean keep-all mixed-script breaks",
-      "state": "open",
-      "draft": false,
-      "score": 58,
-      "tags": [
-        "open",
-        "medium-diff"
-      ],
-      "risk": "low",
-      "cleanliness": "likely-clean",
-      "changed_files": 3,
-      "mergeable": true,
-      "html_url": "https://github.com/chenglou/pretext/pull/124"
-    },
-    {
-      "number": 90,
-      "title": "Add source span mapping to rich layout APIs",
-      "state": "open",
-      "draft": false,
-      "score": 58,
-      "tags": [
-        "open",
-        "medium-diff"
-      ],
-      "risk": "low",
-      "cleanliness": "likely-clean",
-      "changed_files": 4,
-      "mergeable": null,
-      "html_url": "https://github.com/chenglou/pretext/pull/90"
-    },
-    {
       "number": 81,
       "title": "Docs/quickstart usage guide",
       "state": "open",
@@ -619,8 +587,56 @@
       "risk": "low",
       "cleanliness": "likely-clean",
       "changed_files": 1,
-      "mergeable": true,
+      "mergeable": null,
       "html_url": "https://github.com/chenglou/pretext/pull/81"
+    },
+    {
+      "number": 72,
+      "title": "feat: add measurement host config entrypoint",
+      "state": "open",
+      "draft": false,
+      "score": 58,
+      "tags": [
+        "open",
+        "medium-diff"
+      ],
+      "risk": "low",
+      "cleanliness": "likely-clean",
+      "changed_files": 4,
+      "mergeable": null,
+      "html_url": "https://github.com/chenglou/pretext/pull/72"
+    },
+    {
+      "number": 71,
+      "title": "feat: add a compat entrypoint for portable regex support",
+      "state": "open",
+      "draft": false,
+      "score": 58,
+      "tags": [
+        "open",
+        "medium-diff"
+      ],
+      "risk": "medium",
+      "cleanliness": "likely-clean",
+      "changed_files": 6,
+      "mergeable": null,
+      "html_url": "https://github.com/chenglou/pretext/pull/71"
+    },
+    {
+      "number": 45,
+      "title": "Add intrinsic sizing APIs: minContentWidth and maxContentWidth",
+      "state": "open",
+      "draft": false,
+      "score": 58,
+      "tags": [
+        "open",
+        "medium-diff"
+      ],
+      "risk": "low",
+      "cleanliness": "likely-clean",
+      "changed_files": 4,
+      "mergeable": null,
+      "html_url": "https://github.com/chenglou/pretext/pull/45"
     },
     {
       "number": 37,
@@ -651,7 +667,7 @@
       "risk": "low",
       "cleanliness": "likely-clean",
       "changed_files": 5,
-      "mergeable": true,
+      "mergeable": null,
       "html_url": "https://github.com/chenglou/pretext/pull/23"
     },
     {
@@ -667,7 +683,7 @@
       "risk": "low",
       "cleanliness": "likely-clean",
       "changed_files": 2,
-      "mergeable": true,
+      "mergeable": null,
       "html_url": "https://github.com/chenglou/pretext/pull/21"
     },
     {
@@ -699,8 +715,24 @@
       "risk": "low",
       "cleanliness": "likely-clean",
       "changed_files": 6,
-      "mergeable": true,
+      "mergeable": null,
       "html_url": "https://github.com/chenglou/pretext/pull/16"
+    },
+    {
+      "number": 3,
+      "title": "Fix bidi surrogate handling, ctx.font caching, emoji correction, and cleanup",
+      "state": "open",
+      "draft": false,
+      "score": 58,
+      "tags": [
+        "open",
+        "medium-diff"
+      ],
+      "risk": "low",
+      "cleanliness": "likely-clean",
+      "changed_files": 7,
+      "mergeable": null,
+      "html_url": "https://github.com/chenglou/pretext/pull/3"
     },
     {
       "number": 128,
@@ -1054,7 +1086,7 @@
       "risk": "medium",
       "cleanliness": "likely-clean",
       "changed_files": 3,
-      "mergeable": true,
+      "mergeable": null,
       "html_url": "https://github.com/chenglou/pretext/pull/93"
     },
     {
@@ -1088,7 +1120,7 @@
       "risk": "medium",
       "cleanliness": "likely-clean",
       "changed_files": 4,
-      "mergeable": true,
+      "mergeable": null,
       "html_url": "https://github.com/chenglou/pretext/pull/46"
     },
     {
@@ -1105,7 +1137,7 @@
       "risk": "medium",
       "cleanliness": "likely-clean",
       "changed_files": 5,
-      "mergeable": true,
+      "mergeable": null,
       "html_url": "https://github.com/chenglou/pretext/pull/32"
     },
     {
@@ -1122,7 +1154,7 @@
       "risk": "low",
       "cleanliness": "likely-clean",
       "changed_files": 3,
-      "mergeable": true,
+      "mergeable": null,
       "html_url": "https://github.com/chenglou/pretext/pull/31"
     },
     {
@@ -1139,7 +1171,7 @@
       "risk": "medium",
       "cleanliness": "likely-clean",
       "changed_files": 4,
-      "mergeable": true,
+      "mergeable": null,
       "html_url": "https://github.com/chenglou/pretext/pull/19"
     },
     {
@@ -1208,6 +1240,25 @@
       "html_url": "https://github.com/chenglou/pretext/pull/7"
     },
     {
+      "number": 139,
+      "title": "docs: document breakableFitAdvances cache invariant",
+      "state": "open",
+      "draft": false,
+      "score": 45,
+      "tags": [
+        "open",
+        "conventional-docs",
+        "small-diff",
+        "not-mergeable",
+        "mergeable-dirty"
+      ],
+      "risk": "low",
+      "cleanliness": "likely-clean",
+      "changed_files": 1,
+      "mergeable": false,
+      "html_url": "https://github.com/chenglou/pretext/pull/139"
+    },
+    {
       "number": 105,
       "title": "fix: currency symbols stick to adjacent numbers during line breaking",
       "state": "open",
@@ -1227,25 +1278,6 @@
       "html_url": "https://github.com/chenglou/pretext/pull/105"
     },
     {
-      "number": 29,
-      "title": "fix: align trailing collapsible space handling across all line-break paths",
-      "state": "open",
-      "draft": false,
-      "score": 41,
-      "tags": [
-        "open",
-        "conventional-fix",
-        "small-diff",
-        "not-mergeable",
-        "mergeable-dirty"
-      ],
-      "risk": "low",
-      "cleanliness": "likely-clean",
-      "changed_files": 2,
-      "mergeable": false,
-      "html_url": "https://github.com/chenglou/pretext/pull/29"
-    },
-    {
       "number": 109,
       "title": "feat: resolve rem/em font units to px before canvas measurement",
       "state": "open",
@@ -1258,8 +1290,23 @@
       "risk": "high",
       "cleanliness": "likely-messy",
       "changed_files": 16,
-      "mergeable": true,
+      "mergeable": null,
       "html_url": "https://github.com/chenglou/pretext/pull/109"
+    },
+    {
+      "number": 156,
+      "title": "feat: letterSpacing option via Canvas native API",
+      "state": "closed",
+      "draft": false,
+      "score": 35,
+      "tags": [
+        "not-open"
+      ],
+      "risk": "medium",
+      "cleanliness": "unknown",
+      "changed_files": null,
+      "mergeable": null,
+      "html_url": "https://github.com/chenglou/pretext/pull/156"
     },
     {
       "number": 155,
@@ -1305,6 +1352,21 @@
       "changed_files": null,
       "mergeable": null,
       "html_url": "https://github.com/chenglou/pretext/pull/144"
+    },
+    {
+      "number": 108,
+      "title": "feat: letterSpacing option in prepare()",
+      "state": "closed",
+      "draft": false,
+      "score": 35,
+      "tags": [
+        "not-open"
+      ],
+      "risk": "medium",
+      "cleanliness": "unknown",
+      "changed_files": null,
+      "mergeable": null,
+      "html_url": "https://github.com/chenglou/pretext/pull/108"
     },
     {
       "number": 87,
@@ -1548,42 +1610,6 @@
       "html_url": "https://github.com/chenglou/pretext/pull/25"
     },
     {
-      "number": 20,
-      "title": "Fix lineCount inconsistency between layout() and layoutWithLines()",
-      "state": "open",
-      "draft": false,
-      "score": 23,
-      "tags": [
-        "open",
-        "small-diff",
-        "not-mergeable",
-        "mergeable-dirty"
-      ],
-      "risk": "low",
-      "cleanliness": "likely-clean",
-      "changed_files": 2,
-      "mergeable": false,
-      "html_url": "https://github.com/chenglou/pretext/pull/20"
-    },
-    {
-      "number": 5,
-      "title": "Document layout/algorithm technique in README.md",
-      "state": "open",
-      "draft": false,
-      "score": 23,
-      "tags": [
-        "open",
-        "small-diff",
-        "not-mergeable",
-        "mergeable-dirty"
-      ],
-      "risk": "low",
-      "cleanliness": "likely-clean",
-      "changed_files": 1,
-      "mergeable": false,
-      "html_url": "https://github.com/chenglou/pretext/pull/5"
-    },
-    {
       "number": 112,
       "title": "Add optional Playwright Chrome correctness driver",
       "state": "open",
@@ -1597,7 +1623,7 @@
       "risk": "low",
       "cleanliness": "likely-clean",
       "changed_files": 3,
-      "mergeable": true,
+      "mergeable": null,
       "html_url": "https://github.com/chenglou/pretext/pull/112"
     },
     {
@@ -1618,8 +1644,26 @@
       "html_url": "https://github.com/chenglou/pretext/pull/35"
     },
     {
-      "number": 108,
-      "title": "feat: letterSpacing option in prepare()",
+      "number": 149,
+      "title": "test: add direct coverage for documented public APIs",
+      "state": "open",
+      "draft": false,
+      "score": 11,
+      "tags": [
+        "open",
+        "medium-diff",
+        "not-mergeable",
+        "mergeable-dirty"
+      ],
+      "risk": "low",
+      "cleanliness": "likely-clean",
+      "changed_files": 1,
+      "mergeable": false,
+      "html_url": "https://github.com/chenglou/pretext/pull/149"
+    },
+    {
+      "number": 138,
+      "title": "simplify: unify stepRichInlineLine/Stats and remove containsCJKText wrapper",
       "state": "open",
       "draft": false,
       "score": 11,
@@ -1633,11 +1677,29 @@
       "cleanliness": "likely-clean",
       "changed_files": 2,
       "mergeable": false,
-      "html_url": "https://github.com/chenglou/pretext/pull/108"
+      "html_url": "https://github.com/chenglou/pretext/pull/138"
     },
     {
-      "number": 72,
-      "title": "feat: add measurement host config entrypoint",
+      "number": 124,
+      "title": "Improve Korean keep-all mixed-script breaks",
+      "state": "open",
+      "draft": false,
+      "score": 11,
+      "tags": [
+        "open",
+        "medium-diff",
+        "not-mergeable",
+        "mergeable-dirty"
+      ],
+      "risk": "low",
+      "cleanliness": "likely-clean",
+      "changed_files": 3,
+      "mergeable": false,
+      "html_url": "https://github.com/chenglou/pretext/pull/124"
+    },
+    {
+      "number": 90,
+      "title": "Add source span mapping to rich layout APIs",
       "state": "open",
       "draft": false,
       "score": 11,
@@ -1651,61 +1713,7 @@
       "cleanliness": "likely-clean",
       "changed_files": 4,
       "mergeable": false,
-      "html_url": "https://github.com/chenglou/pretext/pull/72"
-    },
-    {
-      "number": 71,
-      "title": "feat: add a compat entrypoint for portable regex support",
-      "state": "open",
-      "draft": false,
-      "score": 11,
-      "tags": [
-        "open",
-        "medium-diff",
-        "not-mergeable",
-        "mergeable-dirty"
-      ],
-      "risk": "medium",
-      "cleanliness": "likely-clean",
-      "changed_files": 6,
-      "mergeable": false,
-      "html_url": "https://github.com/chenglou/pretext/pull/71"
-    },
-    {
-      "number": 45,
-      "title": "Add intrinsic sizing APIs: minContentWidth and maxContentWidth",
-      "state": "open",
-      "draft": false,
-      "score": 11,
-      "tags": [
-        "open",
-        "medium-diff",
-        "not-mergeable",
-        "mergeable-dirty"
-      ],
-      "risk": "low",
-      "cleanliness": "likely-clean",
-      "changed_files": 4,
-      "mergeable": false,
-      "html_url": "https://github.com/chenglou/pretext/pull/45"
-    },
-    {
-      "number": 3,
-      "title": "Fix bidi surrogate handling, ctx.font caching, emoji correction, and cleanup",
-      "state": "open",
-      "draft": false,
-      "score": 11,
-      "tags": [
-        "open",
-        "medium-diff",
-        "not-mergeable",
-        "mergeable-dirty"
-      ],
-      "risk": "low",
-      "cleanliness": "likely-clean",
-      "changed_files": 7,
-      "mergeable": false,
-      "html_url": "https://github.com/chenglou/pretext/pull/3"
+      "html_url": "https://github.com/chenglou/pretext/pull/90"
     },
     {
       "number": 129,

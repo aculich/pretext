@@ -2,14 +2,14 @@
 
 This file is **generated** from `research/github/*.jsonl` plus live `gh api` pull details. It is a **heuristic** triage aid, not maintainer judgment.
 
-- **Upstream snapshot (export):** 2026-04-21T16:51:07.978Z
-- **Regenerated:** 2026-04-21T16:52:57.340Z
+- **Upstream snapshot (export):** 2026-04-23T04:36:24.499Z
+- **Regenerated:** 2026-04-23T04:37:43.457Z
 - **Repo:** chenglou/pretext
 - **Regenerate:** `bun run github:export` (refresh JSONL) then `bun run github:priissues`
 
 ## Merge philosophy
 
-Do **not** merge all open PRs at once. Prefer **small waves** (cherry-pick or branch per PR), verify with `bun run check`, `bun run test`, and `bun run site:build`. See [WORKFLOW.md](WORKFLOW.md) and [DEVELOPMENT.md](DEVELOPMENT.md).
+Do **not** merge all open PRs at once. Prefer **small waves** (cherry-pick or branch per PR), verify with `bun run check`, `bun test`, and `bun run site:build`. See [WORKFLOW.md](WORKFLOW.md) and [DEVELOPMENT.md](DEVELOPMENT.md).
 
 ## Already integrated in this fork (wave 1)
 
@@ -26,7 +26,7 @@ See [FEATURES.md](FEATURES.md): PRs **#80, #97, #114, #119, #125** are marked `a
 | Band | Count |
 |:---|---:|
 | easy | 47 |
-| medium | 26 |
+| medium | 27 |
 | hard | 10 |
 
 ### Pull requests by recommendation
@@ -34,24 +34,24 @@ See [FEATURES.md](FEATURES.md): PRs **#80, #97, #114, #119, #125** are marked `a
 | Recommendation | Count |
 |:---|---:|
 | already_in_fork | 15 |
-| candidate_next | 7 |
-| closed_unmerged | 34 |
+| candidate_next | 3 |
+| closed_unmerged | 36 |
 | draft_hold | 3 |
 | merged_upstream | 7 |
-| review_carefully | 17 |
+| review_carefully | 20 |
 
 ### Issues by effort (heuristic)
 
 | Effort | Count |
 |:---|---:|
-| triage_only | 32 |
+| triage_only | 34 |
 | doc_work | 7 |
 | repro_needed | 5 |
 | engine_work | 28 |
 
 ## Suggested next merge candidates (`candidate_next`)
 
-[#41](https://github.com/chenglou/pretext/pull/41), [#126](https://github.com/chenglou/pretext/pull/126), [#132](https://github.com/chenglou/pretext/pull/132), [#138](https://github.com/chenglou/pretext/pull/138), [#139](https://github.com/chenglou/pretext/pull/139), [#140](https://github.com/chenglou/pretext/pull/140), [#149](https://github.com/chenglou/pretext/pull/149)
+[#41](https://github.com/chenglou/pretext/pull/41), [#126](https://github.com/chenglou/pretext/pull/126), [#132](https://github.com/chenglou/pretext/pull/132)
 
 ## All pull requests
 
@@ -114,7 +114,7 @@ See [FEATURES.md](FEATURES.md): PRs **#80, #97, #114, #119, #125** are marked `a
 | [#103](https://github.com/chenglou/pretext/pull/103) | closed | yes | no | 1 | 2+/0- | high | easy | merged_upstream | docs: clarify bidi metadata and rich-path limits |
 | [#104](https://github.com/chenglou/pretext/pull/104) | closed | no | no | 1 | 1+/0- | high | easy | closed_unmerged | docs: clarify the current variable-font support story |
 | [#105](https://github.com/chenglou/pretext/pull/105) | open | no | no | 2 | 13+/2- | high | easy | review_carefully | fix: currency symbols stick to adjacent numbers during line breaking |
-| [#108](https://github.com/chenglou/pretext/pull/108) | open | no | no | 2 | 98+/16- | high | easy | review_carefully | feat: letterSpacing option in prepare() |
+| [#108](https://github.com/chenglou/pretext/pull/108) | closed | no | no | 2 | 98+/16- | high | easy | closed_unmerged | feat: letterSpacing option in prepare() |
 | [#109](https://github.com/chenglou/pretext/pull/109) | open | no | no | 16 | 4343+/6- | medium | hard | review_carefully | feat: resolve rem/em font units to px before canvas measurement |
 | [#112](https://github.com/chenglou/pretext/pull/112) | open | no | yes | 3 | 159+/0- | low | hard | draft_hold | Add optional Playwright Chrome correctness driver |
 | [#113](https://github.com/chenglou/pretext/pull/113) | open | no | no | 6 | 818+/2- | low | medium | already_in_fork | demo: add Knuth-Plass optimal line-breaking with fitness classification |
@@ -129,17 +129,18 @@ See [FEATURES.md](FEATURES.md): PRs **#80, #97, #114, #119, #125** are marked `a
 | [#132](https://github.com/chenglou/pretext/pull/132) | open | no | no | 2 | 77+/0- | high | easy | candidate_next | fix: prevent rich inline CJK fragments from overflowing maxWidth |
 | [#133](https://github.com/chenglou/pretext/pull/133) | open | no | no | 3 | 401+/0- | low | medium | review_carefully | Add Mouse & Cheese demo  |
 | [#135](https://github.com/chenglou/pretext/pull/135) | closed | no | no | 2 | 43+/5- | high | easy | closed_unmerged | fix: sync streaming line-break stepper with batch walker |
-| [#138](https://github.com/chenglou/pretext/pull/138) | open | no | no | 2 | 2+/139- | medium | easy | candidate_next | simplify: unify stepRichInlineLine/Stats and remove containsCJKText wrapper |
-| [#139](https://github.com/chenglou/pretext/pull/139) | open | no | no | 1 | 5+/0- | high | easy | candidate_next | docs: document breakableFitAdvances cache invariant |
-| [#140](https://github.com/chenglou/pretext/pull/140) | open | no | no | 3 | 49+/106- | medium | easy | candidate_next | Perf/streaming layout optimizations |
+| [#138](https://github.com/chenglou/pretext/pull/138) | open | no | no | 2 | 2+/139- | medium | easy | review_carefully | simplify: unify stepRichInlineLine/Stats and remove containsCJKText wrapper |
+| [#139](https://github.com/chenglou/pretext/pull/139) | open | no | no | 1 | 5+/0- | high | easy | review_carefully | docs: document breakableFitAdvances cache invariant |
+| [#140](https://github.com/chenglou/pretext/pull/140) | open | no | no | 3 | 49+/106- | medium | easy | review_carefully | Perf/streaming layout optimizations |
 | [#141](https://github.com/chenglou/pretext/pull/141) | closed | no | no | 3 | 346+/0- | high | medium | closed_unmerged | fix: classify Hangul Compatibility Jamo (U+3130–U+318F) as CJK |
 | [#144](https://github.com/chenglou/pretext/pull/144) | closed | no | no | 72 | 15415+/5153- | medium | hard | closed_unmerged | test: add direct coverage for documented public APIs |
 | [#146](https://github.com/chenglou/pretext/pull/146) | closed | no | no | 5 | 410+/2- | high | medium | closed_unmerged | fix: CJK + opening bracket line break segmentation |
 | [#147](https://github.com/chenglou/pretext/pull/147) | closed | no | no | 5 | 410+/2- | high | medium | closed_unmerged | fix: CJK + opening bracket line break segmentation |
 | [#148](https://github.com/chenglou/pretext/pull/148) | closed | no | no | 6 | 288+/21- | high | medium | closed_unmerged | fix: CJK + opening bracket line break segmentation |
-| [#149](https://github.com/chenglou/pretext/pull/149) | open | no | no | 1 | 94+/1- | high | easy | candidate_next | test: add direct coverage for documented public APIs |
+| [#149](https://github.com/chenglou/pretext/pull/149) | open | no | no | 1 | 94+/1- | high | easy | review_carefully | test: add direct coverage for documented public APIs |
 | [#154](https://github.com/chenglou/pretext/pull/154) | closed | no | no | 2 | 82+/6- | high | easy | closed_unmerged | unicode-line-breaks-18218157775797050513 |
 | [#155](https://github.com/chenglou/pretext/pull/155) | closed | no | no | 3 | 37+/14- | medium | easy | closed_unmerged | Unicode line breaks 18218157775797050513 |
+| [#156](https://github.com/chenglou/pretext/pull/156) | closed | no | no | 4 | 90+/9- | medium | medium | closed_unmerged | feat: letterSpacing option via Canvas native API |
 
 ### Recommendation legend (PRs)
 
@@ -192,7 +193,7 @@ See [FEATURES.md](FEATURES.md): PRs **#80, #97, #114, #119, #125** are marked `a
 | [#74](https://github.com/chenglou/pretext/issues/74) | closed | high | engine_work | bug+engine | Feature request: support `word-break: keep-all` for CJK text |
 | [#76](https://github.com/chenglou/pretext/issues/76) | closed | low | triage_only | general | AI assisted coding |
 | [#77](https://github.com/chenglou/pretext/issues/77) | closed | high | engine_work | bug+engine; server | [BUG] Pretext bidi: canvas.measureText vs DOM width divergence |
-| [#78](https://github.com/chenglou/pretext/issues/78) | open | high | engine_work | bug+engine | Feature request: letterSpacing support in prepare() |
+| [#78](https://github.com/chenglou/pretext/issues/78) | closed | high | engine_work | bug+engine | Feature request: letterSpacing support in prepare() |
 | [#84](https://github.com/chenglou/pretext/issues/84) | open | high | engine_work | bug+engine | AI agent skill for helping developers use pretext correctly |
 | [#85](https://github.com/chenglou/pretext/issues/85) | closed | high | doc_work | docs | [suggestion] Could you add a quick start verification feature for Docker? |
 | [#86](https://github.com/chenglou/pretext/issues/86) | open | high | doc_work | docs | Questions |
@@ -229,6 +230,8 @@ See [FEATURES.md](FEATURES.md): PRs **#80, #97, #114, #119, #125** are marked `a
 | [#151](https://github.com/chenglou/pretext/issues/151) | open | low | triage_only | general | Many weird behaviours with text selection |
 | [#152](https://github.com/chenglou/pretext/issues/152) | open | low | triage_only | general | Unnecessary DOM updates |
 | [#153](https://github.com/chenglou/pretext/issues/153) | open | low | triage_only | discussion | Feature request: incremental / append-only prepare API for streaming text UIs |
+| [#157](https://github.com/chenglou/pretext/issues/157) | open | low | triage_only | general | React Native: bridge native text measurement for virtualized lists |
+| [#158](https://github.com/chenglou/pretext/issues/158) | open | low | triage_only | general | Add "sideEffects": false to enable tree-shaking |
 
 ### Issue effort legend
 

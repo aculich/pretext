@@ -33,6 +33,11 @@
       "import": "./dist/rich-inline.js",
       "default": "./dist/rich-inline.js"
     },
+    "./contrast": {
+      "types": "./dist/contrast.d.ts",
+      "import": "./dist/contrast.js",
+      "default": "./dist/contrast.js"
+    },
     "./demos/*": "./pages/demos/*",
     "./assets/*": "./pages/assets/*",
     "./package.json": "./package.json"

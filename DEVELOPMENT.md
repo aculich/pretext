@@ -42,7 +42,7 @@ bun install
 - `bun run keep-all-check` — compact batched browser oracle for `{ wordBreak: 'keep-all' }`, including mixed-script no-space canaries
 - `bun run letter-spacing-check` — compact batched browser oracle for `{ letterSpacing }`, using one posted-report probe per browser and covering narrow wraps, combining marks, bidi, CJK, emoji, digits, RTL punctuation, `pre-wrap`, and soft hyphens
 - `bun run letter-spacing-snapshot` — refresh `accuracy/letter-spacing.json` from the Chrome + Safari compact `{ letterSpacing }` oracle
-- `bun run probe-check` — smaller browser probe/diagnostic entrypoint
+- `bun run probe-check` — smaller browser probe/diagnostic entrypoint (default `--text` smoke if you omit flags; pass `--text=...`, `--width=...`, `--letterSpacing=2px`, etc. for ad-hoc repro)
 - `bun run probe-check:safari`
   On a first-break mismatch, probe output now includes a small break trace.
   `sN:gM` means segment/grapheme position, `unit` is that unit's width, `fit` is the cumulative fitted width from the current line start, and `[ours]` / `[browser]` mark the competing break boundaries.

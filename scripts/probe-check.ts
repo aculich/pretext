@@ -84,12 +84,6 @@ function parseBrowser(value: string | null): BrowserKind {
   return browser
 }
 
-function requireFlag(name: string): string {
-  const value = parseStringFlag(name)
-  if (value === null || value.length === 0) throw new Error(`Missing --${name}=...`)
-  return value
-}
-
 function printReport(report: ProbeReport): void {
   if (report.status === 'error') {
     console.log(`error: ${report.message ?? 'unknown error'}`)
@@ -142,9 +136,13 @@ function printReport(report: ProbeReport): void {
   }
 }
 
+/** When `--text` is omitted, `bun run probe-check` still runs a tiny layout smoke (see DEVELOPMENT.md). */
+const DEFAULT_PROBE_TEXT = 'The quick brown fox jumps over the lazy dog.'
+
 const browser = parseBrowser(parseStringFlag('browser'))
 const requestedPort = parseNumberFlag('port', Number.parseInt(process.env['PROBE_CHECK_PORT'] ?? '0', 10))
-const text = requireFlag('text')
+const textArg = parseStringFlag('text')
+const text = textArg !== null && textArg.length > 0 ? textArg : DEFAULT_PROBE_TEXT
 const width = parseNumberFlag('width', 600)
 const font = parseStringFlag('font') ?? '18px serif'
 const letterSpacing = parseStringFlag('letterSpacing')

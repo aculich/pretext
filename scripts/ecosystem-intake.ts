@@ -326,16 +326,57 @@ async function sleep(ms: number) {
 
 type GhCodeRepository = { nameWithOwner?: string }
 
+/** gh may still emit ANSI when CLICOLOR_FORCE / GH_FORCE_TTY is set; strip before JSON.parse. */
+function stripAnsiForJson(s: string): string {
+  // CSI `ESC [ … m` (etc.). Avoid a second `/…/` that contains `\\/` — `/` would end the regex literal.
+  return s.replace(/\u001b\[[\d;?]*[ -/]*[@-~]/g, '')
+}
+
+function parseGhSearchCodeJson(out: string, queryLabel: string): Array<{ repository?: GhCodeRepository }> {
+  const stripped = stripAnsiForJson(out.replace(/^\uFEFF/, ''))
+  const trimmed = stripped.trim()
+  if (trimmed.length === 0) return []
+  const bracketIdx = trimmed.indexOf('[')
+  const slice = bracketIdx >= 0 ? trimmed.slice(bracketIdx) : trimmed
+  try {
+    const parsed: unknown = JSON.parse(slice)
+    if (!Array.isArray(parsed)) {
+      if (parsed && typeof parsed === 'object' && 'message' in (parsed as object)) {
+        console.warn('dependent code search: non-array JSON', queryLabel, parsed)
+      }
+      return []
+    }
+    return parsed as Array<{ repository?: GhCodeRepository }>
+  } catch (e) {
+    const head = trimmed.length > 160 ? `${trimmed.slice(0, 160)}…` : trimmed
+    console.warn(
+      `dependent code search: JSON parse failed (${queryLabel}): ${e instanceof Error ? e.message : String(e)}; stdout head:`,
+      JSON.stringify(head),
+    )
+    return []
+  }
+}
+
 /** Public repos whose package.json references Pretext (GitHub code search; noisy, deduped). */
 async function collectDependentFullNames(seen: Set<string>): Promise<string[]> {
+  // Use GitHub query syntax (no embedded `"` in argv) so shells / spawn never mangle quotes; --filename still scopes paths.
   const queries: string[][] = [
-    ['search', 'code', '"@chenglou/pretext"', '--filename', 'package.json', '--json', 'repository', '--limit', '80'],
-    ['search', 'code', '"chenglou/pretext"', '--filename', 'package.json', '--json', 'repository', '--limit', '50'],
+    ['search', 'code', '@chenglou/pretext', 'filename:package.json', '--json', 'repository', '--limit', '80'],
+    ['search', 'code', 'chenglou/pretext', 'filename:package.json', '--json', 'repository', '--limit', '50'],
   ]
+  const ghEnv: Record<string, string | undefined> = { ...process.env }
+  ghEnv['GH_PAGER'] = ''
+  ghEnv['PAGER'] = 'cat'
+  ghEnv['CI'] = process.env['CI'] ?? '1'
+  ghEnv['NO_COLOR'] = '1'
+  ghEnv['CLICOLOR'] = '0'
+  ghEnv['CLICOLOR_FORCE'] = '0'
+  delete ghEnv['GH_FORCE_TTY']
+
   const byLower = new Map<string, string>()
   for (const q of queries) {
     try {
-      const proc = Bun.spawn(['gh', ...q], { stdout: 'pipe', stderr: 'pipe' })
+      const proc = Bun.spawn(['gh', ...q], { stdout: 'pipe', stderr: 'pipe', env: ghEnv })
       const err = await new Response(proc.stderr).text()
       const out = await new Response(proc.stdout).text()
       const code = await proc.exited
@@ -343,7 +384,7 @@ async function collectDependentFullNames(seen: Set<string>): Promise<string[]> {
         console.warn('gh', q.join(' '), 'failed:', err || out)
         continue
       }
-      const rows = JSON.parse(out) as Array<{ repository?: GhCodeRepository }>
+      const rows = parseGhSearchCodeJson(out, q.slice(2, 4).join(' '))
       for (const row of rows) {
         const id = row.repository?.nameWithOwner
         if (!id) continue
@@ -434,7 +475,8 @@ async function main() {
   let i = 0
   for (const item of queue) {
     i++
-    process.stderr.write(`\r[${i}/${queue.length}] ${item.fullName}`)
+    // Clear whole line so a shorter repo name does not leave junk after an in-place \r update.
+    process.stderr.write(`\r\u001b[2K[${i}/${queue.length}] ${item.fullName}`)
     await sleep(120)
 
     let ghDescription: string | null = null

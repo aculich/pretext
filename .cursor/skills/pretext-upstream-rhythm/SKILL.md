@@ -115,8 +115,8 @@ Compare hits to [research/forks/README.md](../../../research/forks/README.md). I
 **Dependent repos (spot-check without full intake)** — same queries `ecosystem:intake` merges (throttled; small limits):
 
 ```sh
-gh search code '"@chenglou/pretext"' --filename package.json --json repository --limit 20
-gh search code '"chenglou/pretext"' --filename package.json --json repository --limit 15
+gh search code '@chenglou/pretext' filename:package.json --json repository --limit 20
+gh search code 'chenglou/pretext' filename:package.json --json repository --limit 15
 ```
 
 ## 6. Push

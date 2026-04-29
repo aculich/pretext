@@ -157,6 +157,18 @@ Results from the last integration run are appended in this file’s **Verificati
 
 ## Verification log
 
+**Session: 2026-04-23 (`pretext-upstream-rhythm` — merge upstream 0.0.6)**
+
+| Step | Result |
+|------|--------|
+| `git merge --no-ff upstream/main` | Pass — merge commit `10ac731` (upstream **0.0.6**: letterSpacing, keep-all / CJK bracket fixes, probes, benchmarks, docs); **no conflicts** |
+| `main..upstream/main` after merge | **Empty** (0 behind upstream) |
+| `package.json` / `CHANGELOG.md` | **0.0.6** / **0.0.6 - 2026-04-22** from upstream |
+| `bun install` | Pass |
+| `bun run check` | Pass (`tsc` + `oxlint --type-aware src`) |
+| `bun run test` | Pass (**119** tests) |
+| `bun run site:build` | Pass (`site/` generated) |
+
 **Session: 2026-04-21 (`pretext-upstream-rhythm` — merge + GitHub refresh)**
 
 | Step | Result |

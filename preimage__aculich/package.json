@@ -1,0 +1,75 @@
+{
+  "name": "@aculich/preimage",
+  "version": "0.1.0",
+  "description": "Fork of @somnai-dreams/preimage with luminance/contrast-map APIs for adaptive text-on-image overlays. Developed alongside the pretext fork at pretext__aculich/ (this tree lives in pretext__aculich/preimage__aculich/). Upstream preimage mirror: pretext__aculich/upstream/somnai-dreams-preimage/.",
+  "keywords": [
+    "pretext",
+    "image-measurement",
+    "image-loading",
+    "aspect-ratio",
+    "object-fit",
+    "float",
+    "article-layout",
+    "rich-inline",
+    "gallery",
+    "luminance",
+    "contrast",
+    "wcag",
+    "adaptive-overlay"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aculich/preimage.git"
+  },
+  "type": "module",
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./pretext": {
+      "types": "./dist/pretext.d.ts",
+      "import": "./dist/pretext.js",
+      "default": "./dist/pretext.js"
+    },
+    "./luminance": {
+      "types": "./dist/luminance.d.ts",
+      "import": "./dist/luminance.js",
+      "default": "./dist/luminance.js"
+    },
+    "./demos/*": "./pages/demos/*",
+    "./assets/*": "./pages/assets/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "CHANGELOG.md",
+    "dist",
+    "src",
+    "!src/**/*.test.ts",
+    "pages/demos",
+    "pages/assets"
+  ],
+  "scripts": {
+    "build:package": "rm -rf dist && tsc -p tsconfig.build.json",
+    "check": "tsc",
+    "prepack": "rm -rf dist && tsc -p tsconfig.build.json",
+    "start": "HOST=${HOST:-0.0.0.0}; PORT=${PORT:-3000}; bun pages/*.html pages/demos/*.html --host=$HOST:$PORT",
+    "start:windows": "bun pages/*.html pages/demos/*.html --host=0.0.0.0:3000"
+  },
+  "devDependencies": {
+    "@chenglou/pretext": "^0.0.5",
+    "@types/bun": "latest",
+    "playwright": "^1.56.0",
+    "typescript": "^5.6.0"
+  },
+  "peerDependencies": {
+    "@chenglou/pretext": "^0.0.5"
+  }
+}

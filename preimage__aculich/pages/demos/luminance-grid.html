@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>preimage__aculich · luminance grid demo</title>
+<style>
+  body { font: 14px/1.45 -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; margin: 0; background: #111; color: #eee; }
+  header { padding: 10px 16px; display: flex; gap: 12px; align-items: center; flex-wrap: wrap; background: #181818; border-bottom: 1px solid #222; }
+  header label { display: inline-flex; gap: 6px; align-items: center; }
+  header input { width: 60px; }
+  main { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 12px; padding: 12px; }
+  .stage { position: relative; width: 100%; }
+  .stage img { width: 100%; display: block; border-radius: 6px; }
+  .stage canvas { position: absolute; inset: 0; pointer-events: none; mix-blend-mode: normal; opacity: 0.85; }
+  .stage .panel-rect {
+    position: absolute;
+    left: 5%;
+    top: 35%;
+    width: 38%;
+    height: 28%;
+    border: 1px dashed rgba(255,255,255,0.5);
+    border-radius: 8px;
+    padding: 14px 18px;
+    cursor: grab;
+    user-select: none;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    font-size: 18px;
+    line-height: 1.4;
+  }
+  pre {
+    background: #0a0a0a;
+    border: 1px solid #222;
+    border-radius: 6px;
+    padding: 10px;
+    color: #cfd6e2;
+    font-size: 12px;
+    overflow: auto;
+    max-height: 80vh;
+  }
+</style>
+</head>
+<body>
+<header>
+  <strong>preimage__aculich · luminance grid</strong>
+  <label>cols <input id="cols" type="number" min="2" max="64" value="16" /></label>
+  <label>rows <input id="rows" type="number" min="2" max="36" value="9" /></label>
+  <label>WCAG ratio <input id="ratio" type="number" step="0.1" min="1" max="21" value="4.5" /></label>
+  <label>image <select id="pick"></select></label>
+</header>
+<main>
+  <div class="stage">
+    <img id="sample" alt="sample" />
+    <canvas id="grid"></canvas>
+    <div class="panel-rect" id="panel-rect">
+      Drag this panel anywhere over the image &mdash; the suggested
+      <code>color</code> and <code>panelOpacity</code> update live.
+    </div>
+  </div>
+  <pre id="report">loading…</pre>
+</main>
+<script type="module" src="./luminance-grid.ts"></script>
+</body>
+</html>

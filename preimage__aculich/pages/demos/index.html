@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Preimage demos</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="./demo-styles.css" />
+  <style>
+    .page { max-width: 920px; }
+    .lede { font-size: 16px; line-height: 1.6; color: var(--text); max-width: 68ch; }
+    .demo-section { margin-top: 36px; }
+    .demo-section h2 { font-size: 13px; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-soft); margin: 0 0 10px; font-weight: 600; }
+    .demo-section p.intro { color: var(--text-muted); margin: 0 0 14px; max-width: 68ch; font-size: 14px; }
+    .demo-list { display: grid; gap: 10px; }
+    .demo-card { display: block; border: 1px solid var(--border); border-radius: var(--radius-md); padding: 14px 16px; color: var(--text); text-decoration: none; background: var(--surface); transition: border-color 120ms, box-shadow 120ms; }
+    .demo-card:hover { border-color: var(--accent); box-shadow: var(--shadow-md); }
+    .demo-card h3 { margin: 0 0 4px; font-size: 14px; font-weight: 600; color: var(--accent); }
+    .demo-card p { margin: 0; color: var(--text-muted); font-size: 13px; line-height: 1.5; }
+  </style>
+</head>
+<body>
+  <nav class="demo-nav">
+    <a class="brand" href="./">preimage demos</a>
+    <a href="./masonry">Masonry</a>
+    <a href="./editorial">Editorial</a>
+    <a href="./ttfs">TTFS</a>
+    <a href="./decode-pool">Decode pool</a>
+    <span class="spacer"></span>
+    <a class="gh" href="https://github.com/somnai-dreams/preimage">github</a>
+  </nav>
+
+  <main class="page">
+    <header class="page-header">
+      <h1>Preimage</h1>
+      <p class="lede">Measured images for <a href="https://github.com/chenglou/pretext">pretext</a>. Preimage loads and measures images before layout runs — so browser reflows don't happen, text can wrap around figures whose dimensions aren't declared, and canvas/SVG/WebGL renderers get correct fit math without relying on CSS.</p>
+    </header>
+
+    <section class="demo-section">
+      <h2>Demos</h2>
+      <p class="intro">Each demo has per-panel Run buttons — click one side at a time to feel the click-to-layout delay. Real photos from picsum at meaningful sizes, so you can see the download-decode window that reflow happens in.</p>
+      <div class="demo-list">
+        <a class="demo-card" href="./masonry">
+          <h3>Masonry grid</h3>
+          <p>Up to 90 photos, two grids. Left: stock <code>&lt;img&gt;</code> tags — column grows as each image decodes, every tile below shifts. Right: <code>prepare()</code> measures every image, a shortest-column layout commits in one pass, dominant-color placeholders hold the spot.</p>
+        </a>
+        <a class="demo-card" href="./editorial">
+          <h3>Editorial article with floats</h3>
+          <p>Three floated figures inside flowing paragraph text. Naive HTML reflows as each figure decodes. Pretext + preimage measures up front and flows the text around the measured rects via <code>flowColumnWithFloats</code>.</p>
+        </a>
+        <a class="demo-card" href="./ttfs">
+          <h3>Time to first sizing</h3>
+          <p>One 4800×3200 photo (~2-5MB) loaded three ways: naive <code>&lt;img src&gt;</code>, declared <code>width</code>/<code>height</code> attrs, and <code>prepare()</code>. The timestamp shows when each strategy knows the dimensions.</p>
+        </a>
+        <a class="demo-card" href="./decode-pool">
+          <h3>Decode pool for canvas timelines</h3>
+          <p>Sixteen 2000×1125 frames scrubbable on a canvas. Left decodes on every scrub on the main thread; right warms a <code>DecodePool</code> up front and each scrub is a single cached-bitmap blit.</p>
+        </a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
