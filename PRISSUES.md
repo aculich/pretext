@@ -2,8 +2,8 @@
 
 This file is **generated** from `research/github/*.jsonl` plus live `gh api` pull details. It is a **heuristic** triage aid, not maintainer judgment.
 
-- **Upstream snapshot (export):** 2026-04-23T04:36:24.499Z
-- **Regenerated:** 2026-04-23T04:37:43.457Z
+- **Upstream snapshot (export):** 2026-05-31T19:42:06.551Z
+- **Regenerated:** 2026-05-31T19:43:50.964Z
 - **Repo:** chenglou/pretext
 - **Regenerate:** `bun run github:export` (refresh JSONL) then `bun run github:priissues`
 
@@ -25,8 +25,8 @@ See [FEATURES.md](FEATURES.md): PRs **#80, #97, #114, #119, #125** are marked `a
 
 | Band | Count |
 |:---|---:|
-| easy | 47 |
-| medium | 27 |
+| easy | 62 |
+| medium | 34 |
 | hard | 10 |
 
 ### Pull requests by recommendation
@@ -34,24 +34,24 @@ See [FEATURES.md](FEATURES.md): PRs **#80, #97, #114, #119, #125** are marked `a
 | Recommendation | Count |
 |:---|---:|
 | already_in_fork | 15 |
-| candidate_next | 3 |
-| closed_unmerged | 36 |
+| candidate_next | 17 |
+| closed_unmerged | 52 |
 | draft_hold | 3 |
 | merged_upstream | 7 |
-| review_carefully | 20 |
+| review_carefully | 12 |
 
 ### Issues by effort (heuristic)
 
 | Effort | Count |
 |:---|---:|
-| triage_only | 34 |
-| doc_work | 7 |
+| triage_only | 41 |
+| doc_work | 9 |
 | repro_needed | 5 |
-| engine_work | 28 |
+| engine_work | 31 |
 
 ## Suggested next merge candidates (`candidate_next`)
 
-[#41](https://github.com/chenglou/pretext/pull/41), [#126](https://github.com/chenglou/pretext/pull/126), [#132](https://github.com/chenglou/pretext/pull/132)
+[#175](https://github.com/chenglou/pretext/pull/175), [#178](https://github.com/chenglou/pretext/pull/178), [#180](https://github.com/chenglou/pretext/pull/180), [#181](https://github.com/chenglou/pretext/pull/181), [#182](https://github.com/chenglou/pretext/pull/182), [#183](https://github.com/chenglou/pretext/pull/183), [#184](https://github.com/chenglou/pretext/pull/184), [#185](https://github.com/chenglou/pretext/pull/185), [#186](https://github.com/chenglou/pretext/pull/186), [#187](https://github.com/chenglou/pretext/pull/187), [#188](https://github.com/chenglou/pretext/pull/188), [#189](https://github.com/chenglou/pretext/pull/189), [#190](https://github.com/chenglou/pretext/pull/190), [#191](https://github.com/chenglou/pretext/pull/191), [#192](https://github.com/chenglou/pretext/pull/192), [#193](https://github.com/chenglou/pretext/pull/193), [#194](https://github.com/chenglou/pretext/pull/194)
 
 ## All pull requests
 
@@ -75,15 +75,15 @@ See [FEATURES.md](FEATURES.md): PRs **#80, #97, #114, #119, #125** are marked `a
 | [#24](https://github.com/chenglou/pretext/pull/24) | closed | no | no | 10 | 294+/112- | medium | medium | closed_unmerged | corpus(ko): replace Korean corpus with Sonagi by Hwang Sun-won |
 | [#25](https://github.com/chenglou/pretext/pull/25) | closed | yes | no | 1 | 993+/0- | low | medium | merged_upstream | demo: justification algorithm comparison (CSS vs Pretext vs Knuth-Plass) |
 | [#26](https://github.com/chenglou/pretext/pull/26) | closed | yes | no | 2 | 992+/0- | medium | medium | merged_upstream | refactor: split justification-comparison into .html + .ts |
-| [#29](https://github.com/chenglou/pretext/pull/29) | open | no | no | 2 | 46+/0- | high | easy | review_carefully | fix: align trailing collapsible space handling across all line-break paths |
+| [#29](https://github.com/chenglou/pretext/pull/29) | closed | no | no | 2 | 46+/0- | high | easy | closed_unmerged | fix: align trailing collapsible space handling across all line-break paths |
 | [#30](https://github.com/chenglou/pretext/pull/30) | closed | no | no | 1 | 10+/0- | high | easy | closed_unmerged | docs: add browser requirements section to README |
 | [#31](https://github.com/chenglou/pretext/pull/31) | open | no | no | 3 | 234+/0- | low | medium | already_in_fork | demo: virtual scroll with zero DOM measurement |
 | [#32](https://github.com/chenglou/pretext/pull/32) | open | no | no | 5 | 544+/1- | low | medium | review_carefully | added server-side canvas support & Created Masonry Demo |
 | [#33](https://github.com/chenglou/pretext/pull/33) | closed | no | no | 2 | 12+/1- | high | easy | closed_unmerged | fix: add CJK Extension H/I to isCJK and fix pre-wrap fast path |
 | [#35](https://github.com/chenglou/pretext/pull/35) | closed | no | yes | 1 | 7+/0- | low | hard | draft_hold | docs: clarify prepare() vs layout() performance expectations |
 | [#37](https://github.com/chenglou/pretext/pull/37) | open | no | no | 4 | 108+/4- | medium | medium | review_carefully | Add vertical Japanese layout support |
-| [#38](https://github.com/chenglou/pretext/pull/38) | open | no | no | 5 | 2182+/1290- | high | hard | review_carefully | perf: complete V8 optimization suite (Phase 1-3: line-break, analysis, bidi) |
-| [#41](https://github.com/chenglou/pretext/pull/41) | open | no | no | 1 | 1+/1- | high | easy | candidate_next | Updated |
+| [#38](https://github.com/chenglou/pretext/pull/38) | closed | no | no | 5 | 2182+/1290- | high | hard | closed_unmerged | perf: complete V8 optimization suite (Phase 1-3: line-break, analysis, bidi) |
+| [#41](https://github.com/chenglou/pretext/pull/41) | closed | no | no | 1 | 1+/1- | high | easy | closed_unmerged | Updated |
 | [#45](https://github.com/chenglou/pretext/pull/45) | open | no | no | 4 | 167+/1- | medium | medium | already_in_fork | Add intrinsic sizing APIs: minContentWidth and maxContentWidth |
 | [#46](https://github.com/chenglou/pretext/pull/46) | open | no | no | 4 | 536+/0- | low | medium | already_in_fork | Add virtual chat demo with side-by-side DOM-layout comparison |
 | [#52](https://github.com/chenglou/pretext/pull/52) | closed | no | no | 1 | 5+/3- | high | easy | closed_unmerged | fix: unify countPreparedLines with walkPreparedLines to fix lineCount mismatch (#49) |
@@ -113,34 +113,56 @@ See [FEATURES.md](FEATURES.md): PRs **#80, #97, #114, #119, #125** are marked `a
 | [#102](https://github.com/chenglou/pretext/pull/102) | closed | no | no | 1 | 11+/0- | high | easy | closed_unmerged | docs: add hyphenation guidance for manual layout |
 | [#103](https://github.com/chenglou/pretext/pull/103) | closed | yes | no | 1 | 2+/0- | high | easy | merged_upstream | docs: clarify bidi metadata and rich-path limits |
 | [#104](https://github.com/chenglou/pretext/pull/104) | closed | no | no | 1 | 1+/0- | high | easy | closed_unmerged | docs: clarify the current variable-font support story |
-| [#105](https://github.com/chenglou/pretext/pull/105) | open | no | no | 2 | 13+/2- | high | easy | review_carefully | fix: currency symbols stick to adjacent numbers during line breaking |
+| [#105](https://github.com/chenglou/pretext/pull/105) | closed | no | no | 2 | 13+/2- | high | easy | closed_unmerged | fix: currency symbols stick to adjacent numbers during line breaking |
 | [#108](https://github.com/chenglou/pretext/pull/108) | closed | no | no | 2 | 98+/16- | high | easy | closed_unmerged | feat: letterSpacing option in prepare() |
 | [#109](https://github.com/chenglou/pretext/pull/109) | open | no | no | 16 | 4343+/6- | medium | hard | review_carefully | feat: resolve rem/em font units to px before canvas measurement |
 | [#112](https://github.com/chenglou/pretext/pull/112) | open | no | yes | 3 | 159+/0- | low | hard | draft_hold | Add optional Playwright Chrome correctness driver |
-| [#113](https://github.com/chenglou/pretext/pull/113) | open | no | no | 6 | 818+/2- | low | medium | already_in_fork | demo: add Knuth-Plass optimal line-breaking with fitness classification |
+| [#113](https://github.com/chenglou/pretext/pull/113) | open | no | no | 5 | 816+/0- | low | medium | already_in_fork | demo: add Knuth-Plass optimal line-breaking with fitness classification |
 | [#114](https://github.com/chenglou/pretext/pull/114) | open | no | no | 1 | 1+/1- | high | easy | already_in_fork | Use localhost for Windows start script |
 | [#118](https://github.com/chenglou/pretext/pull/118) | closed | yes | no | 3 | 3+/8- | high | easy | merged_upstream | fix: deduplicate isCJK test, remove no-op pre-wrap replace, document empty-string layout |
-| [#119](https://github.com/chenglou/pretext/pull/119) | open | no | no | 1 | 69+/0- | high | easy | already_in_fork | perf: skip no-op merge passes in analysis pipeline |
-| [#124](https://github.com/chenglou/pretext/pull/124) | open | no | no | 3 | 196+/10- | medium | medium | review_carefully | Improve Korean keep-all mixed-script breaks |
+| [#119](https://github.com/chenglou/pretext/pull/119) | closed | no | no | 1 | 69+/0- | high | easy | already_in_fork | perf: skip no-op merge passes in analysis pipeline |
+| [#124](https://github.com/chenglou/pretext/pull/124) | closed | no | no | 3 | 196+/10- | medium | medium | closed_unmerged | Improve Korean keep-all mixed-script breaks |
 | [#125](https://github.com/chenglou/pretext/pull/125) | closed | no | no | 1 | 1+/1- | high | easy | already_in_fork | docs: fix unclosed parenthesis in walkLineRanges description |
-| [#126](https://github.com/chenglou/pretext/pull/126) | open | no | no | 3 | 26+/0- | medium | easy | candidate_next | feat: add SSR support via setMeasureContext |
+| [#126](https://github.com/chenglou/pretext/pull/126) | closed | no | no | 5 | 35+/1- | medium | medium | closed_unmerged | feat: add SSR support via setMeasureContext |
 | [#128](https://github.com/chenglou/pretext/pull/128) | closed | no | no | 1 | 2+/2- | high | easy | closed_unmerged | docs: correct typo in comments and documentation |
 | [#129](https://github.com/chenglou/pretext/pull/129) | closed | no | yes | 2 | 32+/0- | low | hard | draft_hold | fix: preserve streamed line starts inside a chunk |
-| [#132](https://github.com/chenglou/pretext/pull/132) | open | no | no | 2 | 77+/0- | high | easy | candidate_next | fix: prevent rich inline CJK fragments from overflowing maxWidth |
 | [#133](https://github.com/chenglou/pretext/pull/133) | open | no | no | 3 | 401+/0- | low | medium | review_carefully | Add Mouse & Cheese demo  |
-| [#135](https://github.com/chenglou/pretext/pull/135) | closed | no | no | 2 | 43+/5- | high | easy | closed_unmerged | fix: sync streaming line-break stepper with batch walker |
-| [#138](https://github.com/chenglou/pretext/pull/138) | open | no | no | 2 | 2+/139- | medium | easy | review_carefully | simplify: unify stepRichInlineLine/Stats and remove containsCJKText wrapper |
-| [#139](https://github.com/chenglou/pretext/pull/139) | open | no | no | 1 | 5+/0- | high | easy | review_carefully | docs: document breakableFitAdvances cache invariant |
-| [#140](https://github.com/chenglou/pretext/pull/140) | open | no | no | 3 | 49+/106- | medium | easy | review_carefully | Perf/streaming layout optimizations |
+| [#138](https://github.com/chenglou/pretext/pull/138) | closed | no | no | 2 | 2+/139- | medium | easy | closed_unmerged | simplify: unify stepRichInlineLine/Stats and remove containsCJKText wrapper |
+| [#139](https://github.com/chenglou/pretext/pull/139) | closed | no | no | 1 | 5+/0- | high | easy | closed_unmerged | docs: document breakableFitAdvances cache invariant |
+| [#140](https://github.com/chenglou/pretext/pull/140) | closed | no | no | 3 | 49+/106- | medium | easy | closed_unmerged | Perf/streaming layout optimizations |
 | [#141](https://github.com/chenglou/pretext/pull/141) | closed | no | no | 3 | 346+/0- | high | medium | closed_unmerged | fix: classify Hangul Compatibility Jamo (U+3130–U+318F) as CJK |
 | [#144](https://github.com/chenglou/pretext/pull/144) | closed | no | no | 72 | 15415+/5153- | medium | hard | closed_unmerged | test: add direct coverage for documented public APIs |
 | [#146](https://github.com/chenglou/pretext/pull/146) | closed | no | no | 5 | 410+/2- | high | medium | closed_unmerged | fix: CJK + opening bracket line break segmentation |
 | [#147](https://github.com/chenglou/pretext/pull/147) | closed | no | no | 5 | 410+/2- | high | medium | closed_unmerged | fix: CJK + opening bracket line break segmentation |
 | [#148](https://github.com/chenglou/pretext/pull/148) | closed | no | no | 6 | 288+/21- | high | medium | closed_unmerged | fix: CJK + opening bracket line break segmentation |
-| [#149](https://github.com/chenglou/pretext/pull/149) | open | no | no | 1 | 94+/1- | high | easy | review_carefully | test: add direct coverage for documented public APIs |
+| [#149](https://github.com/chenglou/pretext/pull/149) | closed | no | no | 1 | 94+/1- | high | easy | closed_unmerged | test: add direct coverage for documented public APIs |
 | [#154](https://github.com/chenglou/pretext/pull/154) | closed | no | no | 2 | 82+/6- | high | easy | closed_unmerged | unicode-line-breaks-18218157775797050513 |
 | [#155](https://github.com/chenglou/pretext/pull/155) | closed | no | no | 3 | 37+/14- | medium | easy | closed_unmerged | Unicode line breaks 18218157775797050513 |
 | [#156](https://github.com/chenglou/pretext/pull/156) | closed | no | no | 4 | 90+/9- | medium | medium | closed_unmerged | feat: letterSpacing option via Canvas native API |
+| [#160](https://github.com/chenglou/pretext/pull/160) | closed | no | no | 1 | 1+/0- | high | easy | closed_unmerged | chore: mark package as sideEffects: false to enable tree-shaking |
+| [#161](https://github.com/chenglou/pretext/pull/161) | closed | no | no | 2 | 48+/18- | high | easy | closed_unmerged | fix: cache breakable fit advances per mode |
+| [#164](https://github.com/chenglou/pretext/pull/164) | closed | no | no | 3 | 357+/0- | medium | medium | closed_unmerged | Add guard for Intl.Segmenter in line-text.ts, Fixes #159 |
+| [#165](https://github.com/chenglou/pretext/pull/165) | closed | no | no | 2 | 14+/1- | high | easy | closed_unmerged | fix: keep German low quotes with following word |
+| [#166](https://github.com/chenglou/pretext/pull/166) | closed | no | no | 2 | 235+/3- | high | medium | closed_unmerged | chore: support Chrome browser checks on Windows |
+| [#168](https://github.com/chenglou/pretext/pull/168) | closed | no | no | 1 | 2+/1- | high | easy | closed_unmerged | fix: remove unsafe exec() in rich-note.ts |
+| [#170](https://github.com/chenglou/pretext/pull/170) | closed | no | no | 1 | 11+/1- | high | easy | closed_unmerged | fix: reject partial probe-check numeric inputs |
+| [#175](https://github.com/chenglou/pretext/pull/175) | open | no | no | 1 | 1+/1- | high | easy | candidate_next | docs: note Unicode property escape requirement next to Intl.Segmenter caveat |
+| [#178](https://github.com/chenglou/pretext/pull/178) | open | no | no | 2 | 21+/6- | high | easy | candidate_next | fix: handle NaN layout widths |
+| [#180](https://github.com/chenglou/pretext/pull/180) | open | no | no | 1 | 18+/18- | high | easy | candidate_next | docs: translate SECURITY.md to Japanese |
+| [#181](https://github.com/chenglou/pretext/pull/181) | open | no | no | 1 | 46+/46- | high | easy | candidate_next | docs: translate CHANGELOG.md to Japanese |
+| [#182](https://github.com/chenglou/pretext/pull/182) | open | no | no | 1 | 19+/19- | high | easy | candidate_next | docs: translate STATUS.md to Japanese |
+| [#183](https://github.com/chenglou/pretext/pull/183) | open | no | no | 1 | 61+/61- | high | easy | candidate_next | docs: translate README.md to Japanese |
+| [#184](https://github.com/chenglou/pretext/pull/184) | open | no | no | 1 | 12+/12- | high | easy | candidate_next | docs: translate thoughts.md to Japanese |
+| [#185](https://github.com/chenglou/pretext/pull/185) | open | no | no | 1 | 76+/76- | high | easy | candidate_next | docs: translate DEVELOPMENT.md to Japanese |
+| [#186](https://github.com/chenglou/pretext/pull/186) | open | no | no | 1 | 14+/14- | high | easy | candidate_next | docs: translate corpora/STATUS.md to Japanese |
+| [#187](https://github.com/chenglou/pretext/pull/187) | open | no | no | 1 | 46+/46- | high | easy | candidate_next | docs: translate TODO.md to Japanese |
+| [#188](https://github.com/chenglou/pretext/pull/188) | open | no | no | 1 | 235+/235- | high | medium | candidate_next | docs: translate RESEARCH.md to Japanese |
+| [#189](https://github.com/chenglou/pretext/pull/189) | open | no | no | 1 | 112+/114- | high | medium | candidate_next | docs: translate corpora/TAXONOMY.md to Japanese |
+| [#190](https://github.com/chenglou/pretext/pull/190) | open | no | no | 1 | 101+/101- | high | medium | candidate_next | docs: translate AGENTS.md to Japanese |
+| [#191](https://github.com/chenglou/pretext/pull/191) | open | no | no | 1 | 63+/67- | high | easy | candidate_next | docs: translate corpora/README.md to Japanese |
+| [#192](https://github.com/chenglou/pretext/pull/192) | open | no | no | 2 | 213+/215- | high | medium | candidate_next | docs: translate CLAUDE.md to Japanese |
+| [#193](https://github.com/chenglou/pretext/pull/193) | open | no | no | 3 | 82+/11- | medium | easy | candidate_next | feat: support whiteSpace: 'pre-wrap' in prepareRichInline |
+| [#194](https://github.com/chenglou/pretext/pull/194) | open | no | no | 2 | 61+/1- | high | easy | candidate_next | Fix rich-inline punctuation boundary wrapping |
 
 ### Recommendation legend (PRs)
 
@@ -198,13 +220,13 @@ See [FEATURES.md](FEATURES.md): PRs **#80, #97, #114, #119, #125** are marked `a
 | [#85](https://github.com/chenglou/pretext/issues/85) | closed | high | doc_work | docs | [suggestion] Could you add a quick start verification feature for Docker? |
 | [#86](https://github.com/chenglou/pretext/issues/86) | open | high | doc_work | docs | Questions |
 | [#88](https://github.com/chenglou/pretext/issues/88) | closed | high | engine_work | bug+engine | layoutInlineItems in rich-note demo can overflow maxWidth |
-| [#89](https://github.com/chenglou/pretext/issues/89) | open | high | engine_work | bug+engine | Mismatching cases (Pretext vs. CSS) |
+| [#89](https://github.com/chenglou/pretext/issues/89) | closed | high | engine_work | bug+engine | Mismatching cases (Pretext vs. CSS) |
 | [#91](https://github.com/chenglou/pretext/issues/91) | closed | high | engine_work | bug+engine | Improve Pretext docs/examples for hyphenation with user-generated text |
 | [#92](https://github.com/chenglou/pretext/issues/92) | closed | high | repro_needed | bug; server | `bun start` fails on Windows due to `lsof` not being available |
 | [#94](https://github.com/chenglou/pretext/issues/94) | open | high | doc_work | docs | Shrinkwrap showdown mix-up |
 | [#95](https://github.com/chenglou/pretext/issues/95) | closed | low | triage_only | discussion | Question: VFont supported or not? |
 | [#96](https://github.com/chenglou/pretext/issues/96) | closed | low | triage_only | general | 中文+连续数字出现断行问题 |
-| [#98](https://github.com/chenglou/pretext/issues/98) | open | low | triage_only | general | Wrapping of "$___" is inconsistent with browser |
+| [#98](https://github.com/chenglou/pretext/issues/98) | closed | low | triage_only | general | Wrapping of "$___" is inconsistent with browser |
 | [#99](https://github.com/chenglou/pretext/issues/99) | open | high | doc_work | docs | Seeking feedback: Charming Pretext extension for flowing text inside shapes |
 | [#106](https://github.com/chenglou/pretext/issues/106) | closed | low | triage_only | discussion | Does the following preview work as expected?: "How Pretext.js works: measure once, lay out forever." |
 | [#107](https://github.com/chenglou/pretext/issues/107) | open | low | triage_only | general | Canvas doesn't account for `letter-spacing`, `font-optical-sizing` and `font-feature-settings` |
@@ -213,25 +235,37 @@ See [FEATURES.md](FEATURES.md): PRs **#80, #97, #114, #119, #125** are marked `a
 | [#115](https://github.com/chenglou/pretext/issues/115) | closed | high | engine_work | bug+engine | Duplicate test 'isCJK covers the newer CJK extension blocks' appears twice in layout.test.ts |
 | [#116](https://github.com/chenglou/pretext/issues/116) | closed | high | engine_work | bug+engine | normalizeWhitespacePreWrap fast-path runs a no-op replace on every pre-wrap prepare() call |
 | [#117](https://github.com/chenglou/pretext/issues/117) | closed | high | engine_work | bug+engine | layout() returns height: 0 for empty string — browser renders 1 × lineHeight |
-| [#120](https://github.com/chenglou/pretext/issues/120) | open | high | repro_needed | bug | Inline-rich mode + CJK fragment cause overflow |
+| [#120](https://github.com/chenglou/pretext/issues/120) | closed | high | repro_needed | bug | Inline-rich mode + CJK fragment cause overflow |
 | [#121](https://github.com/chenglou/pretext/issues/121) | closed | high | engine_work | bug+engine | Bug: `layoutNextLine` and `walkLineRanges` mismatch with `layoutWithLines` |
 | [#122](https://github.com/chenglou/pretext/issues/122) | open | low | triage_only | general | Invalid regular expression: /\p{Script=Arabic}/: Invalid property name |
 | [#123](https://github.com/chenglou/pretext/issues/123) | open | medium | engine_work | general; server | Server Side Rendering (SSR) support |
-| [#127](https://github.com/chenglou/pretext/issues/127) | open | low | triage_only | general | Homepage: "How Pretext.js works" before/after slider tab label text overlaps on drag |
+| [#127](https://github.com/chenglou/pretext/issues/127) | closed | low | triage_only | general | Homepage: "How Pretext.js works" before/after slider tab label text overlaps on drag |
 | [#130](https://github.com/chenglou/pretext/issues/130) | closed | low | triage_only | discussion | 【consult】Is there have any CDN link can use? |
 | [#131](https://github.com/chenglou/pretext/issues/131) | open | low | triage_only | general | React Native support: native text measurement backend |
 | [#134](https://github.com/chenglou/pretext/issues/134) | open | low | triage_only | discussion | Question: Can it break text into slides? |
-| [#136](https://github.com/chenglou/pretext/issues/136) | open | high | repro_needed | bug | Simplify rich-inline: unify stepRichInlineLine/Stats and remove containsCJKText wrapper |
-| [#137](https://github.com/chenglou/pretext/issues/137) | open | high | engine_work | bug+engine | getSegmentBreakableFitAdvances: cached result does not distinguish BreakableFitMode |
+| [#136](https://github.com/chenglou/pretext/issues/136) | closed | high | repro_needed | bug | Simplify rich-inline: unify stepRichInlineLine/Stats and remove containsCJKText wrapper |
+| [#137](https://github.com/chenglou/pretext/issues/137) | closed | high | engine_work | bug+engine | getSegmentBreakableFitAdvances: cached result does not distinguish BreakableFitMode |
 | [#142](https://github.com/chenglou/pretext/issues/142) | closed | high | engine_work | bug+engine | Bug: Hangul Compatibility Jamo (U+3130–U+318F) causes incorrect line breaks — affects common Korean expressions like ㅋㅋ, ㅠㅠ, ㄹㅇ |
-| [#143](https://github.com/chenglou/pretext/issues/143) | open | high | doc_work | docs | Add direct tests for documented public APIs |
+| [#143](https://github.com/chenglou/pretext/issues/143) | closed | high | doc_work | docs | Add direct tests for documented public APIs |
 | [#145](https://github.com/chenglou/pretext/issues/145) | closed | high | engine_work | bug+engine | Bug: Opening brackets after CJK text merge into wrong segment |
 | [#150](https://github.com/chenglou/pretext/issues/150) | open | low | triage_only | general | Demo submission: Trypanosoma brucei |
 | [#151](https://github.com/chenglou/pretext/issues/151) | open | low | triage_only | general | Many weird behaviours with text selection |
 | [#152](https://github.com/chenglou/pretext/issues/152) | open | low | triage_only | general | Unnecessary DOM updates |
 | [#153](https://github.com/chenglou/pretext/issues/153) | open | low | triage_only | discussion | Feature request: incremental / append-only prepare API for streaming text UIs |
 | [#157](https://github.com/chenglou/pretext/issues/157) | open | low | triage_only | general | React Native: bridge native text measurement for virtualized lists |
-| [#158](https://github.com/chenglou/pretext/issues/158) | open | low | triage_only | general | Add "sideEffects": false to enable tree-shaking |
+| [#158](https://github.com/chenglou/pretext/issues/158) | closed | low | triage_only | general | Add "sideEffects": false to enable tree-shaking |
+| [#159](https://github.com/chenglou/pretext/issues/159) | closed | high | engine_work | bug+engine | Intl.Segmenter hard dependency crashes on Firefox Mobile <125 without documentation or guard |
+| [#162](https://github.com/chenglou/pretext/issues/162) | closed | low | triage_only | general | continueSoftHyphenBreakableSegment ignores caller's rightmin: proposal for softHyphenMode: 'strict' |
+| [#163](https://github.com/chenglou/pretext/issues/163) | closed | low | triage_only | general | German low opening quotes (‚ U+201A, „ U+201E) missing from kinsokuEnd |
+| [#167](https://github.com/chenglou/pretext/issues/167) | open | high | engine_work | bug+engine | Using pretext + Remotion for text-flow video — works for dragon, broken for ball, asking for theory |
+| [#169](https://github.com/chenglou/pretext/issues/169) | closed | low | triage_only | general | Long words break at period |
+| [#171](https://github.com/chenglou/pretext/issues/171) | closed | low | triage_only | general | Preserve letter spacing at the end of a line |
+| [#172](https://github.com/chenglou/pretext/issues/172) | closed | high | doc_work | docs | Embed Agent Friendly Code Score Badge |
+| [#173](https://github.com/chenglou/pretext/issues/173) | open | low | triage_only | general | Support rich inline with `pre-wrap` whitespace preserve |
+| [#174](https://github.com/chenglou/pretext/issues/174) | open | low | triage_only | general | The preview on website is broken the content on right left is shifted to left |
+| [#176](https://github.com/chenglou/pretext/issues/176) | closed | high | doc_work | docs | `rich-inline` doesn't include hyphens in materialized text |
+| [#177](https://github.com/chenglou/pretext/issues/177) | open | medium | engine_work | general; server | `rich-inline` wraps punctuation inconsistently with browser |
+| [#179](https://github.com/chenglou/pretext/issues/179) | open | low | triage_only | general | Minor Optimisations |
 
 ### Issue effort legend
 

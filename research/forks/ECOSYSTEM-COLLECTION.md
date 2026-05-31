@@ -4,7 +4,7 @@
 
 This document mirrors the *intent* of [ShipItAndPray/awesome-pretext](https://github.com/ShipItAndPray/awesome-pretext)’s README while grounding the **full superset** in [`ecosystem-inventory.json`](ecosystem-inventory.json). Regenerate both with `bun run ecosystem:intake`.
 
-_Inventory generated: 2026-04-23 · 167 repos (core 0, adjacent 162, unclear 5)._
+_Inventory generated: 2026-05-31 · 170 repos (core 119, adjacent 33, unclear 18)._
 
 ## How to read this vs awesome-pretext
 
@@ -36,173 +36,176 @@ Sorted by **use-case category** (from awesome-pretext when present), then repo. 
 
 | Repo | Category | Demo | Relevance | Stars | Forks | Pushed |
 | --- | --- | --- | --- | ---: | ---: | --- |
-| [`ShipItAndPray/pretext-chat`](https://github.com/ShipItAndPray/pretext-chat) | Chat & Logs | [demo](https://shipitandpray.github.io/pretext-chat/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-logviewer`](https://github.com/ShipItAndPray/pretext-logviewer) | Chat & Logs | [demo](https://shipitandpray.github.io/pretext-logviewer/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-repl`](https://github.com/ShipItAndPray/pretext-repl) | Chat & Logs | [demo](https://shipitandpray.github.io/pretext-repl/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-terminal`](https://github.com/ShipItAndPray/pretext-terminal) | Chat & Logs | [demo](https://shipitandpray.github.io/pretext-terminal/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-blocks`](https://github.com/ShipItAndPray/pretext-blocks) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-blocks/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-captions`](https://github.com/ShipItAndPray/pretext-captions) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-captions/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-diff`](https://github.com/ShipItAndPray/pretext-diff) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-diff/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-diff-navigator`](https://github.com/ShipItAndPray/pretext-diff-navigator) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-diff-navigator/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-docgen`](https://github.com/ShipItAndPray/pretext-docgen) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-docgen/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-editor`](https://github.com/ShipItAndPray/pretext-editor) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-editor/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-epub`](https://github.com/ShipItAndPray/pretext-epub) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-epub/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-markdown`](https://github.com/ShipItAndPray/pretext-markdown) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-markdown/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-pdf`](https://github.com/ShipItAndPray/pretext-pdf) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-pdf/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-slides`](https://github.com/ShipItAndPray/pretext-slides) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-slides/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-accordion`](https://github.com/ShipItAndPray/pretext-accordion) | Foundations | [demo](https://shipitandpray.github.io/pretext-accordion/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-animate`](https://github.com/ShipItAndPray/pretext-animate) | Foundations | [demo](https://shipitandpray.github.io/pretext-animate/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-forms`](https://github.com/ShipItAndPray/pretext-forms) | Foundations | [demo](https://shipitandpray.github.io/pretext-forms/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-masonry`](https://github.com/ShipItAndPray/pretext-masonry) | Foundations | [demo](https://shipitandpray.github.io/pretext-masonry/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-overflow-menu`](https://github.com/ShipItAndPray/pretext-overflow-menu) | Foundations | [demo](https://shipitandpray.github.io/pretext-overflow-menu/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-react`](https://github.com/ShipItAndPray/pretext-react) | Foundations | [demo](https://shipitandpray.github.io/pretext-react/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-ssr`](https://github.com/ShipItAndPray/pretext-ssr) | Foundations | [demo](https://shipitandpray.github.io/pretext-ssr/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-tooltip`](https://github.com/ShipItAndPray/pretext-tooltip) | Foundations | [demo](https://shipitandpray.github.io/pretext-tooltip/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-truncate`](https://github.com/ShipItAndPray/pretext-truncate) | Foundations | [demo](https://shipitandpray.github.io/pretext-truncate/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-typewriter`](https://github.com/ShipItAndPray/pretext-typewriter) | Foundations | [demo](https://shipitandpray.github.io/pretext-typewriter/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-canvas`](https://github.com/ShipItAndPray/pretext-canvas) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-canvas/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-code-minimap`](https://github.com/ShipItAndPray/pretext-code-minimap) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-code-minimap/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-comic`](https://github.com/ShipItAndPray/pretext-comic) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-comic/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-gantt`](https://github.com/ShipItAndPray/pretext-gantt) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-gantt/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-infinite-canvas`](https://github.com/ShipItAndPray/pretext-infinite-canvas) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-infinite-canvas/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-map-labels`](https://github.com/ShipItAndPray/pretext-map-labels) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-map-labels/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-og`](https://github.com/ShipItAndPray/pretext-og) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-og/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-sparkline`](https://github.com/ShipItAndPray/pretext-sparkline) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-sparkline/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-tts-highlight`](https://github.com/ShipItAndPray/pretext-tts-highlight) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-tts-highlight/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-webxr`](https://github.com/ShipItAndPray/pretext-webxr) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-webxr/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-word-cloud`](https://github.com/ShipItAndPray/pretext-word-cloud) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-word-cloud/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-rn`](https://github.com/ShipItAndPray/pretext-rn) | Platform Targets | [demo](https://shipitandpray.github.io/pretext-rn/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-table`](https://github.com/ShipItAndPray/pretext-table) | Platform Targets | [demo](https://shipitandpray.github.io/pretext-table/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-a11y`](https://github.com/ShipItAndPray/pretext-a11y) | Testing & CI | [demo](https://shipitandpray.github.io/pretext-a11y/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-devtools`](https://github.com/ShipItAndPray/pretext-devtools) | Testing & CI | [demo](https://shipitandpray.github.io/pretext-devtools/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-i18n`](https://github.com/ShipItAndPray/pretext-i18n) | Testing & CI | [demo](https://shipitandpray.github.io/pretext-i18n/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-overflow-monitor`](https://github.com/ShipItAndPray/pretext-overflow-monitor) | Testing & CI | [demo](https://shipitandpray.github.io/pretext-overflow-monitor/) | `adjacent-pretext` | — | — | — |
-| [`ShipItAndPray/pretext-storybook`](https://github.com/ShipItAndPray/pretext-storybook) | Testing & CI | [demo](https://shipitandpray.github.io/pretext-storybook/) | `adjacent-pretext` | — | — | — |
-| [`0xGF/boneyard`](https://github.com/0xGF/boneyard) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`0xNyk/pretext-playground`](https://github.com/0xNyk/pretext-playground) | Community | — | `adjacent-pretext` | — | — | — |
-| [`1sh22/pretex`](https://github.com/1sh22/pretex) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`8run3r/bcbtech`](https://github.com/8run3r/bcbtech) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`aaryapatel09/aaryapatel-website`](https://github.com/aaryapatel09/aaryapatel-website) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`abhishek462307/Convos-Agentic-Commerce`](https://github.com/abhishek462307/Convos-Agentic-Commerce) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Abhishekingle662/pretext-flow-demo`](https://github.com/Abhishekingle662/pretext-flow-demo) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`acoyfellow/cloudterm`](https://github.com/acoyfellow/cloudterm) | Discovery | — | `unclear-or-noise` | — | — | — |
-| [`alanvww/watchwords`](https://github.com/alanvww/watchwords) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`aleclarson/pretext-markdown-stream`](https://github.com/aleclarson/pretext-markdown-stream) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`aloewright/smooth-site`](https://github.com/aloewright/smooth-site) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`AnupBhat30/twinkytype`](https://github.com/AnupBhat30/twinkytype) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`BEKO2210/my_interactive_books`](https://github.com/BEKO2210/my_interactive_books) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`bensongeorgethomas/portfolio`](https://github.com/bensongeorgethomas/portfolio) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`bevyip/play-part-3`](https://github.com/bevyip/play-part-3) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`blackjune67/asterum-system`](https://github.com/blackjune67/asterum-system) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`BlazeUp-AI/Observal`](https://github.com/BlazeUp-AI/Observal) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`blipman35/blipman35.github.io`](https://github.com/blipman35/blipman35.github.io) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`blueif16/astro-blog`](https://github.com/blueif16/astro-blog) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`broomva/life`](https://github.com/broomva/life) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Bruce699/Experimental-Todos`](https://github.com/Bruce699/Experimental-Todos) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Cbturtle2/PersonalWebsite`](https://github.com/Cbturtle2/PersonalWebsite) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Changan-Su/Forsion-AI-Studio`](https://github.com/Changan-Su/Forsion-AI-Studio) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Charles-xdx/UAV`](https://github.com/Charles-xdx/UAV) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`cocktailpeanut/textmash`](https://github.com/cocktailpeanut/textmash) | Community | — | `unclear-or-noise` | — | — | — |
-| [`cybrowl/job_raptor`](https://github.com/cybrowl/job_raptor) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`d3plus/d3plus`](https://github.com/d3plus/d3plus) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`danmindru/pretext-changed-the-internet`](https://github.com/danmindru/pretext-changed-the-internet) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`darkroomengineering/fitbox`](https://github.com/darkroomengineering/fitbox) | Discovery | — | `unclear-or-noise` | — | — | — |
-| [`declanhuggins/dhugs-com`](https://github.com/declanhuggins/dhugs-com) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`developing-today/code`](https://github.com/developing-today/code) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`dioliveira07/second-brain-hub`](https://github.com/dioliveira07/second-brain-hub) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`divsmith/webtuner`](https://github.com/divsmith/webtuner) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Dreyzab/grenzwanderer`](https://github.com/Dreyzab/grenzwanderer) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`EARider23/BusinessLauncha`](https://github.com/EARider23/BusinessLauncha) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`electrifiedchan/club_website`](https://github.com/electrifiedchan/club_website) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`f3liz-casa/yukari-rubi`](https://github.com/f3liz-casa/yukari-rubi) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Fearvox/dash-persona`](https://github.com/Fearvox/dash-persona) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`frank1003A/use-pretext`](https://github.com/frank1003A/use-pretext) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`fu351/SecretSauce`](https://github.com/fu351/SecretSauce) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`futurelesswindchan/blog0fwindchan`](https://github.com/futurelesswindchan/blog0fwindchan) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`geeksbaek/daily-magazine`](https://github.com/geeksbaek/daily-magazine) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`giolaq/giolaqaiblog`](https://github.com/giolaq/giolaqaiblog) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`girl-dream/VideoInHTML`](https://github.com/girl-dream/VideoInHTML) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`GizzyUwU/suri`](https://github.com/GizzyUwU/suri) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`greenmoach/pretext-app`](https://github.com/greenmoach/pretext-app) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Gregoryc28/VellumReader`](https://github.com/Gregoryc28/VellumReader) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`groupsum/markdown_workspace`](https://github.com/groupsum/markdown_workspace) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Guneshbari/SentinelCore_DEV`](https://github.com/Guneshbari/SentinelCore_DEV) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`h00mankind/Forge`](https://github.com/h00mankind/Forge) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`haoyangli16/pretext-research-tools`](https://github.com/haoyangli16/pretext-research-tools) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`heristop/heristop.github.io`](https://github.com/heristop/heristop.github.io) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`hgxszhj/pretext`](https://github.com/hgxszhj/pretext) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Himaan1998Y/pretext-pdf`](https://github.com/Himaan1998Y/pretext-pdf) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`imurodl/pretext-flow`](https://github.com/imurodl/pretext-flow) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`inference-sh/shadcn-registry`](https://github.com/inference-sh/shadcn-registry) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Innei/shuffle-article`](https://github.com/Innei/shuffle-article) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`inxeoz/pretext-inxeoz`](https://github.com/inxeoz/pretext-inxeoz) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Itsnotaka/v7`](https://github.com/Itsnotaka/v7) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`itxashancode/Refresh-My-Web`](https://github.com/itxashancode/Refresh-My-Web) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`jaddenki/gyaru`](https://github.com/jaddenki/gyaru) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Jamailar/RedBox`](https://github.com/Jamailar/RedBox) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`JeromyJSmith/GraftKit`](https://github.com/JeromyJSmith/GraftKit) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`jihchi/react-pretext`](https://github.com/jihchi/react-pretext) | Community | — | `adjacent-pretext` | — | — | — |
-| [`joeflateau-octavius/pretext-rich`](https://github.com/joeflateau-octavius/pretext-rich) | Community | — | `adjacent-pretext` | — | — | — |
-| [`justyn-clark/pretext-chat-poc`](https://github.com/justyn-clark/pretext-chat-poc) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`jwyxym/YGOPro3`](https://github.com/jwyxym/YGOPro3) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`jyami-kim/gitbook-page`](https://github.com/jyami-kim/gitbook-page) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`KakarotDB/interactive-calendar-component`](https://github.com/KakarotDB/interactive-calendar-component) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`kitsuyui/react-playground`](https://github.com/kitsuyui/react-playground) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`KyleDerZweite/basalt`](https://github.com/KyleDerZweite/basalt) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`L31T1NH0/modrinth-downloader`](https://github.com/L31T1NH0/modrinth-downloader) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`lawrenceli0228/pretext-playground`](https://github.com/lawrenceli0228/pretext-playground) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Leo555/pre-markdown`](https://github.com/Leo555/pre-markdown) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`libondev/pxd`](https://github.com/libondev/pxd) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`lucascrespo23/pinch-type`](https://github.com/lucascrespo23/pinch-type) | Community | — | `unclear-or-noise` | — | — | — |
-| [`lyc-aon/successor-agent`](https://github.com/lyc-aon/successor-agent) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`LydiaShanCode/rainy-day`](https://github.com/LydiaShanCode/rainy-day) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`MaskyS/fractal-kanban-demo`](https://github.com/MaskyS/fractal-kanban-demo) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`mateffy/pretext-php`](https://github.com/mateffy/pretext-php) | Community | — | `adjacent-pretext` | — | — | — |
-| [`mertcicekci0/merth-pretext-blockverse`](https://github.com/mertcicekci0/merth-pretext-blockverse) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`micaavigliano/the-editorial-engine-a11y`](https://github.com/micaavigliano/the-editorial-engine-a11y) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`MikeSchirtzinger/pretext-rs`](https://github.com/MikeSchirtzinger/pretext-rs) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`morten-olsen/editions`](https://github.com/morten-olsen/editions) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`MultiboxLabs/flow-browser`](https://github.com/MultiboxLabs/flow-browser) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`naitokosuke/lab`](https://github.com/naitokosuke/lab) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`NathanWalker/ns-pretext`](https://github.com/NathanWalker/ns-pretext) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`noletorious/portfolio-experimental`](https://github.com/noletorious/portfolio-experimental) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Notes9Org/Notes9`](https://github.com/Notes9Org/Notes9) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`ossaidqadri/otherdev-web-v2`](https://github.com/ossaidqadri/otherdev-web-v2) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Paradise-in-Matrix/Paradise`](https://github.com/Paradise-in-Matrix/Paradise) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`PASToR1951/QPIR-AIP`](https://github.com/PASToR1951/QPIR-AIP) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`PavanCodesNY/Pavan`](https://github.com/PavanCodesNY/Pavan) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`paxoscn/pretextall`](https://github.com/paxoscn/pretextall) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`peteriadamgabor/inkmirror`](https://github.com/peteriadamgabor/inkmirror) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Poojan38380/pretext-playground-upgrade`](https://github.com/Poojan38380/pretext-playground-upgrade) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Poojan38380/TextVerse`](https://github.com/Poojan38380/TextVerse) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`PoosaSaikiran/Project-01`](https://github.com/PoosaSaikiran/Project-01) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Pranesh-2005/digital-bouquet-pretext`](https://github.com/Pranesh-2005/digital-bouquet-pretext) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`ProjectMusa/tikzjs`](https://github.com/ProjectMusa/tikzjs) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`proticom/paperboy`](https://github.com/proticom/paperboy) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`quinteroac/pretext-tables`](https://github.com/quinteroac/pretext-tables) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`r-y-ren/renyxin`](https://github.com/r-y-ren/renyxin) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`rararulab/rara`](https://github.com/rararulab/rara) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`roip/chrome-extensions`](https://github.com/roip/chrome-extensions) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`samwillis/premirror`](https://github.com/samwillis/premirror) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`seocorp/figflow`](https://github.com/seocorp/figflow) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Signet-AI/signetai`](https://github.com/Signet-AI/signetai) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Simon-He95/markstream-vue`](https://github.com/Simon-He95/markstream-vue) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`sivavarunan/portfolio`](https://github.com/sivavarunan/portfolio) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`somnai-dreams/preimage`](https://github.com/somnai-dreams/preimage) | Discovery | — | `unclear-or-noise` | — | — | — |
-| [`sonnes/september`](https://github.com/sonnes/september) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`souki1/AIMarketResearch`](https://github.com/souki1/AIMarketResearch) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`szkkb/wechat_miniprogram_dashboard`](https://github.com/szkkb/wechat_miniprogram_dashboard) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`TirtheshJani/portfolio`](https://github.com/TirtheshJani/portfolio) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Todomir/trunky`](https://github.com/Todomir/trunky) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Top-g-hash/nuxt-pretext`](https://github.com/Top-g-hash/nuxt-pretext) | Discovery | — | `adjacent-pretext` | — | — | — |
-| [`UNLINEARITY/Atlas-of-Control-and-AI`](https://github.com/UNLINEARITY/Atlas-of-Control-and-AI) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`UOR-Foundation/website`](https://github.com/UOR-Foundation/website) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`vectorize-io/hindsight`](https://github.com/vectorize-io/hindsight) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`Wetty-Technology/wetty-chat`](https://github.com/Wetty-Technology/wetty-chat) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`yys-4/pretext-try-lab`](https://github.com/yys-4/pretext-try-lab) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`zummed/starch`](https://github.com/zummed/starch) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`ZVN-DEV/yable`](https://github.com/ZVN-DEV/yable) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
-| [`ZYKJShadow/Async`](https://github.com/ZYKJShadow/Async) | Code search (importers) | — | `adjacent-pretext` | — | — | — |
+| [`ShipItAndPray/pretext-chat`](https://github.com/ShipItAndPray/pretext-chat) | Chat & Logs | [demo](https://shipitandpray.github.io/pretext-chat/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-logviewer`](https://github.com/ShipItAndPray/pretext-logviewer) | Chat & Logs | [demo](https://shipitandpray.github.io/pretext-logviewer/) | `adjacent-pretext` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-repl`](https://github.com/ShipItAndPray/pretext-repl) | Chat & Logs | [demo](https://shipitandpray.github.io/pretext-repl/) | `adjacent-pretext` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-terminal`](https://github.com/ShipItAndPray/pretext-terminal) | Chat & Logs | [demo](https://shipitandpray.github.io/pretext-terminal/) | `core-pretext-ecosystem` | 1 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-blocks`](https://github.com/ShipItAndPray/pretext-blocks) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-blocks/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-captions`](https://github.com/ShipItAndPray/pretext-captions) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-captions/) | `adjacent-pretext` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-diff`](https://github.com/ShipItAndPray/pretext-diff) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-diff/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-diff-navigator`](https://github.com/ShipItAndPray/pretext-diff-navigator) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-diff-navigator/) | `adjacent-pretext` | 1 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-docgen`](https://github.com/ShipItAndPray/pretext-docgen) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-docgen/) | `core-pretext-ecosystem` | 1 | 0 | 2026-03-30 |
+| [`ShipItAndPray/pretext-editor`](https://github.com/ShipItAndPray/pretext-editor) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-editor/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-epub`](https://github.com/ShipItAndPray/pretext-epub) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-epub/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-markdown`](https://github.com/ShipItAndPray/pretext-markdown) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-markdown/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-pdf`](https://github.com/ShipItAndPray/pretext-pdf) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-pdf/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-slides`](https://github.com/ShipItAndPray/pretext-slides) | Editors & Docs | [demo](https://shipitandpray.github.io/pretext-slides/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-accordion`](https://github.com/ShipItAndPray/pretext-accordion) | Foundations | [demo](https://shipitandpray.github.io/pretext-accordion/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-animate`](https://github.com/ShipItAndPray/pretext-animate) | Foundations | [demo](https://shipitandpray.github.io/pretext-animate/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-forms`](https://github.com/ShipItAndPray/pretext-forms) | Foundations | [demo](https://shipitandpray.github.io/pretext-forms/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-masonry`](https://github.com/ShipItAndPray/pretext-masonry) | Foundations | [demo](https://shipitandpray.github.io/pretext-masonry/) | `core-pretext-ecosystem` | 2 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-overflow-menu`](https://github.com/ShipItAndPray/pretext-overflow-menu) | Foundations | [demo](https://shipitandpray.github.io/pretext-overflow-menu/) | `adjacent-pretext` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-react`](https://github.com/ShipItAndPray/pretext-react) | Foundations | [demo](https://shipitandpray.github.io/pretext-react/) | `core-pretext-ecosystem` | 1 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-ssr`](https://github.com/ShipItAndPray/pretext-ssr) | Foundations | [demo](https://shipitandpray.github.io/pretext-ssr/) | `adjacent-pretext` | 1 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-tooltip`](https://github.com/ShipItAndPray/pretext-tooltip) | Foundations | [demo](https://shipitandpray.github.io/pretext-tooltip/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-truncate`](https://github.com/ShipItAndPray/pretext-truncate) | Foundations | [demo](https://shipitandpray.github.io/pretext-truncate/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-typewriter`](https://github.com/ShipItAndPray/pretext-typewriter) | Foundations | [demo](https://shipitandpray.github.io/pretext-typewriter/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-canvas`](https://github.com/ShipItAndPray/pretext-canvas) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-canvas/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-code-minimap`](https://github.com/ShipItAndPray/pretext-code-minimap) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-code-minimap/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-comic`](https://github.com/ShipItAndPray/pretext-comic) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-comic/) | `adjacent-pretext` | 1 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-gantt`](https://github.com/ShipItAndPray/pretext-gantt) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-gantt/) | `core-pretext-ecosystem` | 1 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-infinite-canvas`](https://github.com/ShipItAndPray/pretext-infinite-canvas) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-infinite-canvas/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-map-labels`](https://github.com/ShipItAndPray/pretext-map-labels) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-map-labels/) | `adjacent-pretext` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-og`](https://github.com/ShipItAndPray/pretext-og) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-og/) | `core-pretext-ecosystem` | 1 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-sparkline`](https://github.com/ShipItAndPray/pretext-sparkline) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-sparkline/) | `core-pretext-ecosystem` | 1 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-tts-highlight`](https://github.com/ShipItAndPray/pretext-tts-highlight) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-tts-highlight/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-webxr`](https://github.com/ShipItAndPray/pretext-webxr) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-webxr/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-word-cloud`](https://github.com/ShipItAndPray/pretext-word-cloud) | Graphics & Media | [demo](https://shipitandpray.github.io/pretext-word-cloud/) | `adjacent-pretext` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-rn`](https://github.com/ShipItAndPray/pretext-rn) | Platform Targets | [demo](https://shipitandpray.github.io/pretext-rn/) | `adjacent-pretext` | 0 | 0 | 2026-03-30 |
+| [`ShipItAndPray/pretext-table`](https://github.com/ShipItAndPray/pretext-table) | Platform Targets | [demo](https://shipitandpray.github.io/pretext-table/) | `core-pretext-ecosystem` | 1 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-a11y`](https://github.com/ShipItAndPray/pretext-a11y) | Testing & CI | [demo](https://shipitandpray.github.io/pretext-a11y/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-devtools`](https://github.com/ShipItAndPray/pretext-devtools) | Testing & CI | [demo](https://shipitandpray.github.io/pretext-devtools/) | `adjacent-pretext` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-i18n`](https://github.com/ShipItAndPray/pretext-i18n) | Testing & CI | [demo](https://shipitandpray.github.io/pretext-i18n/) | `adjacent-pretext` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-overflow-monitor`](https://github.com/ShipItAndPray/pretext-overflow-monitor) | Testing & CI | [demo](https://shipitandpray.github.io/pretext-overflow-monitor/) | `core-pretext-ecosystem` | 0 | 0 | 2026-04-02 |
+| [`ShipItAndPray/pretext-storybook`](https://github.com/ShipItAndPray/pretext-storybook) | Testing & CI | [demo](https://shipitandpray.github.io/pretext-storybook/) | `core-pretext-ecosystem` | 1 | 0 | 2026-04-02 |
+| [`0xnayuta/0xnayuta.github.io`](https://github.com/0xnayuta/0xnayuta.github.io) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-17 |
+| [`0xNyk/pretext-playground`](https://github.com/0xNyk/pretext-playground) | Community | — | `core-pretext-ecosystem` | 39 | 4 | 2026-03-30 |
+| [`0xRupeshSardar/0xrupeshsardar.github.io`](https://github.com/0xRupeshSardar/0xrupeshsardar.github.io) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-27 |
+| [`1sh22/pretex`](https://github.com/1sh22/pretex) | Code search (importers) | — | `core-pretext-ecosystem` | 1 | 0 | 2026-04-20 |
+| [`acoyfellow/cloudterm`](https://github.com/acoyfellow/cloudterm) | Discovery | — | `core-pretext-ecosystem` | 1 | 0 | 2026-05-13 |
+| [`aflansburg/consultme`](https://github.com/aflansburg/consultme) | Code search (importers) | — | `core-pretext-ecosystem` | 1 | 0 | 2026-05-29 |
+| [`alexanderchen/typebeat`](https://github.com/alexanderchen/typebeat) | Code search (importers) | — | `core-pretext-ecosystem` | 6 | 1 | 2026-04-02 |
+| [`alpeshvas/pretext-pdfjs`](https://github.com/alpeshvas/pretext-pdfjs) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-03-31 |
+| [`amulil/amulil`](https://github.com/amulil/amulil) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-27 |
+| [`AnanyaKulkarni205/TailsOfBijapur`](https://github.com/AnanyaKulkarni205/TailsOfBijapur) | Code search (importers) | — | `adjacent-pretext` | 1 | 2 | 2026-05-01 |
+| [`AntoniovanDijck/sharecap`](https://github.com/AntoniovanDijck/sharecap) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-13 |
+| [`archiseino/pretext-playground`](https://github.com/archiseino/pretext-playground) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-13 |
+| [`ashishkr710/portfolio_Ashish`](https://github.com/ashishkr710/portfolio_Ashish) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-22 |
+| [`aswinzz/portfolio`](https://github.com/aswinzz/portfolio) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-04-01 |
+| [`B4uti4github/tslash`](https://github.com/B4uti4github/tslash) | Code search (importers) | — | `core-pretext-ecosystem` | 1 | 0 | 2026-04-03 |
+| [`bamarler/bamarler`](https://github.com/bamarler/bamarler) | Code search (importers) | — | `adjacent-pretext` | 0 | 0 | 2026-04-01 |
+| [`BlackBoxRecorder/memos`](https://github.com/BlackBoxRecorder/memos) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-25 |
+| [`blackjune67/asterum-system`](https://github.com/blackjune67/asterum-system) | Code search (importers) | — | `adjacent-pretext` | 0 | 0 | 2026-04-21 |
+| [`BrianIto/portfolio`](https://github.com/BrianIto/portfolio) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-04-28 |
+| [`bunizao/site`](https://github.com/bunizao/site) | Code search (importers) | — | `core-pretext-ecosystem` | 3 | 0 | 2026-05-31 |
+| [`cathy0305/studio_ipad`](https://github.com/cathy0305/studio_ipad) | Code search (importers) | — | `adjacent-pretext` | 0 | 0 | 2026-05-26 |
+| [`chomiruku/seija-kij.in`](https://github.com/chomiruku/seija-kij.in) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-25 |
+| [`chthollyphile/folia-major`](https://github.com/chthollyphile/folia-major) | Code search (importers) | — | `core-pretext-ecosystem` | 99 | 11 | 2026-05-31 |
+| [`cocktailpeanut/textmash`](https://github.com/cocktailpeanut/textmash) | Community | — | `core-pretext-ecosystem` | 0 | 0 | 2026-03-29 |
+| [`code-highway-patrol/chp-web`](https://github.com/code-highway-patrol/chp-web) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-04-26 |
+| [`codehz/pretext-bug-diag`](https://github.com/codehz/pretext-bug-diag) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-04-09 |
+| [`Cofounder-Customer-Projects-1/shonda-martin-media-5c2fd1-marketing`](https://github.com/Cofounder-Customer-Projects-1/shonda-martin-media-5c2fd1-marketing) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-15 |
+| [`Compassie/Flame-test`](https://github.com/Compassie/Flame-test) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-04-07 |
+| [`darkroomengineering/fitbox`](https://github.com/darkroomengineering/fitbox) | Discovery | — | `core-pretext-ecosystem` | 7 | 0 | 2026-04-22 |
+| [`daytonaio/daytona`](https://github.com/daytonaio/daytona) | Code search (importers) | — | `core-pretext-ecosystem` | 72501 | 5613 | 2026-05-31 |
+| [`developing-today/code`](https://github.com/developing-today/code) | Code search (importers) | — | `unclear-or-noise` | 1 | 0 | 2026-05-28 |
+| [`DovieW/microbook-maker`](https://github.com/DovieW/microbook-maker) | Code search (importers) | — | `adjacent-pretext` | 3 | 0 | 2026-05-01 |
+| [`Dragslayr/creativeProjects`](https://github.com/Dragslayr/creativeProjects) | Code search (importers) | — | `adjacent-pretext` | 0 | 0 | 2026-04-19 |
+| [`dredamonsta1/andre-portfolio-react`](https://github.com/dredamonsta1/andre-portfolio-react) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-22 |
+| [`eanzhao/Aexon`](https://github.com/eanzhao/Aexon) | Code search (importers) | — | `adjacent-pretext` | 4 | 0 | 2026-04-22 |
+| [`eiaserinnys/remiel`](https://github.com/eiaserinnys/remiel) | Code search (importers) | — | `unclear-or-noise` | 0 | 0 | 2026-05-29 |
+| [`electrifiedchan/sparta-edge-proctoring`](https://github.com/electrifiedchan/sparta-edge-proctoring) | Code search (importers) | — | `adjacent-pretext` | 0 | 0 | 2026-05-07 |
+| [`fakoli/baara-next`](https://github.com/fakoli/baara-next) | Code search (importers) | — | `unclear-or-noise` | 1 | 0 | 2026-05-26 |
+| [`fibegg/fibe-agent`](https://github.com/fibegg/fibe-agent) | Code search (importers) | — | `core-pretext-ecosystem` | 1 | 1 | 2026-05-31 |
+| [`filipsjolanderr/filip-personal`](https://github.com/filipsjolanderr/filip-personal) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-07 |
+| [`fvnju/noteey`](https://github.com/fvnju/noteey) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-28 |
+| [`HachiXD/Gatherend`](https://github.com/HachiXD/Gatherend) | Code search (importers) | — | `unclear-or-noise` | 6 | 2 | 2026-05-28 |
+| [`HamsterNote/HtmlParser`](https://github.com/HamsterNote/HtmlParser) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-29 |
+| [`Haneef99/portfolio`](https://github.com/Haneef99/portfolio) | Code search (importers) | — | `adjacent-pretext` | 0 | 0 | 2026-04-05 |
+| [`haoyangli16/pretext-research-tools`](https://github.com/haoyangli16/pretext-research-tools) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-03-31 |
+| [`haru516-web/burn_two`](https://github.com/haru516-web/burn_two) | Code search (importers) | — | `core-pretext-ecosystem` | 1 | 1 | 2026-05-16 |
+| [`hencter/newtab-home`](https://github.com/hencter/newtab-home) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-04-30 |
+| [`heygen-com/hyperframes`](https://github.com/heygen-com/hyperframes) | Code search (importers) | — | `unclear-or-noise` | 22794 | 2117 | 2026-05-31 |
+| [`HongMing-Huang/pretext-frontend-motion`](https://github.com/HongMing-Huang/pretext-frontend-motion) | Code search (importers) | — | `adjacent-pretext` | 2 | 0 | 2026-05-25 |
+| [`Icamtu/algo-trader`](https://github.com/Icamtu/algo-trader) | Code search (importers) | — | `unclear-or-noise` | 0 | 0 | 2026-05-30 |
+| [`JAYATIAHUJA/Basilisk-s-Hunger`](https://github.com/JAYATIAHUJA/Basilisk-s-Hunger) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-03-31 |
+| [`jensrot/portfolio-site`](https://github.com/jensrot/portfolio-site) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-26 |
+| [`JeromyJSmith/GraftKit`](https://github.com/JeromyJSmith/GraftKit) | Code search (importers) | — | `unclear-or-noise` | 1 | 0 | 2026-05-12 |
+| [`jihchi/react-pretext`](https://github.com/jihchi/react-pretext) | Community | — | `core-pretext-ecosystem` | 1 | 0 | 2026-03-31 |
+| [`jmilinovich/daily-paper`](https://github.com/jmilinovich/daily-paper) | Code search (importers) | — | `core-pretext-ecosystem` | 1 | 0 | 2026-03-31 |
+| [`joeflateau-octavius/pretext-rich`](https://github.com/joeflateau-octavius/pretext-rich) | Community | — | `core-pretext-ecosystem` | 2 | 0 | 2026-03-30 |
+| [`joshuadsilva1/altbridge`](https://github.com/joshuadsilva1/altbridge) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 1 | 2026-04-08 |
+| [`kabeer11000/otherdev.web-02`](https://github.com/kabeer11000/otherdev.web-02) | Code search (importers) | — | `adjacent-pretext` | 0 | 0 | 2026-05-31 |
+| [`kristianernst/piui`](https://github.com/kristianernst/piui) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-16 |
+| [`leCheeseRoyale/ascii-games`](https://github.com/leCheeseRoyale/ascii-games) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-04-23 |
+| [`leesangb/caret`](https://github.com/leesangb/caret) | Code search (importers) | — | `unclear-or-noise` | 0 | 0 | 2026-04-14 |
+| [`leesx/pretext-time-typography`](https://github.com/leesx/pretext-time-typography) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-09 |
+| [`liam-brophy/pretext`](https://github.com/liam-brophy/pretext) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-04-13 |
+| [`Liiift-Studio/AxisRhythm`](https://github.com/Liiift-Studio/AxisRhythm) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-31 |
+| [`Liiift-Studio/SteadyGray`](https://github.com/Liiift-Studio/SteadyGray) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-31 |
+| [`lkevincc0/agent-react-native-template`](https://github.com/lkevincc0/agent-react-native-template) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-16 |
+| [`llstarfish/pretext-dog`](https://github.com/llstarfish/pretext-dog) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-04-01 |
+| [`lucascrespo23/pinch-type`](https://github.com/lucascrespo23/pinch-type) | Community | — | `core-pretext-ecosystem` | 107 | 2 | 2026-03-31 |
+| [`luckysolanki902/luckysolanki`](https://github.com/luckysolanki902/luckysolanki) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-19 |
+| [`MarJC5/wp-agent`](https://github.com/MarJC5/wp-agent) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-04-13 |
+| [`mateffy/pretext-php`](https://github.com/mateffy/pretext-php) | Community | — | `core-pretext-ecosystem` | 1 | 0 | 2026-03-29 |
+| [`mayneyao/eidos`](https://github.com/mayneyao/eidos) | Code search (importers) | — | `unclear-or-noise` | 3134 | 135 | 2026-05-30 |
+| [`MonaSweataSK/pretext-demo`](https://github.com/MonaSweataSK/pretext-demo) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-04-26 |
+| [`muni106/munilogs`](https://github.com/muni106/munilogs) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-03 |
+| [`nacs-970/gallery`](https://github.com/nacs-970/gallery) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-17 |
+| [`NolanCotter/svelte-tool-dashboard`](https://github.com/NolanCotter/svelte-tool-dashboard) | Code search (importers) | — | `core-pretext-ecosystem` | 1 | 0 | 2026-05-31 |
+| [`nu-wa/curricularr`](https://github.com/nu-wa/curricularr) | Code search (importers) | — | `core-pretext-ecosystem` | 2 | 0 | 2026-04-12 |
+| [`ohcnetwork/careui`](https://github.com/ohcnetwork/careui) | Code search (importers) | — | `core-pretext-ecosystem` | 2 | 2 | 2026-05-23 |
+| [`Only0neHpLeft/Aperture_web`](https://github.com/Only0neHpLeft/Aperture_web) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-04-21 |
+| [`open-pencil/open-pencil`](https://github.com/open-pencil/open-pencil) | Code search (importers) | — | `core-pretext-ecosystem` | 5296 | 480 | 2026-05-31 |
+| [`Paradise-in-Matrix/Paradise`](https://github.com/Paradise-in-Matrix/Paradise) | Code search (importers) | — | `core-pretext-ecosystem` | 15 | 2 | 2026-05-31 |
+| [`PetrGuan/Prelayout`](https://github.com/PetrGuan/Prelayout) | Code search (importers) | — | `core-pretext-ecosystem` | 56 | 1 | 2026-03-31 |
+| [`phodal/routa`](https://github.com/phodal/routa) | Code search (importers) | — | `core-pretext-ecosystem` | 1622 | 226 | 2026-05-26 |
+| [`Poojan38380/TextVerse`](https://github.com/Poojan38380/TextVerse) | Code search (importers) | — | `core-pretext-ecosystem` | 2 | 0 | 2026-04-08 |
+| [`puppe1990/epub-reader`](https://github.com/puppe1990/epub-reader) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-03-29 |
+| [`rararulab/rara`](https://github.com/rararulab/rara) | Code search (importers) | — | `adjacent-pretext` | 8 | 0 | 2026-05-28 |
+| [`RazorConsole/RazorConsole`](https://github.com/RazorConsole/RazorConsole) | Code search (importers) | — | `adjacent-pretext` | 1713 | 46 | 2026-05-18 |
+| [`Retroneek/syncbox-react`](https://github.com/Retroneek/syncbox-react) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-02 |
+| [`rinesh/pretext-breaker`](https://github.com/rinesh/pretext-breaker) | Code search (importers) | — | `core-pretext-ecosystem` | 11 | 1 | 2026-03-30 |
+| [`samwillis/premirror`](https://github.com/samwillis/premirror) | Code search (importers) | — | `unclear-or-noise` | 69 | 7 | 2026-03-29 |
+| [`SaranshBangar/weekly_dx`](https://github.com/SaranshBangar/weekly_dx) | Code search (importers) | — | `adjacent-pretext` | 0 | 0 | 2026-04-05 |
+| [`ScaleModeTools/WebGPU_Metaverse`](https://github.com/ScaleModeTools/WebGPU_Metaverse) | Code search (importers) | — | `unclear-or-noise` | 0 | 0 | 2026-05-02 |
+| [`SeloSlav/weft`](https://github.com/SeloSlav/weft) | Code search (importers) | — | `core-pretext-ecosystem` | 2 | 0 | 2026-03-31 |
+| [`shapidesign/portfolio`](https://github.com/shapidesign/portfolio) | Code search (importers) | — | `core-pretext-ecosystem` | 1 | 0 | 2026-05-21 |
+| [`sizzlorox/react-pretext`](https://github.com/sizzlorox/react-pretext) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-04-04 |
+| [`somnai-dreams/preimage`](https://github.com/somnai-dreams/preimage) | Discovery | — | `core-pretext-ecosystem` | 5 | 0 | 2026-05-05 |
+| [`spike-land-ai/spike-land`](https://github.com/spike-land-ai/spike-land) | Code search (importers) | — | `unclear-or-noise` | 1 | 2 | 2026-04-09 |
+| [`stayradiated/aeon`](https://github.com/stayradiated/aeon) | Code search (importers) | — | `core-pretext-ecosystem` | 1 | 1 | 2026-05-31 |
+| [`sumy7/piant`](https://github.com/sumy7/piant) | Code search (importers) | — | `unclear-or-noise` | 1 | 0 | 2026-05-17 |
+| [`SuperiormonLBJ/blog`](https://github.com/SuperiormonLBJ/blog) | Code search (importers) | — | `core-pretext-ecosystem` | 1 | 0 | 2026-04-05 |
+| [`swoo1226/stitch-mcp-app`](https://github.com/swoo1226/stitch-mcp-app) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-13 |
+| [`Tamnud-ghule/Effects_using_pretext`](https://github.com/Tamnud-ghule/Effects_using_pretext) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-04-12 |
+| [`TanStack/virtual`](https://github.com/TanStack/virtual) | Code search (importers) | — | `unclear-or-noise` | 6927 | 433 | 2026-05-28 |
+| [`tattle-made/Uli`](https://github.com/tattle-made/Uli) | Code search (importers) | — | `adjacent-pretext` | 52 | 34 | 2026-04-23 |
+| [`TheCoder30ec4/Ch_Varun`](https://github.com/TheCoder30ec4/Ch_Varun) | Code search (importers) | — | `adjacent-pretext` | 4 | 1 | 2026-05-08 |
+| [`TheGardenGallery/the-garden`](https://github.com/TheGardenGallery/the-garden) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-30 |
+| [`Timcai06/LinuxWeek11-Django-FormulaLab`](https://github.com/Timcai06/LinuxWeek11-Django-FormulaLab) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-28 |
+| [`Todomir/trunky`](https://github.com/Todomir/trunky) | Code search (importers) | — | `unclear-or-noise` | 10 | 0 | 2026-03-31 |
+| [`Tonkic/Tonkic.github.io`](https://github.com/Tonkic/Tonkic.github.io) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-31 |
+| [`Top-g-hash/nuxt-pretext`](https://github.com/Top-g-hash/nuxt-pretext) | Discovery | — | `core-pretext-ecosystem` | 1 | 0 | 2026-04-21 |
+| [`Travis-Gilbert/travisgilbert.me`](https://github.com/Travis-Gilbert/travisgilbert.me) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-30 |
+| [`TruElysia02/NekoPaw`](https://github.com/TruElysia02/NekoPaw) | Code search (importers) | — | `core-pretext-ecosystem` | 66 | 3 | 2026-04-29 |
+| [`UnablePath/MemoSpark`](https://github.com/UnablePath/MemoSpark) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 1 | 2026-05-13 |
+| [`vdavid/cmdr`](https://github.com/vdavid/cmdr) | Code search (importers) | — | `unclear-or-noise` | 14 | 1 | 2026-05-30 |
+| [`vectorize-io/hindsight`](https://github.com/vectorize-io/hindsight) | Code search (importers) | — | `unclear-or-noise` | 15333 | 865 | 2026-05-29 |
+| [`vedantlahane/Mnemos`](https://github.com/vedantlahane/Mnemos) | Code search (importers) | — | `adjacent-pretext` | 0 | 0 | 2026-04-29 |
+| [`vinayak-gh/portfolio`](https://github.com/vinayak-gh/portfolio) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-04-13 |
+| [`wesen/2026-05-27--pretext-design-system`](https://github.com/wesen/2026-05-27--pretext-design-system) | Code search (importers) | — | `adjacent-pretext` | 0 | 0 | 2026-05-27 |
+| [`whcss-5213/whc.blog.io`](https://github.com/whcss-5213/whc.blog.io) | Code search (importers) | — | `core-pretext-ecosystem` | 1 | 0 | 2026-05-23 |
+| [`WOOU-0510/uode`](https://github.com/WOOU-0510/uode) | Code search (importers) | — | `unclear-or-noise` | 0 | 0 | 2026-04-17 |
+| [`wxyhgk/retain-pdf`](https://github.com/wxyhgk/retain-pdf) | Code search (importers) | — | `adjacent-pretext` | 1828 | 216 | 2026-05-31 |
+| [`xeuxdev/pretext-demo`](https://github.com/xeuxdev/pretext-demo) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-04-04 |
+| [`xli2333/FDSM_Business_Knowledge`](https://github.com/xli2333/FDSM_Business_Knowledge) | Code search (importers) | — | `adjacent-pretext` | 0 | 0 | 2026-05-12 |
+| [`yeci226/personalWeb`](https://github.com/yeci226/personalWeb) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-04-15 |
+| [`yihui315/tianji-global`](https://github.com/yihui315/tianji-global) | Code search (importers) | — | `core-pretext-ecosystem` | 0 | 0 | 2026-05-27 |
+| [`YungBricoCoop/portfolio`](https://github.com/YungBricoCoop/portfolio) | Code search (importers) | — | `core-pretext-ecosystem` | 3 | 1 | 2026-04-27 |
+| [`zackham/stepwise`](https://github.com/zackham/stepwise) | Code search (importers) | — | `adjacent-pretext` | 14 | 1 | 2026-05-26 |
+| [`ZYKJShadow/Async`](https://github.com/ZYKJShadow/Async) | Code search (importers) | — | `core-pretext-ecosystem` | 482 | 78 | 2026-05-19 |
 
 ## Repos referencing @chenglou/pretext (code search)
 
@@ -210,126 +213,129 @@ _These rows come from public `gh search code` hits on `package.json` (npm scope 
 
 | Repo | Stars | Relevance | Rationale (short) |
 | --- | ---: | --- | --- |
-| [`0xGF/boneyard`](https://github.com/0xGF/boneyard) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`1sh22/pretex`](https://github.com/1sh22/pretex) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`8run3r/bcbtech`](https://github.com/8run3r/bcbtech) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`aaryapatel09/aaryapatel-website`](https://github.com/aaryapatel09/aaryapatel-website) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`abhishek462307/Convos-Agentic-Commerce`](https://github.com/abhishek462307/Convos-Agentic-Commerce) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Abhishekingle662/pretext-flow-demo`](https://github.com/Abhishekingle662/pretext-flow-demo) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`alanvww/watchwords`](https://github.com/alanvww/watchwords) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`aleclarson/pretext-markdown-stream`](https://github.com/aleclarson/pretext-markdown-stream) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`aloewright/smooth-site`](https://github.com/aloewright/smooth-site) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`AnupBhat30/twinkytype`](https://github.com/AnupBhat30/twinkytype) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`BEKO2210/my_interactive_books`](https://github.com/BEKO2210/my_interactive_books) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`bensongeorgethomas/portfolio`](https://github.com/bensongeorgethomas/portfolio) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`bevyip/play-part-3`](https://github.com/bevyip/play-part-3) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`blackjune67/asterum-system`](https://github.com/blackjune67/asterum-system) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`BlazeUp-AI/Observal`](https://github.com/BlazeUp-AI/Observal) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`blipman35/blipman35.github.io`](https://github.com/blipman35/blipman35.github.io) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`blueif16/astro-blog`](https://github.com/blueif16/astro-blog) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`broomva/life`](https://github.com/broomva/life) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Bruce699/Experimental-Todos`](https://github.com/Bruce699/Experimental-Todos) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Cbturtle2/PersonalWebsite`](https://github.com/Cbturtle2/PersonalWebsite) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Changan-Su/Forsion-AI-Studio`](https://github.com/Changan-Su/Forsion-AI-Studio) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Charles-xdx/UAV`](https://github.com/Charles-xdx/UAV) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`cybrowl/job_raptor`](https://github.com/cybrowl/job_raptor) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`d3plus/d3plus`](https://github.com/d3plus/d3plus) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`danmindru/pretext-changed-the-internet`](https://github.com/danmindru/pretext-changed-the-internet) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`declanhuggins/dhugs-com`](https://github.com/declanhuggins/dhugs-com) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`developing-today/code`](https://github.com/developing-today/code) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`dioliveira07/second-brain-hub`](https://github.com/dioliveira07/second-brain-hub) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`divsmith/webtuner`](https://github.com/divsmith/webtuner) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Dreyzab/grenzwanderer`](https://github.com/Dreyzab/grenzwanderer) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`EARider23/BusinessLauncha`](https://github.com/EARider23/BusinessLauncha) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`electrifiedchan/club_website`](https://github.com/electrifiedchan/club_website) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`f3liz-casa/yukari-rubi`](https://github.com/f3liz-casa/yukari-rubi) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Fearvox/dash-persona`](https://github.com/Fearvox/dash-persona) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`frank1003A/use-pretext`](https://github.com/frank1003A/use-pretext) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`fu351/SecretSauce`](https://github.com/fu351/SecretSauce) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`futurelesswindchan/blog0fwindchan`](https://github.com/futurelesswindchan/blog0fwindchan) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`geeksbaek/daily-magazine`](https://github.com/geeksbaek/daily-magazine) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`giolaq/giolaqaiblog`](https://github.com/giolaq/giolaqaiblog) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`girl-dream/VideoInHTML`](https://github.com/girl-dream/VideoInHTML) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`GizzyUwU/suri`](https://github.com/GizzyUwU/suri) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`greenmoach/pretext-app`](https://github.com/greenmoach/pretext-app) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Gregoryc28/VellumReader`](https://github.com/Gregoryc28/VellumReader) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`groupsum/markdown_workspace`](https://github.com/groupsum/markdown_workspace) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Guneshbari/SentinelCore_DEV`](https://github.com/Guneshbari/SentinelCore_DEV) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`h00mankind/Forge`](https://github.com/h00mankind/Forge) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`haoyangli16/pretext-research-tools`](https://github.com/haoyangli16/pretext-research-tools) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`heristop/heristop.github.io`](https://github.com/heristop/heristop.github.io) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`hgxszhj/pretext`](https://github.com/hgxszhj/pretext) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Himaan1998Y/pretext-pdf`](https://github.com/Himaan1998Y/pretext-pdf) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`imurodl/pretext-flow`](https://github.com/imurodl/pretext-flow) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`inference-sh/shadcn-registry`](https://github.com/inference-sh/shadcn-registry) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Innei/shuffle-article`](https://github.com/Innei/shuffle-article) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`inxeoz/pretext-inxeoz`](https://github.com/inxeoz/pretext-inxeoz) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Itsnotaka/v7`](https://github.com/Itsnotaka/v7) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`itxashancode/Refresh-My-Web`](https://github.com/itxashancode/Refresh-My-Web) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`jaddenki/gyaru`](https://github.com/jaddenki/gyaru) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Jamailar/RedBox`](https://github.com/Jamailar/RedBox) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`JeromyJSmith/GraftKit`](https://github.com/JeromyJSmith/GraftKit) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`justyn-clark/pretext-chat-poc`](https://github.com/justyn-clark/pretext-chat-poc) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`jwyxym/YGOPro3`](https://github.com/jwyxym/YGOPro3) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`jyami-kim/gitbook-page`](https://github.com/jyami-kim/gitbook-page) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`KakarotDB/interactive-calendar-component`](https://github.com/KakarotDB/interactive-calendar-component) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`kitsuyui/react-playground`](https://github.com/kitsuyui/react-playground) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`KyleDerZweite/basalt`](https://github.com/KyleDerZweite/basalt) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`L31T1NH0/modrinth-downloader`](https://github.com/L31T1NH0/modrinth-downloader) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`lawrenceli0228/pretext-playground`](https://github.com/lawrenceli0228/pretext-playground) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Leo555/pre-markdown`](https://github.com/Leo555/pre-markdown) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`libondev/pxd`](https://github.com/libondev/pxd) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`lyc-aon/successor-agent`](https://github.com/lyc-aon/successor-agent) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`LydiaShanCode/rainy-day`](https://github.com/LydiaShanCode/rainy-day) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`MaskyS/fractal-kanban-demo`](https://github.com/MaskyS/fractal-kanban-demo) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`mertcicekci0/merth-pretext-blockverse`](https://github.com/mertcicekci0/merth-pretext-blockverse) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`micaavigliano/the-editorial-engine-a11y`](https://github.com/micaavigliano/the-editorial-engine-a11y) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`MikeSchirtzinger/pretext-rs`](https://github.com/MikeSchirtzinger/pretext-rs) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`morten-olsen/editions`](https://github.com/morten-olsen/editions) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`MultiboxLabs/flow-browser`](https://github.com/MultiboxLabs/flow-browser) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`naitokosuke/lab`](https://github.com/naitokosuke/lab) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`NathanWalker/ns-pretext`](https://github.com/NathanWalker/ns-pretext) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`noletorious/portfolio-experimental`](https://github.com/noletorious/portfolio-experimental) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Notes9Org/Notes9`](https://github.com/Notes9Org/Notes9) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`ossaidqadri/otherdev-web-v2`](https://github.com/ossaidqadri/otherdev-web-v2) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Paradise-in-Matrix/Paradise`](https://github.com/Paradise-in-Matrix/Paradise) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`PASToR1951/QPIR-AIP`](https://github.com/PASToR1951/QPIR-AIP) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`PavanCodesNY/Pavan`](https://github.com/PavanCodesNY/Pavan) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`paxoscn/pretextall`](https://github.com/paxoscn/pretextall) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`peteriadamgabor/inkmirror`](https://github.com/peteriadamgabor/inkmirror) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Poojan38380/pretext-playground-upgrade`](https://github.com/Poojan38380/pretext-playground-upgrade) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Poojan38380/TextVerse`](https://github.com/Poojan38380/TextVerse) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`PoosaSaikiran/Project-01`](https://github.com/PoosaSaikiran/Project-01) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Pranesh-2005/digital-bouquet-pretext`](https://github.com/Pranesh-2005/digital-bouquet-pretext) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`ProjectMusa/tikzjs`](https://github.com/ProjectMusa/tikzjs) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`proticom/paperboy`](https://github.com/proticom/paperboy) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`quinteroac/pretext-tables`](https://github.com/quinteroac/pretext-tables) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`r-y-ren/renyxin`](https://github.com/r-y-ren/renyxin) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`rararulab/rara`](https://github.com/rararulab/rara) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`roip/chrome-extensions`](https://github.com/roip/chrome-extensions) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`samwillis/premirror`](https://github.com/samwillis/premirror) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`seocorp/figflow`](https://github.com/seocorp/figflow) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Signet-AI/signetai`](https://github.com/Signet-AI/signetai) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Simon-He95/markstream-vue`](https://github.com/Simon-He95/markstream-vue) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`sivavarunan/portfolio`](https://github.com/sivavarunan/portfolio) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`sonnes/september`](https://github.com/sonnes/september) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`souki1/AIMarketResearch`](https://github.com/souki1/AIMarketResearch) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`szkkb/wechat_miniprogram_dashboard`](https://github.com/szkkb/wechat_miniprogram_dashboard) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`TirtheshJani/portfolio`](https://github.com/TirtheshJani/portfolio) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Todomir/trunky`](https://github.com/Todomir/trunky) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`UNLINEARITY/Atlas-of-Control-and-AI`](https://github.com/UNLINEARITY/Atlas-of-Control-and-AI) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`UOR-Foundation/website`](https://github.com/UOR-Foundation/website) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`vectorize-io/hindsight`](https://github.com/vectorize-io/hindsight) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`Wetty-Technology/wetty-chat`](https://github.com/Wetty-Technology/wetty-chat) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`yys-4/pretext-try-lab`](https://github.com/yys-4/pretext-try-lab) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`zummed/starch`](https://github.com/zummed/starch) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`ZVN-DEV/yable`](https://github.com/ZVN-DEV/yable) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
-| [`ZYKJShadow/Async`](https://github.com/ZYKJShadow/Async) | — | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`daytonaio/daytona`](https://github.com/daytonaio/daytona) | 72501 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`heygen-com/hyperframes`](https://github.com/heygen-com/hyperframes) | 22794 | `unclear-or-noise` | Could not confirm @chenglou/pretext from GitHub API; may still be related — review README after clone. |
+| [`vectorize-io/hindsight`](https://github.com/vectorize-io/hindsight) | 15333 | `unclear-or-noise` | Could not confirm @chenglou/pretext from GitHub API; may still be related — review README after clone. |
+| [`TanStack/virtual`](https://github.com/TanStack/virtual) | 6927 | `unclear-or-noise` | Could not confirm @chenglou/pretext from GitHub API; may still be related — review README after clone. |
+| [`open-pencil/open-pencil`](https://github.com/open-pencil/open-pencil) | 5296 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`mayneyao/eidos`](https://github.com/mayneyao/eidos) | 3134 | `unclear-or-noise` | Could not confirm @chenglou/pretext from GitHub API; may still be related — review README after clone. |
+| [`wxyhgk/retain-pdf`](https://github.com/wxyhgk/retain-pdf) | 1828 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`RazorConsole/RazorConsole`](https://github.com/RazorConsole/RazorConsole) | 1713 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`phodal/routa`](https://github.com/phodal/routa) | 1622 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`ZYKJShadow/Async`](https://github.com/ZYKJShadow/Async) | 482 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`chthollyphile/folia-major`](https://github.com/chthollyphile/folia-major) | 99 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`samwillis/premirror`](https://github.com/samwillis/premirror) | 69 | `unclear-or-noise` | Could not confirm @chenglou/pretext from GitHub API; may still be related — review README after clone. |
+| [`TruElysia02/NekoPaw`](https://github.com/TruElysia02/NekoPaw) | 66 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`PetrGuan/Prelayout`](https://github.com/PetrGuan/Prelayout) | 56 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`tattle-made/Uli`](https://github.com/tattle-made/Uli) | 52 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`Paradise-in-Matrix/Paradise`](https://github.com/Paradise-in-Matrix/Paradise) | 15 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`vdavid/cmdr`](https://github.com/vdavid/cmdr) | 14 | `unclear-or-noise` | Could not confirm @chenglou/pretext from GitHub API; may still be related — review README after clone. |
+| [`zackham/stepwise`](https://github.com/zackham/stepwise) | 14 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`rinesh/pretext-breaker`](https://github.com/rinesh/pretext-breaker) | 11 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`Todomir/trunky`](https://github.com/Todomir/trunky) | 10 | `unclear-or-noise` | Could not confirm @chenglou/pretext from GitHub API; may still be related — review README after clone. |
+| [`rararulab/rara`](https://github.com/rararulab/rara) | 8 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`alexanderchen/typebeat`](https://github.com/alexanderchen/typebeat) | 6 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`HachiXD/Gatherend`](https://github.com/HachiXD/Gatherend) | 6 | `unclear-or-noise` | Could not confirm @chenglou/pretext from GitHub API; may still be related — review README after clone. |
+| [`eanzhao/Aexon`](https://github.com/eanzhao/Aexon) | 4 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`TheCoder30ec4/Ch_Varun`](https://github.com/TheCoder30ec4/Ch_Varun) | 4 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`bunizao/site`](https://github.com/bunizao/site) | 3 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`DovieW/microbook-maker`](https://github.com/DovieW/microbook-maker) | 3 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`YungBricoCoop/portfolio`](https://github.com/YungBricoCoop/portfolio) | 3 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`HongMing-Huang/pretext-frontend-motion`](https://github.com/HongMing-Huang/pretext-frontend-motion) | 2 | `adjacent-pretext` | Name or description suggests Pretext ecosystem; no package.json proof via API. |
+| [`nu-wa/curricularr`](https://github.com/nu-wa/curricularr) | 2 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`ohcnetwork/careui`](https://github.com/ohcnetwork/careui) | 2 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`Poojan38380/TextVerse`](https://github.com/Poojan38380/TextVerse) | 2 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`SeloSlav/weft`](https://github.com/SeloSlav/weft) | 2 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`1sh22/pretex`](https://github.com/1sh22/pretex) | 1 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`aflansburg/consultme`](https://github.com/aflansburg/consultme) | 1 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`AnanyaKulkarni205/TailsOfBijapur`](https://github.com/AnanyaKulkarni205/TailsOfBijapur) | 1 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`B4uti4github/tslash`](https://github.com/B4uti4github/tslash) | 1 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`developing-today/code`](https://github.com/developing-today/code) | 1 | `unclear-or-noise` | Could not confirm @chenglou/pretext from GitHub API; may still be related — review README after clone. |
+| [`fakoli/baara-next`](https://github.com/fakoli/baara-next) | 1 | `unclear-or-noise` | Could not confirm @chenglou/pretext from GitHub API; may still be related — review README after clone. |
+| [`fibegg/fibe-agent`](https://github.com/fibegg/fibe-agent) | 1 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`haru516-web/burn_two`](https://github.com/haru516-web/burn_two) | 1 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`JeromyJSmith/GraftKit`](https://github.com/JeromyJSmith/GraftKit) | 1 | `unclear-or-noise` | Could not confirm @chenglou/pretext from GitHub API; may still be related — review README after clone. |
+| [`jmilinovich/daily-paper`](https://github.com/jmilinovich/daily-paper) | 1 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`NolanCotter/svelte-tool-dashboard`](https://github.com/NolanCotter/svelte-tool-dashboard) | 1 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`shapidesign/portfolio`](https://github.com/shapidesign/portfolio) | 1 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`spike-land-ai/spike-land`](https://github.com/spike-land-ai/spike-land) | 1 | `unclear-or-noise` | Could not confirm @chenglou/pretext from GitHub API; may still be related — review README after clone. |
+| [`stayradiated/aeon`](https://github.com/stayradiated/aeon) | 1 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`sumy7/piant`](https://github.com/sumy7/piant) | 1 | `unclear-or-noise` | Could not confirm @chenglou/pretext from GitHub API; may still be related — review README after clone. |
+| [`SuperiormonLBJ/blog`](https://github.com/SuperiormonLBJ/blog) | 1 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`whcss-5213/whc.blog.io`](https://github.com/whcss-5213/whc.blog.io) | 1 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`0xnayuta/0xnayuta.github.io`](https://github.com/0xnayuta/0xnayuta.github.io) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`0xRupeshSardar/0xrupeshsardar.github.io`](https://github.com/0xRupeshSardar/0xrupeshsardar.github.io) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`alpeshvas/pretext-pdfjs`](https://github.com/alpeshvas/pretext-pdfjs) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`amulil/amulil`](https://github.com/amulil/amulil) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`AntoniovanDijck/sharecap`](https://github.com/AntoniovanDijck/sharecap) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`archiseino/pretext-playground`](https://github.com/archiseino/pretext-playground) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`ashishkr710/portfolio_Ashish`](https://github.com/ashishkr710/portfolio_Ashish) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`aswinzz/portfolio`](https://github.com/aswinzz/portfolio) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`bamarler/bamarler`](https://github.com/bamarler/bamarler) | 0 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`BlackBoxRecorder/memos`](https://github.com/BlackBoxRecorder/memos) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`blackjune67/asterum-system`](https://github.com/blackjune67/asterum-system) | 0 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`BrianIto/portfolio`](https://github.com/BrianIto/portfolio) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`cathy0305/studio_ipad`](https://github.com/cathy0305/studio_ipad) | 0 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`chomiruku/seija-kij.in`](https://github.com/chomiruku/seija-kij.in) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`code-highway-patrol/chp-web`](https://github.com/code-highway-patrol/chp-web) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`codehz/pretext-bug-diag`](https://github.com/codehz/pretext-bug-diag) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`Cofounder-Customer-Projects-1/shonda-martin-media-5c2fd1-marketing`](https://github.com/Cofounder-Customer-Projects-1/shonda-martin-media-5c2fd1-marketing) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`Compassie/Flame-test`](https://github.com/Compassie/Flame-test) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`Dragslayr/creativeProjects`](https://github.com/Dragslayr/creativeProjects) | 0 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`dredamonsta1/andre-portfolio-react`](https://github.com/dredamonsta1/andre-portfolio-react) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`eiaserinnys/remiel`](https://github.com/eiaserinnys/remiel) | 0 | `unclear-or-noise` | Could not confirm @chenglou/pretext from GitHub API; may still be related — review README after clone. |
+| [`electrifiedchan/sparta-edge-proctoring`](https://github.com/electrifiedchan/sparta-edge-proctoring) | 0 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`filipsjolanderr/filip-personal`](https://github.com/filipsjolanderr/filip-personal) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`fvnju/noteey`](https://github.com/fvnju/noteey) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`HamsterNote/HtmlParser`](https://github.com/HamsterNote/HtmlParser) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`Haneef99/portfolio`](https://github.com/Haneef99/portfolio) | 0 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`haoyangli16/pretext-research-tools`](https://github.com/haoyangli16/pretext-research-tools) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`hencter/newtab-home`](https://github.com/hencter/newtab-home) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`Icamtu/algo-trader`](https://github.com/Icamtu/algo-trader) | 0 | `unclear-or-noise` | Could not confirm @chenglou/pretext from GitHub API; may still be related — review README after clone. |
+| [`JAYATIAHUJA/Basilisk-s-Hunger`](https://github.com/JAYATIAHUJA/Basilisk-s-Hunger) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`jensrot/portfolio-site`](https://github.com/jensrot/portfolio-site) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`joshuadsilva1/altbridge`](https://github.com/joshuadsilva1/altbridge) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`kabeer11000/otherdev.web-02`](https://github.com/kabeer11000/otherdev.web-02) | 0 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`kristianernst/piui`](https://github.com/kristianernst/piui) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`leCheeseRoyale/ascii-games`](https://github.com/leCheeseRoyale/ascii-games) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`leesangb/caret`](https://github.com/leesangb/caret) | 0 | `unclear-or-noise` | Could not confirm @chenglou/pretext from GitHub API; may still be related — review README after clone. |
+| [`leesx/pretext-time-typography`](https://github.com/leesx/pretext-time-typography) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`liam-brophy/pretext`](https://github.com/liam-brophy/pretext) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`Liiift-Studio/AxisRhythm`](https://github.com/Liiift-Studio/AxisRhythm) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`Liiift-Studio/SteadyGray`](https://github.com/Liiift-Studio/SteadyGray) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`lkevincc0/agent-react-native-template`](https://github.com/lkevincc0/agent-react-native-template) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`llstarfish/pretext-dog`](https://github.com/llstarfish/pretext-dog) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`luckysolanki902/luckysolanki`](https://github.com/luckysolanki902/luckysolanki) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`MarJC5/wp-agent`](https://github.com/MarJC5/wp-agent) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`MonaSweataSK/pretext-demo`](https://github.com/MonaSweataSK/pretext-demo) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`muni106/munilogs`](https://github.com/muni106/munilogs) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`nacs-970/gallery`](https://github.com/nacs-970/gallery) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`Only0neHpLeft/Aperture_web`](https://github.com/Only0neHpLeft/Aperture_web) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`puppe1990/epub-reader`](https://github.com/puppe1990/epub-reader) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`Retroneek/syncbox-react`](https://github.com/Retroneek/syncbox-react) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`SaranshBangar/weekly_dx`](https://github.com/SaranshBangar/weekly_dx) | 0 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`ScaleModeTools/WebGPU_Metaverse`](https://github.com/ScaleModeTools/WebGPU_Metaverse) | 0 | `unclear-or-noise` | Could not confirm @chenglou/pretext from GitHub API; may still be related — review README after clone. |
+| [`sizzlorox/react-pretext`](https://github.com/sizzlorox/react-pretext) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`swoo1226/stitch-mcp-app`](https://github.com/swoo1226/stitch-mcp-app) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`Tamnud-ghule/Effects_using_pretext`](https://github.com/Tamnud-ghule/Effects_using_pretext) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`TheGardenGallery/the-garden`](https://github.com/TheGardenGallery/the-garden) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`Timcai06/LinuxWeek11-Django-FormulaLab`](https://github.com/Timcai06/LinuxWeek11-Django-FormulaLab) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`Tonkic/Tonkic.github.io`](https://github.com/Tonkic/Tonkic.github.io) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`Travis-Gilbert/travisgilbert.me`](https://github.com/Travis-Gilbert/travisgilbert.me) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`UnablePath/MemoSpark`](https://github.com/UnablePath/MemoSpark) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`vedantlahane/Mnemos`](https://github.com/vedantlahane/Mnemos) | 0 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`vinayak-gh/portfolio`](https://github.com/vinayak-gh/portfolio) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`wesen/2026-05-27--pretext-design-system`](https://github.com/wesen/2026-05-27--pretext-design-system) | 0 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`WOOU-0510/uode`](https://github.com/WOOU-0510/uode) | 0 | `unclear-or-noise` | Could not confirm @chenglou/pretext from GitHub API; may still be related — review README after clone. |
+| [`xeuxdev/pretext-demo`](https://github.com/xeuxdev/pretext-demo) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`xli2333/FDSM_Business_Knowledge`](https://github.com/xli2333/FDSM_Business_Knowledge) | 0 | `adjacent-pretext` | Matched public GitHub code search for package.json referencing Pretext; could not load package.json via API — verify loc… |
+| [`yeci226/personalWeb`](https://github.com/yeci226/personalWeb) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
+| [`yihui315/tianji-global`](https://github.com/yihui315/tianji-global) | 0 | `core-pretext-ecosystem` | package.json lists @chenglou/pretext (dependency / peer / dev). |
 
 ## Repos in this fork’s inventory but not in awesome-pretext README tables
 
-- [`acoyfellow/cloudterm`](https://github.com/acoyfellow/cloudterm) — (gh repo view failed: SyntaxError: JSON Parse error: Unrecognized token '')
-- [`darkroomengineering/fitbox`](https://github.com/darkroomengineering/fitbox) — (gh repo view failed: SyntaxError: JSON Parse error: Unrecognized token '')
-- [`somnai-dreams/preimage`](https://github.com/somnai-dreams/preimage) — (gh repo view failed: SyntaxError: JSON Parse error: Unrecognized token '')
-- [`Top-g-hash/nuxt-pretext`](https://github.com/Top-g-hash/nuxt-pretext) — (gh repo view failed: SyntaxError: JSON Parse error: Unrecognized token '')
+- [`acoyfellow/cloudterm`](https://github.com/acoyfellow/cloudterm) — Web terminal emulator. DOM-rendered. Built on @chenglou/pretext.
+- [`darkroomengineering/fitbox`](https://github.com/darkroomengineering/fitbox) — Reflow-free text-to-box fitting for React, built on Pretext.
+- [`somnai-dreams/preimage`](https://github.com/somnai-dreams/preimage) — Fast, accurate & comprehensive image measurement & layout, based on @chenglou/pretext
+- [`Top-g-hash/nuxt-pretext`](https://github.com/Top-g-hash/nuxt-pretext) — Pretext integration for Nuxt. Fast multiline text measurement without DOM reflow. Components, composables, and canvas rendering included.
 

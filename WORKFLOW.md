@@ -157,6 +157,23 @@ Results from the last integration run are appended in this file’s **Verificati
 
 ## Verification log
 
+
+**Session: 2026-05-31 (`pretext-upstream-rhythm` — merge upstream 0.0.7)**
+
+| Step | Result |
+|------|--------|
+| `git merge --no-ff upstream/main` | Pass — merge `4c73acc` (**18** upstream commits: **0.0.7**, no-space punctuation chains, knip, streaming perf, symbol-check); conflicts in `package.json`, `DEVELOPMENT.md`, `src/analysis.ts`, `bun.lock` resolved; follow-up `aeb9cba` for `tsconfig`/`knip` excludes |
+| `main..upstream/main` after merge | **Empty** (0 behind upstream) |
+| `package.json` / upstream tag | **0.0.7** / upstream tag **v0.0.7** (no GitHub Releases published) |
+| `bun install` | Pass (added `knip`) |
+| `bun run check` | Pass (`tsc` + `oxlint` + `knip`) |
+| `bun run test` | Pass (**133** tests) |
+| `bun run site:build` | Pass (`site/` generated; re-run after `ecosystem:intake`) |
+| `bun run github:export` | Pass — issues 86, pulls 106, issue comments 244, PR review comments 15 |
+| `bun run github:triage` | Pass — wave-1: **#186**, **#184**, **#182**, **#180**, **#175** |
+| `bun run github:priissues` | Pass — [PRISSUES.md](PRISSUES.md) refreshed |
+| `bun run ecosystem:intake` | Pass — **170** repos in inventory; **118** new from `gh search code` (deduped); awesome README link warnings unchanged pattern |
+| Fork `pretext-a11y` | `git fetch origin` — **no** new commits on `origin/main` |
 **Session: 2026-04-23 (`pretext-upstream-rhythm` — merge upstream 0.0.6)**
 
 | Step | Result |
