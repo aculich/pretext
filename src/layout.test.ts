@@ -10,8 +10,10 @@ const LINE_HEIGHT = 19
 
 type LayoutModule = typeof import('./layout.ts')
 type LineBreakModule = typeof import('./line-break.ts')
+type MeasurementModule = typeof import('./measurement.ts')
 type RichInlineModule = typeof import('./rich-inline.ts')
 type AnalysisModule = typeof import('./analysis.ts')
+type SegmentMetrics = ReturnType<MeasurementModule['getSegmentMetrics']>
 
 let prepare: LayoutModule['prepare']
 let prepareWithSegments: LayoutModule['prepareWithSegments']
@@ -19,7 +21,9 @@ let layout: LayoutModule['layout']
 let layoutWithLines: LayoutModule['layoutWithLines']
 let layoutNextLine: LayoutModule['layoutNextLine']
 let layoutNextLineRange: LayoutModule['layoutNextLineRange']
+let materializeLineRange: LayoutModule['materializeLineRange']
 let measureLineStats: LayoutModule['measureLineStats']
+let measureNaturalWidth: LayoutModule['measureNaturalWidth']
 let walkLineRanges: LayoutModule['walkLineRanges']
 let minContentWidth: LayoutModule['minContentWidth']
 let maxContentWidth: LayoutModule['maxContentWidth']
@@ -29,8 +33,10 @@ let setMeasureFunction: LayoutModule['setMeasureFunction']
 let countPreparedLines: LineBreakModule['countPreparedLines']
 let measurePreparedLineGeometry: LineBreakModule['measurePreparedLineGeometry']
 let stepPreparedLineGeometry: LineBreakModule['stepPreparedLineGeometry']
-let walkPreparedLines: LineBreakModule['walkPreparedLines']
+let walkPreparedLinesRaw: LineBreakModule['walkPreparedLinesRaw']
+let getSegmentBreakableFitAdvances: MeasurementModule['getSegmentBreakableFitAdvances']
 let prepareRichInline: RichInlineModule['prepareRichInline']
+let layoutNextRichInlineLineRange: RichInlineModule['layoutNextRichInlineLineRange']
 let materializeRichInlineLineRange: RichInlineModule['materializeRichInlineLineRange']
 let measureRichInlineStats: RichInlineModule['measureRichInlineStats']
 let walkRichInlineLineRanges: RichInlineModule['walkRichInlineLineRanges']
@@ -265,10 +271,11 @@ class TestOffscreenCanvas {
 
 beforeAll(async () => {
   Reflect.set(globalThis, 'OffscreenCanvas', TestOffscreenCanvas)
-  const [analysisMod, mod, lineBreakMod, richInlineMod] = await Promise.all([
+  const [analysisMod, mod, lineBreakMod, measurementMod, richInlineMod] = await Promise.all([
     import('./analysis.ts'),
     import('./layout.ts'),
     import('./line-break.ts'),
+    import('./measurement.ts'),
     import('./rich-inline.ts'),
   ])
   ;({ isCJK } = analysisMod)
@@ -279,7 +286,9 @@ beforeAll(async () => {
     layoutWithLines,
     layoutNextLine,
     layoutNextLineRange,
+    materializeLineRange,
     measureLineStats,
+    measureNaturalWidth,
     walkLineRanges,
     minContentWidth,
     maxContentWidth,
@@ -287,13 +296,33 @@ beforeAll(async () => {
     setLocale,
     setMeasureFunction,
   } = mod)
-  ;({ countPreparedLines, measurePreparedLineGeometry, stepPreparedLineGeometry, walkPreparedLines } = lineBreakMod)
-  ;({ prepareRichInline, materializeRichInlineLineRange, measureRichInlineStats, walkRichInlineLineRanges } = richInlineMod)
+  ;({ countPreparedLines, measurePreparedLineGeometry, stepPreparedLineGeometry, walkPreparedLinesRaw } = lineBreakMod)
+  ;({ getSegmentBreakableFitAdvances } = measurementMod)
+  ;({ prepareRichInline, layoutNextRichInlineLineRange, materializeRichInlineLineRange, measureRichInlineStats, walkRichInlineLineRanges } = richInlineMod)
 })
 
 beforeEach(() => {
   setLocale(undefined)
   clearCache()
+})
+
+describe('measurement invariants', () => {
+  test('breakable fit cache distinguishes fit modes', () => {
+    const metrics: SegmentMetrics = { width: 80, containsCJK: false }
+    const cache = new Map<string, SegmentMetrics>([
+      ['a', { width: 10, containsCJK: false }],
+      ['b', { width: 20, containsCJK: false }],
+      ['c', { width: 30, containsCJK: false }],
+      ['ab', { width: 35, containsCJK: false }],
+      ['bc', { width: 60, containsCJK: false }],
+      ['abc', metrics],
+    ])
+
+    expect(getSegmentBreakableFitAdvances('abc', metrics, cache, 0, 'sum-graphemes')).toEqual([10, 20, 30])
+    expect(getSegmentBreakableFitAdvances('abc', metrics, cache, 0, 'pair-context')).toEqual([10, 25, 40])
+    expect(getSegmentBreakableFitAdvances('abc', metrics, cache, 0, 'segment-prefixes')).toEqual([10, 25, 45])
+    expect(getSegmentBreakableFitAdvances('abc', metrics, cache, 0, 'sum-graphemes')).toEqual([10, 20, 30])
+  })
 })
 
 describe('prepare invariants', () => {
@@ -386,18 +415,23 @@ describe('prepare invariants', () => {
     const narrow = layoutWithLines(prefixed, softBreakWidth, LINE_HEIGHT)
     expect(narrow.lineCount).toBe(2)
     expect(narrow.lines.map(line => line.text)).toEqual(['foo trans-', 'atlantic'])
+    expect(narrow.lines[0]!.width).toBeCloseTo(
+      prefixed.widths[0]! + prefixed.widths[1]! + prefixed.widths[2]! + prefixed.discretionaryHyphenWidth,
+      5,
+    )
     expect(layout(prefixed, softBreakWidth, LINE_HEIGHT).lineCount).toBe(narrow.lineCount)
 
-    const continuedSoftBreakWidth =
+    const hyphenAndOneGraphemeWidth =
       prefixed.widths[0]! +
       prefixed.widths[1]! +
       prefixed.widths[2]! +
       prefixed.breakableFitAdvances[4]![0]! +
       prefixed.discretionaryHyphenWidth +
       0.1
-    const continued = layoutWithLines(prefixed, continuedSoftBreakWidth, LINE_HEIGHT)
-    expect(continued.lines.map(line => line.text)).toEqual(['foo trans-a', 'tlantic'])
-    expect(layout(prefixed, continuedSoftBreakWidth, LINE_HEIGHT).lineCount).toBe(continued.lineCount)
+    const strict = layoutWithLines(prefixed, hyphenAndOneGraphemeWidth, LINE_HEIGHT)
+    expect(strict.lines.map(line => line.text)).toEqual(['foo trans-', 'atlantic'])
+    expect(collectStreamedLines(prefixed, hyphenAndOneGraphemeWidth)).toEqual(strict.lines)
+    expect(layout(prefixed, hyphenAndOneGraphemeWidth, LINE_HEIGHT).lineCount).toBe(strict.lineCount)
   })
 
   test('keeps closing punctuation attached to the preceding word', () => {
@@ -451,6 +485,20 @@ describe('prepare invariants', () => {
     expect(prepared.segments).toEqual(['“Whenever'])
   })
 
+  test('keeps opening punctuation attached to the following word', () => {
+    const textBefore = 'aaaaaaaaaaaaaaaaaaa'
+    for (const opener of ['¡', '¿', '‚', '„', '\u2E18']) {
+      const prepared = prepareWithSegments(`${textBefore} ${opener}Wort`, FONT)
+      expect(prepared.segments).toEqual([textBefore, ' ', `${opener}Wort`])
+
+      const strandedOpenerWidth = measureWidth(`${textBefore} ${opener}`, FONT) + 0.1
+      expect(layoutWithLines(prepared, strandedOpenerWidth, LINE_HEIGHT).lines.map(line => line.text)).toEqual([
+        `${textBefore} `,
+        `${opener}Wort`,
+      ])
+    }
+  })
+
   test('keeps apostrophe-led elisions attached to the following word', () => {
     const prepared = prepareWithSegments('“Take ’em downstairs', FONT)
     expect(prepared.segments).toEqual(['“Take', ' ', '’em', ' ', 'downstairs'])
@@ -478,6 +526,18 @@ describe('prepare invariants', () => {
     expect(prepared.segments).toEqual([text])
   })
 
+  test('keeps numeric prefix and postfix line-break classes attached', () => {
+    expect(prepareWithSegments('$___', FONT).segments).toEqual(['$___'])
+    expect(prepareWithSegments('$500', FONT).segments).toEqual(['$500'])
+    expect(prepareWithSegments('500€', FONT).segments).toEqual(['500€'])
+    expect(prepareWithSegments('+500', FONT).segments).toEqual(['+500'])
+    expect(prepareWithSegments('−500', FONT).segments).toEqual(['−500'])
+    expect(prepareWithSegments('foo%bar', FONT).segments).toEqual(['foo%bar'])
+    expect(prepareWithSegments('50°C', FONT).segments).toEqual(['50°C'])
+    expect(prepareWithSegments('$(12.35)', FONT).segments).toEqual(['$(12.35)'])
+    expect(prepareWithSegments('-1/12', FONT).segments).toEqual(['-1/12'])
+  })
+
   test('keeps URL-like runs together as one breakable segment', () => {
     const prepared = prepareWithSegments('see https://example.com/reports/q3?lang=ar&mode=full now', FONT)
     expect(prepared.segments).toEqual([
@@ -490,8 +550,38 @@ describe('prepare invariants', () => {
     ])
   })
 
-  test('keeps no-space ascii punctuation chains together as one breakable segment', () => {
-    const prepared = prepareWithSegments('foo;bar foo:bar foo,bar foo.bar as;lkdfjals;k', FONT)
+  test('prefers hyphen-like boundaries inside overlong breakable runs', () => {
+    const text = 'https://alpha-beta-gamma-delta.example.test/path'
+    const prepared = prepareWithSegments(text, FONT)
+    const width = measureWidth('https://alpha-bet', FONT) + 0.1
+
+    expect(prepared.segments).toEqual([text])
+
+    const batched = layoutWithLines(prepared, width, LINE_HEIGHT)
+    expect(batched.lines[0]?.text).toBe('https://alpha-')
+    expect(batched.lines[1]?.text).toBe('beta-gamma-')
+    expect(collectStreamedLines(prepared, width)).toEqual(batched.lines)
+    expect(layout(prepared, width, LINE_HEIGHT).lineCount).toBe(batched.lineCount)
+    expect(measureLineStats(prepared, width).lineCount).toBe(batched.lineCount)
+
+    const unicodeDash = prepareWithSegments('https://alpha\u2010beta\u2010gamma.example.test/path', FONT)
+    const unicodeWidth = measureWidth('https://alpha\u2010b', FONT) + 0.1
+    expect(layoutWithLines(unicodeDash, unicodeWidth, LINE_HEIGHT).lines[0]?.text).toBe('https://alpha\u2010')
+  })
+
+  test('does not prefer hyphen-like boundaries in keep-all runs', () => {
+    const text = 'foo-bar日本語'
+    const prepared = prepareWithSegments(text, FONT, { wordBreak: 'keep-all' })
+
+    expect(prepared.segments).toEqual(['foo-', 'bar日本語'])
+    expect(prepared.breakablePreferredBreaks).toEqual([null, null])
+  })
+
+  test('keeps no-space punctuation chains together as one breakable segment', () => {
+    const prepared = prepareWithSegments(
+      'foo;bar foo:bar foo,bar foo.bar as;lkdfjals;k ééé.ééé αβγ.δεζ אבג.דהו',
+      FONT,
+    )
     expect(prepared.segments).toEqual([
       'foo;bar',
       ' ',
@@ -502,7 +592,34 @@ describe('prepare invariants', () => {
       'foo.bar',
       ' ',
       'as;lkdfjals;k',
+      ' ',
+      'ééé.ééé',
+      ' ',
+      'αβγ.δεζ',
+      ' ',
+      'אבג.דהו',
     ])
+  })
+
+  test('keeps no-space word-internal symbol chains together as one breakable segment', () => {
+    for (const symbol of ['`', '~', '!', '@', '#', '^', '&', '*', '=', '/', '{', '}', '[', ']', '|', '"', '<', '>', '♂', '╥', '∟', '┌']) {
+      expect(prepareWithSegments(`foo${symbol}bar`, FONT).segments).toEqual([`foo${symbol}bar`])
+    }
+
+    expect(prepareWithSegments('foo#$bar', FONT).segments).toEqual(['foo#$bar'])
+    expect(prepareWithSegments('#hashtag mention@domain', FONT).segments).toEqual([
+      '#hashtag',
+      ' ',
+      'mention@domain',
+    ])
+  })
+
+  test('keeps browser break symbols out of no-space word-internal symbol chains', () => {
+    expect(prepareWithSegments('foo?bar', FONT).segments).toEqual(['foo?', 'bar'])
+    expect(prepareWithSegments('foo—bar', FONT).segments).toEqual(['foo', '—', 'bar'])
+    expect(prepareWithSegments('foo…bar', FONT).segments).toEqual(['foo…', 'bar'])
+    expect(prepareWithSegments('foo‼bar', FONT).segments).toEqual(['foo', '‼', 'bar'])
+    expect(prepareWithSegments('foo🙂bar', FONT).segments).toEqual(['foo', '🙂', 'bar'])
   })
 
   test('keeps numeric time ranges together', () => {
@@ -639,7 +756,7 @@ describe('prepare invariants', () => {
     expect(prepareWithSegments('東京(Tokyo)と', FONT).segments).toEqual(['東', '京', '(Tokyo)', 'と'])
     expect(prepareWithSegments('北京(Beijing)和', FONT).segments).toEqual(['北', '京', '(Beijing)', '和'])
     expect(prepareWithSegments('참조[1]와', FONT).segments).toEqual(['참', '조', '[1]', '와'])
-    expect(prepareWithSegments('AB(CD)', FONT).segments).toEqual(['AB(', 'CD)'])
+    expect(prepareWithSegments('AB(CD)', FONT).segments).toEqual(['AB(CD)'])
   })
 
   test('prepare and prepareWithSegments agree on layout behavior', () => {
@@ -694,7 +811,7 @@ describe('prepare invariants', () => {
 })
 
 describe('rich-inline invariants', () => {
-  test('letterSpacing applies inside rich-inline items', () => {
+  test('letterSpacing preserves the terminal gap inside rich-inline items', () => {
     const spacing = 3
     const prepared = prepareRichInline([
       { text: 'AB', font: FONT, letterSpacing: spacing },
@@ -702,7 +819,31 @@ describe('rich-inline invariants', () => {
 
     expect(measureRichInlineStats(prepared, 200)).toEqual({
       lineCount: 1,
-      maxLineWidth: measureWidth('AB', FONT) + spacing,
+      maxLineWidth: measureWidth('AB', FONT) + spacing * 2,
+    })
+  })
+
+  test('letterSpacing preserves rich-inline gaps across styled item boundaries', () => {
+    const spacing = 3
+    const prepared = prepareRichInline([
+      { text: 'A', font: '700 16px Test Sans', letterSpacing: spacing },
+      { text: 'BC', font: FONT, letterSpacing: spacing },
+    ])
+    const expectedWidth =
+      measureWidth('A', '700 16px Test Sans') +
+      measureWidth('BC', FONT) +
+      spacing * 3
+    const firstItemWidth = measureWidth('A', '700 16px Test Sans') + spacing
+
+    expect(measureRichInlineStats(prepared, 200)).toEqual({
+      lineCount: 1,
+      maxLineWidth: expectedWidth,
+    })
+    expect(layoutNextRichInlineLineRange(prepared, firstItemWidth + 0.1)).toMatchObject({
+      fragments: [
+        { itemIndex: 0 },
+      ],
+      width: firstItemWidth,
     })
   })
 
@@ -782,10 +923,77 @@ describe('rich-inline invariants', () => {
       )
     }
   })
+
+  test('layoutNextRichInlineLineRange leaves the start cursor reusable', () => {
+    const prepared = prepareRichInline([
+      { text: 'Ship ', font: FONT },
+      { text: '@maya', font: '700 12px Test Sans', break: 'never', extraWidth: 18 },
+      { text: "'s rich note wraps cleanly", font: FONT },
+    ])
+    const start = { itemIndex: 0, segmentIndex: 0, graphemeIndex: 0 }
+    const firstLine = layoutNextRichInlineLineRange(prepared, 120, start)
+
+    expect(firstLine).not.toBeNull()
+    expect(start).toEqual({ itemIndex: 0, segmentIndex: 0, graphemeIndex: 0 })
+    expect(layoutNextRichInlineLineRange(prepared, 120, start)).toEqual(firstLine)
+
+    const nextStart = { ...firstLine!.end }
+    expect(layoutNextRichInlineLineRange(prepared, 120, firstLine!.end)).not.toBeNull()
+    expect(firstLine!.end).toEqual(nextStart)
+  })
+
+  test('rich inline item boundaries do not accept forced-progress overflow', () => {
+    const maxWidth = measureWidth('A', FONT) + 1
+    const prepared = prepareRichInline([
+      { text: 'A', font: FONT },
+      { text: 'C', font: FONT },
+      { text: 'D', font: FONT },
+    ])
+    const widths: number[] = []
+
+    const lineCount = walkRichInlineLineRanges(prepared, maxWidth, line => {
+      widths.push(line.width)
+    })
+
+    expect(widths).toEqual([
+      measureWidth('A', FONT),
+      measureWidth('C', FONT),
+      measureWidth('D', FONT),
+    ])
+    expect(measureRichInlineStats(prepared, maxWidth)).toEqual({
+      lineCount,
+      maxLineWidth: Math.max(...widths),
+    })
+  })
+
+  test('split CJK rich inline items stay inside the line width', () => {
+    const maxWidth = measureWidth('中', FONT) + 1
+    const prepared = prepareRichInline([
+      { text: '中', font: FONT },
+      { text: '国 ', font: FONT },
+      { text: '文', font: FONT },
+    ])
+    const widths: number[] = []
+
+    const lineCount = walkRichInlineLineRanges(prepared, maxWidth, range => {
+      const line = materializeRichInlineLineRange(prepared, range)
+      widths.push(line.width)
+    })
+
+    expect(widths).toEqual([
+      measureWidth('中', FONT),
+      measureWidth('国', FONT),
+      measureWidth('文', FONT),
+    ])
+    expect(measureRichInlineStats(prepared, maxWidth)).toEqual({
+      lineCount,
+      maxLineWidth: Math.max(...widths),
+    })
+  })
 })
 
 describe('layout invariants', () => {
-  test('letterSpacing adds only inter-grapheme gaps, not trailing gaps', () => {
+  test('letterSpacing preserves terminal line-end gaps like browsers', () => {
     const spacing = 4
 
     const single = layoutWithLines(
@@ -793,21 +1001,21 @@ describe('layout invariants', () => {
       200,
       LINE_HEIGHT,
     )
-    expect(single.lines[0]!.width).toBeCloseTo(measureWidth('A', FONT), 5)
+    expect(single.lines[0]!.width).toBeCloseTo(measureWidth('A', FONT) + spacing, 5)
 
     const pair = layoutWithLines(
       prepareWithSegments('AB', FONT, { letterSpacing: spacing }),
       200,
       LINE_HEIGHT,
     )
-    expect(pair.lines[0]!.width).toBeCloseTo(measureWidth('AB', FONT) + spacing, 5)
+    expect(pair.lines[0]!.width).toBeCloseTo(measureWidth('AB', FONT) + spacing * 2, 5)
 
     const segmented = layoutWithLines(
       prepareWithSegments('A B', FONT, { letterSpacing: spacing }),
       200,
       LINE_HEIGHT,
     )
-    expect(segmented.lines[0]!.width).toBeCloseTo(measureWidth('A B', FONT) + spacing * 2, 5)
+    expect(segmented.lines[0]!.width).toBeCloseTo(measureWidth('A B', FONT) + spacing * 3, 5)
   })
 
   test('letterSpacing zero preserves prepared widths', () => {
@@ -827,19 +1035,19 @@ describe('layout invariants', () => {
     )
 
     expect(wrapped.lines.map(line => line.text)).toEqual(['A ', 'B'])
-    expect(wrapped.lines[0]!.width).toBeCloseTo(lineAWidth, 5)
+    expect(wrapped.lines[0]!.width).toBeCloseTo(lineAWidth + spacing, 5)
   })
 
   test('letterSpacing restarts at grapheme line breaks inside a word', () => {
     const spacing = 5
     const prepared = prepareWithSegments('abcd', FONT, { letterSpacing: spacing })
-    const twoGraphemesWidth = measureWidth('ab', FONT) + spacing
-    const wrapped = layoutWithLines(prepared, twoGraphemesWidth + spacing + 0.1, LINE_HEIGHT)
+    const twoGraphemesWidth = measureWidth('ab', FONT) + spacing * 2
+    const wrapped = layoutWithLines(prepared, twoGraphemesWidth + 0.1, LINE_HEIGHT)
 
     expect(wrapped.lines.map(line => line.text)).toEqual(['ab', 'cd'])
     expect(wrapped.lines[0]!.width).toBeCloseTo(twoGraphemesWidth, 5)
     expect(wrapped.lines[1]!.width).toBeCloseTo(twoGraphemesWidth, 5)
-    expect(layout(prepared, twoGraphemesWidth + spacing + 0.1, LINE_HEIGHT).lineCount).toBe(wrapped.lineCount)
+    expect(layout(prepared, twoGraphemesWidth + 0.1, LINE_HEIGHT).lineCount).toBe(wrapped.lineCount)
   })
 
   test('letterSpacing uses the trailing fit gap when wrapping inside a word', () => {
@@ -850,7 +1058,18 @@ describe('layout invariants', () => {
     const wrapped = layoutWithLines(prepared, allPaintWidth + spacing / 2, LINE_HEIGHT)
 
     expect(wrapped.lines.map(line => line.text)).toEqual(['abc', 'd'])
-    expect(wrapped.lines[0]!.width).toBeCloseTo(measureWidth('abc', FONT) + spacing * 2, 5)
+    expect(wrapped.lines[0]!.width).toBeCloseTo(measureWidth('abc', FONT) + spacing * 3, 5)
+  })
+
+  test('letterSpacing preserves terminal spacing after a visible soft hyphen', () => {
+    const spacing = 5
+    const prepared = prepareWithSegments('trans\u00ADatlantic', FONT, { letterSpacing: spacing })
+    const softHyphenLineWidth = prepared.widths[0]! + prepared.discretionaryHyphenWidth
+    const wrapped = layoutWithLines(prepared, softHyphenLineWidth - spacing / 2, LINE_HEIGHT)
+
+    expect(wrapped.lines[0]!.text).toBe('trans-')
+    expect(wrapped.lines[0]!.width).toBeCloseTo(softHyphenLineWidth, 5)
+    expect(wrapped.lines[1]!.text.startsWith('-')).toBe(false)
   })
 
   test('letterSpacing trailing fit gap respects combining graphemes', () => {
@@ -881,7 +1100,7 @@ describe('layout invariants', () => {
       LINE_HEIGHT,
     ).lines[0]!
 
-    expect(line.width).toBeCloseTo(measureWidth('AB', FONT) + spacing, 5)
+    expect(line.width).toBeCloseTo(measureWidth('AB', FONT) + spacing * 2, 5)
   })
 
   test('letterSpacing applies across CJK segment boundaries', () => {
@@ -892,7 +1111,7 @@ describe('layout invariants', () => {
       LINE_HEIGHT,
     ).lines[0]!
 
-    expect(line.width).toBeCloseTo(measureWidth('春天', FONT) + spacing, 5)
+    expect(line.width).toBeCloseTo(measureWidth('春天', FONT) + spacing * 2, 5)
   })
 
   test('letterSpacing applies through digits and punctuation', () => {
@@ -903,7 +1122,7 @@ describe('layout invariants', () => {
       300,
       LINE_HEIGHT,
     ).lines[0]!
-    const gapCount = getSegmentGraphemes(text).length - 1
+    const gapCount = getSegmentGraphemes(text).length
 
     expect(line.width).toBeCloseTo(measureWidth(text, FONT) + spacing * gapCount, 5)
   })
@@ -916,7 +1135,7 @@ describe('layout invariants', () => {
       300,
       LINE_HEIGHT,
     ).lines[0]!
-    const gapCount = getSegmentGraphemes(text).length - 1
+    const gapCount = getSegmentGraphemes(text).length
 
     expect(line.width).toBeCloseTo(measureWidth(text, FONT) + spacing * gapCount, 5)
   })
@@ -929,7 +1148,7 @@ describe('layout invariants', () => {
       LINE_HEIGHT,
     ).lines[0]!
 
-    expect(line.width).toBeCloseTo(measureWidth('A😀B', FONT) + spacing * 2, 5)
+    expect(line.width).toBeCloseTo(measureWidth('A😀B', FONT) + spacing * 3, 5)
   })
 
   test('letterSpacing stays line-local across hard breaks', () => {
@@ -941,8 +1160,8 @@ describe('layout invariants', () => {
     ).lines
 
     expect(lines.map(line => line.text)).toEqual(['A', 'B'])
-    expect(lines[0]!.width).toBeCloseTo(measureWidth('A', FONT), 5)
-    expect(lines[1]!.width).toBeCloseTo(measureWidth('B', FONT), 5)
+    expect(lines[0]!.width).toBeCloseTo(measureWidth('A', FONT) + spacing, 5)
+    expect(lines[1]!.width).toBeCloseTo(measureWidth('B', FONT) + spacing, 5)
   })
 
   test('letterSpacing participates in pre-wrap tab positioning', () => {
@@ -952,7 +1171,7 @@ describe('layout invariants', () => {
     const line = layoutWithLines(prepared, 200, LINE_HEIGHT).lines[0]!
     const aWidth = measureWidth('A', FONT)
     const tabAdvance = nextTabAdvance(aWidth + spacing, measureWidth(' ', FONT))
-    const expected = aWidth + spacing + tabAdvance + spacing + measureWidth('B', FONT)
+    const expected = aWidth + spacing + tabAdvance + spacing + measureWidth('B', FONT) + spacing
 
     expect(line.text).toBe(text)
     expect(line.width).toBeCloseTo(expected, 5)
@@ -1384,6 +1603,16 @@ describe('layout invariants', () => {
     })))
   })
 
+  test('materializeLineRange reproduces streamed layout lines', () => {
+    const prepared = prepareWithSegments('foo trans\u00ADatlantic said "hello" to 世界 and waved.', FONT)
+    const width = prepared.widths[0]! + prepared.widths[1]! + prepared.widths[2]! + prepared.breakableFitAdvances[4]![0]! + prepared.discretionaryHyphenWidth + 0.1
+    const expected = layoutWithLines(prepared, width, LINE_HEIGHT).lines[0]!
+    const range = layoutNextLineRange(prepared, { segmentIndex: 0, graphemeIndex: 0 }, width)
+
+    expect(range).not.toBeNull()
+    expect(materializeLineRange(prepared, range!)).toEqual(expected)
+  })
+
   test('measureLineStats matches walked line count and widest line', () => {
     const prepared = prepareWithSegments('foo trans\u00ADatlantic said "hello" to 世界 and waved.', FONT)
     const width = prepared.widths[0]! + prepared.widths[1]! + prepared.widths[2]! + prepared.breakableFitAdvances[4]![0]! + prepared.discretionaryHyphenWidth + 0.1
@@ -1399,6 +1628,12 @@ describe('layout invariants', () => {
       lineCount: walkedLineCount,
       maxLineWidth: walkedMaxLineWidth,
     })
+  })
+
+  test('measureNaturalWidth returns the widest forced line', () => {
+    const prepared = prepareWithSegments('wide line\nfit\nmid', FONT, { whiteSpace: 'pre-wrap' })
+
+    expect(measureNaturalWidth(prepared)).toBe(measureWidth('wide line', FONT))
   })
 
   test('line-break geometry helpers stay aligned with streamed line ranges', () => {
@@ -1444,7 +1679,7 @@ describe('layout invariants', () => {
       for (let widthIndex = 0; widthIndex < widths.length; widthIndex++) {
         const width = widths[widthIndex]!
         const counted = countPreparedLines(prepared, width)
-        const walked = walkPreparedLines(prepared, width)
+        const walked = walkPreparedLinesRaw(prepared, width)
         expect(counted).toBe(walked)
       }
     }

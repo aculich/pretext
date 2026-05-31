@@ -12,7 +12,7 @@ bun install
 
 - `bun start` — stable local page server at <http://localhost:3000>
 - `bun run start:windows` — Windows-friendly fallback without automatic port cleanup
-- `bun run check` — typecheck plus lint
+- `bun run check` — typecheck, lint, and dead-code scan (`knip`)
 - `bun test` / `bun run test` — invariant suite under `./src/` only (`bun test src` matches any path segment named `src`, e.g. clones under `upstream/`; use `bun run test` or `bun test ./src/`)
 
 ### Packaging And Release Confidence
@@ -36,10 +36,11 @@ bun install
 - `bun run accuracy-snapshot` — refresh `accuracy/chrome.json`
 - `bun run accuracy-snapshot:safari`
 - `bun run accuracy-snapshot:firefox`
-- `bun run benchmark-check` — Chrome benchmark snapshot
+- `bun run benchmark-check` — Chrome benchmark snapshot; default is the median of 3 full page runs, use `--runs=1` for a quick local check
 - `bun run benchmark-check:safari`
 - `bun run pre-wrap-check` — compact batched browser oracle for `{ whiteSpace: 'pre-wrap' }`
 - `bun run keep-all-check` — compact batched browser oracle for `{ wordBreak: 'keep-all' }`, including mixed-script no-space canaries
+- `bun run symbol-check` — compact batched Chrome + Safari oracle for no-space symbol runs inside long words
 - `bun run letter-spacing-check` — compact batched browser oracle for `{ letterSpacing }`, using one posted-report probe per browser and covering narrow wraps, combining marks, bidi, CJK, emoji, digits, RTL punctuation, `pre-wrap`, and soft hyphens
 - `bun run letter-spacing-snapshot` — refresh `accuracy/letter-spacing.json` from the Chrome + Safari compact `{ letterSpacing }` oracle
 - `bun run probe-check` — smaller browser probe/diagnostic entrypoint (default `--text` smoke if you omit flags; pass `--text=...`, `--width=...`, `--letterSpacing=2px`, etc. for ad-hoc repro)
