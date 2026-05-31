@@ -7,6 +7,7 @@ const config: KnipConfig = {
     // Library entry points — match the `exports` field in package.json
     'src/layout.ts',
     'src/rich-inline.ts',
+    'src/contrast.ts',
     // Scripts invoked via package.json
     'scripts/**/*.ts',
     // Browser pages and demos — each `pages/**/*.ts` is the target of a `<script type="module" src="…">` in a sibling `.html`
@@ -14,9 +15,12 @@ const config: KnipConfig = {
   ],
   ignore: [
     'src/layout.test.ts', // Exclude tests so their imports don't count as "usage"
+    'preimage__aculich/**', // Sibling @aculich/preimage package; own package.json and checks
+    'benchmarks/simple-benchmark.ts', // Manual perf harness, not wired in package.json
   ],
   ignoreDependencies: [
     'tsgolint', // Type-aware checker invoked by `oxlint --type-aware` via oxlint-tsgolint
+    'lighthouse', // ecosystem:lighthouse script
   ],
   ignoreBinaries: [
     // Used in package.json scripts

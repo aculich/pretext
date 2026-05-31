@@ -1,5 +1,5 @@
 {
-  "exclude": ["node_modules", "dist", "site", "research/forks", "upstream"],
+  "exclude": ["node_modules", "dist", "site", "research/forks", "upstream", "preimage__aculich"],
   "compilerOptions": {
     "lib": ["ESNext", "DOM"],
     "target": "ESNext",
